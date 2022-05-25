@@ -5,7 +5,7 @@ body {
   box-sizing: border-box;
   font-family: monospace;
   color: var(--dark);
-  background-color: var(--second-light-color);
+  background-color: var(--main-light-color);
 }
 
 :root {
@@ -19,6 +19,8 @@ body {
   --second-green-color:rgb(7, 165, 165);
 
   --main-blue-color: rgb(72, 60, 244);
+  --second-blue-color: rgb(107, 99, 216);
+
 
   --main-red-color:rgb(236, 47, 88);
 
@@ -55,4 +57,9 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.page_header{
+  background-color: var(--second-light-color);
+  padding: 1.5rem;
 }

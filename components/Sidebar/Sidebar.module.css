@@ -1,0 +1,11 @@
+.sidebar{
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   padding: 0 1rem;
+}
+
+.logo{
+   margin-top: 1.5rem;
+   font-size: 26px;
+}
