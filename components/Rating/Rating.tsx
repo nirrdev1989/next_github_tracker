@@ -9,7 +9,7 @@ interface RatingProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
    setRating?: (ratingCount: number) => void
 }
 
-export default function Rating({ setRating, rating, isEdit = false, ...props }: RatingProps) {
+export default function Rating({ setRating, rating, isEdit = false, ...props }: RatingProps): JSX.Element {
    const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>))
 
 

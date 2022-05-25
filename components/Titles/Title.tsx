@@ -6,7 +6,7 @@ interface TitleProps {
    children: ReactNode
 }
 
-export default function Title({ type, children }: TitleProps) {
+export default function Title({ type, children }: TitleProps): JSX.Element {
    switch (type) {
       case "h1":
          return <h1 className={styles.h1}>{children}</h1>
