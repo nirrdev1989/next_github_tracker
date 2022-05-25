@@ -1,0 +1,8 @@
+.footer {
+   background-color: var(--main-blue-color);
+   color: var(--main-light-color);
+   padding: 1.5rem 3rem;
+   display: grid;
+   grid-template-columns: 1fr auto auto;
+   gap: 1.5rem;
+}
