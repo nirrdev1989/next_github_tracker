@@ -1,0 +1,23 @@
+.button{
+   padding: 0.5rem;
+   opacity: 0.7;
+   transition: 0.5s ease all;
+   cursor: pointer;
+   text-align: center;
+   border-radius: 0;
+   border: none;
+}
+
+.button:hover {
+   opacity: 1;
+}
+
+.main_green {
+   background-color: var(--main-green-color);
+   color: var(--main-light-color);
+}
+
+.main_blue {
+   background-color: var(--main-blue-color);
+   color: var(--main-light-color);
+}

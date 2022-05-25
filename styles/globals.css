@@ -2,14 +2,56 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  box-sizing: border-box;
+  font-family: monospace;
+  color: var(--dark);
+  background-color: var(--second-light-color);
 }
+
+:root {
+  --main-dark-color: rgb(26, 26, 26);
+
+  --main-light-color: white;
+  --second-light-color: whitesmoke;
+  --three-light-color: rgb(219, 219, 219);
+
+  --main-green-color:rgb(35, 197, 197);
+  --second-green-color:rgb(7, 165, 165);
+
+  --main-blue-color: rgb(72, 60, 244);
+
+  --main-red-color:rgb(236, 47, 88);
+
+  --main-yellow-color: rgb(236, 201, 47);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  /* color: rgb(26, 26, 26); */
+  /* color:whitesmoke; */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 
 a {
   color: inherit;
   text-decoration: none;
 }
+
+
 
 * {
   box-sizing: border-box;
