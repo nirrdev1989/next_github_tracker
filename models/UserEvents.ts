@@ -1,3 +1,5 @@
+import { _UserLikeOwner } from "./UserLikeOwner"
+
 export interface _GitUserEvents {
    actor: _Actor
    created_at: string
@@ -67,31 +69,8 @@ export interface _Issue {
    title: string
    updated_at: string
    url: string
-   user: _User
+   user: _UserLikeOwner
 }
-
-
-export interface _User {
-   avatar_url: string
-   events_url: string
-   followers_url: string
-   following_url: string
-   gists_url: string
-   gravatar_id: string
-   html_url: string
-   id: number
-   login: string
-   node_id: string
-   organizations_url: string
-   received_events_url: string
-   repos_url: string
-   site_admin: boolean
-   starred_url: string
-   subscriptions_url: string
-   type: string
-   url: string
-}
-
 
 export interface _Payload {
    description: string
@@ -133,7 +112,7 @@ export interface _Forkee {
    comments_url: string
    commits_url: string
    compare_url: string
-   owner: _User
+   owner: _UserLikeOwner
    contents_url: string
    contributors_url: string
    created_at: string
