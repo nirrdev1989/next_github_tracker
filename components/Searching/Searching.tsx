@@ -34,11 +34,6 @@ export default function Searching({ className, ...props }: SearchingProps): JSX.
 
          }
       })
-      // "https://api.github.com/search/users?q={query}{&page,per_page,sort,order}"
-      // axios.get(`https://api.github.com/search/users?q=${value}&page=3`)
-      //    .then((results) => {
-      //       console.log(results)
-      //    })
    }
 
    function handleKeyDown(event) {

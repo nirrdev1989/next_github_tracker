@@ -1,16 +1,22 @@
 import { GetStaticProps } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/Button/Button";
 import P from "../components/P/P";
 import Rating from "../components/Rating/Rating";
 import Title from "../components/Titles/Title";
 import { withLayout } from "../layout/Layout";
 import axios from "axios"
-import { users } from "../fake-db/users";
+import { users, usersSearch, _UsersSearchResults } from "../fake-db/users";
 import Searching from "../components/Searching/Searching";
 import styles from "../styles/Home.page.module.css"
 import Input from "../components/Input/Input";
 import { useRouter } from "next/router";
+import { _UserLikeOwner } from "../models/UserLikeOwner";
+import Image from "next/image";
+import UsersList from "../components/UsersList/UsersList";
+
+
+
 
 interface HomeProps {
 
@@ -18,8 +24,28 @@ interface HomeProps {
 
 function HomePage({ }: HomeProps): JSX.Element {
   const router = useRouter()
+  const [searchResults, setSearchResults] = useState<_UsersSearchResults>()
 
-  console.log(router.query)
+  async function getUsers() {
+    try {
+      const { data } = await axios.get<_UsersSearchResults>(
+        `https://api.github.com/search/users?q=${router.query.search}&page=1`
+      )
+
+      setSearchResults(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    const searchValue = router.query.search
+    const type = router.query.type
+    console.log(searchValue)
+    if (searchValue !== undefined && searchValue !== "") {
+      getUsers()
+    }
+  }, [router.query.search, router.query.type])
 
 
   return (
@@ -33,14 +59,12 @@ function HomePage({ }: HomeProps): JSX.Element {
       </div>
 
       <div className={styles.search_results}>
-        <P size="medium">No results</P>
+        {searchResults?.items.length > 0 ?
+          <UsersList users={searchResults.items} /> :
+          <P size="medium">No results</P>}
       </div>
 
-      {/* <P size="large">dasdasdasd  </P>
-      <P  > fsdfds </P>
-      <P size="small" > fsdfdsf </P>
-      <Rating isEdit={true} rating={rating} setRating={setRating} />
-      <Button onClick={() => { }} extraClass="main_green" >Check &#10140;</Button> */}
+      {/* <Rating isEdit={true} rating={rating} setRating={setRating} /> */}
     </div>
   )
 }

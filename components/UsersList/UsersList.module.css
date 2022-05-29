@@ -1,0 +1,10 @@
+.user_list_item {
+   display: flex;
+   padding: var(--size-1-rem) 0;
+   gap: var(--size-1-rem);
+   border-bottom: solid var(--main-dark-color) 1px;
+}
+
+.user_list_item img {
+   border-radius: 50%;
+}
