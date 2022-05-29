@@ -14,9 +14,9 @@ const menuItems: _MenuItem[] = [
 ]
 
 
+interface MenuProps { }
 
-
-export default function Menu(): JSX.Element {
+export default function Menu({ }: MenuProps): JSX.Element {
    // const {activeMenuTab, isCurrentActive, openTab} = useAppContext()
    const [activeMenuTab, setActiveMenuTab] = useState<number>(0)
    const [isCurrentActive, setIsCurrentActive] = useState<number>(0)

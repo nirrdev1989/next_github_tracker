@@ -15,7 +15,7 @@ export default function Title({ type, children }: TitleProps): JSX.Element {
       case "h3":
          return <h3 className={styles.h3}>{children}</h3>
       case "h4":
-         return <h4>{children}</h4>
+         return <h4 className={styles.h4}>{children}</h4>
       case "h5":
          return <h5>{children}</h5>
       case "h6":
