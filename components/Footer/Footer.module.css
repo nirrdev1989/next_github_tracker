@@ -1,22 +1,23 @@
 .footer {
    background-color: var(--main-blue-color);
-   color: var(--main-light-color);
-   padding: 1.5rem 3rem;
+   color: white;
+   padding: var(--size-1-5-rem) var(--size-3-rem);
    display: grid;
    grid-template-columns: 1fr auto auto;
-   gap: 1.5rem;
+   gap: var(--size-1-5-rem);
 }
 
-.footer a{
-   transition: 0.5s ease all;
+.footer a {
+   transition: var(--transaction-0-5-s);
 }
 
 .footer a:hover {
-   color: var(--three-light-color);
+   text-decoration: underline;
+   /* color: var(--second-light-color); */
 }
 
 @media (max-width: 600px) {
-   .footer{
+   .footer {
       grid-template-columns: 1fr;
       gap: 0.75rem;
    }

@@ -1,30 +1,33 @@
-.menu_container{
+.menu_container {
    /* padding: 1rem; */
 }
-.menu_item_header{
+
+.menu_item_header {
    line-height: 35px;
    cursor: pointer;
    width: 100%;
    display: flex;
    align-items: center;
-   transition: 0.5s ease all;
+   transition: var(--transaction-0-5-s);
    font-weight: 600;
+   font-size: 16px;
 }
 
 .menu_item_header.active:hover,
-.menu_item_header:hover{
-   color: var( --second-blue-color);
+.menu_item_header:hover {
+   color: var(--second-blue-color);
 }
-.menu_item_header.active{
+
+.menu_item_header.active {
    color: var(--main-blue-color);
 }
 
-.menu_item_header svg{
-   margin-right: 0.5rem;
-   font-size: 18px;
+.menu_item_header svg {
+   margin-right: var(--size-0-5-rem);
+   font-size: 20px;
 }
 
-.menu_item_options{
+.menu_item_options {
    overflow-x: hidden;
    position: relative;
    visibility: hidden;
@@ -45,18 +48,19 @@
    transition: max-height 0.6s, opacity 2s, visibility 3s ease;
 }
 
-.menu_item_options > div {
+.menu_item_options>div {
    padding: 0 0.3rem;
    line-height: 20px;
    opacity: 0.7;
-   transition: 0.5s ease all;
+   transition: var(--transaction-0-5-s);
    cursor: pointer;
+   font-size: 15px;
 }
 
-.menu_item_options > div:hover{
+.menu_item_options>div:hover {
    opacity: 1;
 }
 
-.menu_item_options_active{
+.menu_item_options_active {
    color: var(--main-blue-color);
 }

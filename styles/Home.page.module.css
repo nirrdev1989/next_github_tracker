@@ -1,0 +1,13 @@
+.home_page_container>div {
+   margin-bottom: var(--size-1-rem);
+}
+
+.search_results {
+   text-align: center;
+}
+
+@media (max-width: 770px) {
+   .home_page_container {
+      margin: var(--size-1-rem);
+   }
+}

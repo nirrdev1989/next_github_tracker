@@ -1,11 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: monospace;
-  color: var(--dark);
-  background-color: var(--main-light-color);
+  color: var(--main-dark-color);
+  background-color: var(--second-light-color);
 }
 
 :root {
@@ -15,27 +19,74 @@ body {
   --second-light-color: whitesmoke;
   --three-light-color: rgb(219, 219, 219);
 
-  --main-green-color:rgb(35, 197, 197);
-  --second-green-color:rgb(7, 165, 165);
+  --main-green-color: rgb(35, 197, 197);
+  --second-green-color: rgb(7, 165, 165);
 
-  --main-blue-color: rgb(72, 60, 244);
-  --second-blue-color: rgb(107, 99, 216);
+  --main-blue-color: rgb(22, 110, 211);
+  --second-blue-color: rgb(28, 146, 205);
 
-
-  --main-red-color:rgb(236, 47, 88);
+  --main-red-color: rgb(236, 47, 88);
+  --second-red-color: rgb(233, 78, 111);
 
   --main-yellow-color: rgb(236, 201, 47);
+  --second-yellow-color: rgb(234, 209, 100);
+
+  --size-0-5-rem: 0.5rem;
+  --size-1-rem: 1rem;
+  --size-1-5-rem: 1.5rem;
+  --size-2-rem: 2rem;
+  --size-2-5-rem: 2.5rem;
+  --size-3-rem: 3rem;
+
+  --transaction-0-5-s: 0.5s ease all;
+
+  --box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+[data-mode="dark"] {
+  --main-dark-color: white;
+
+  --main-light-color: rgb(41, 41, 41);
+  --second-light-color: rgb(56, 56, 56);
+  --three-light-color: rgb(76, 76, 76);
+
+  --main-green-color: rgb(35, 197, 197);
+  --second-green-color: rgb(7, 165, 165);
+
+  --main-blue-color: rgb(22, 110, 211);
+  --second-blue-color: rgb(28, 146, 205);
+
+
+  --main-red-color: rgb(236, 47, 88);
+  --second-red-color: rgb(233, 78, 111);
+
+
+  --main-yellow-color: rgb(236, 201, 47);
+  --second-yellow-color: rgb(234, 209, 100);
+
+  --size-0-5-rem: 0.5rem;
+  --size-1-rem: 1rem;
+  --size-1-5-rem: 1.5rem;
+  --size-2-rem: 2rem;
+  --size-2-5-rem: 2.5rem;
+  --size-3-rem: 3rem;
+
+
+  --transaction-0-5-s: 0.5s ease all;
+
+  --box-shadow: rgba(246, 246, 246, 0.2) 0px 7px 29px 0px;
+
+
 }
 
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
-  /* color: rgb(26, 26, 26); */
-  /* color:whitesmoke; */
+
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--second-light-color);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -53,13 +104,26 @@ a {
   text-decoration: none;
 }
 
-
-
-* {
-  box-sizing: border-box;
+input {
+  /* outline-color: var(--main-dark-color); */
+  padding: 0.3rem;
 }
 
-.page_header{
-  background-color: var(--second-light-color);
-  padding: 1.5rem;
+input:focus {
+  /* outline: none; */
+  /* box-shadow: 0 0 0 1px var(--main-blue-color); */
+}
+
+button {
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+button, input {
+  border-radius: 0 !important;
+}
+
+.page_header {
+  padding: var(--size-1-rem) 0;
 }

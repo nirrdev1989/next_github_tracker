@@ -1,11 +1,30 @@
-.sidebar{
+.sidebar {
    display: flex;
    flex-direction: column;
-   gap: 1rem;
-   padding: 0 1rem;
+   gap: var(--size-1-rem);
+   padding: 0 var(--size-1-rem);
 }
 
-.logo{
-   margin-top: 1.5rem;
+.mode_icons {
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+   transition: var(--transaction-0-5-s);
+   opacity: 0.7;
+}
+
+.mode_icons:hover {
+   opacity: 1;
+}
+
+.logo {
+   display: flex;
+   margin-top: var(--size-1-rem);
    font-size: 26px;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.logo a:hover {
+   text-decoration: underline;
 }

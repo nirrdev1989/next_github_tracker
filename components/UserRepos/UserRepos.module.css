@@ -1,0 +1,98 @@
+.user_repos {
+   padding-bottom: var(--size-1-rem);
+
+}
+
+.user_repos a:hover {
+   text-decoration: underline;
+}
+
+.user_repos_list {
+   width: 100%;
+   max-height: 81vh;
+   height: 81vh;
+   margin-top: var(--size-1-rem);
+   background-color: var(--main-light-color);
+   padding: var(--size-1-rem);
+   /* padding-top: var(--size-2-rem); */
+   /* box-shadow: var(--box-shadow); */
+}
+
+.user_repos_list_inner {
+   max-height: 78vh;
+   height: 78vh;
+   overflow-x: hidden;
+}
+
+.user_repo_item {
+   width: 98%;
+   margin: auto;
+   margin-bottom: var(--size-1-rem);
+   border-bottom: 2px solid var(--second-light-color);
+   padding-bottom: var(--size-1-rem);
+}
+
+.user_repo_item:nth-child(odd) {
+   /* background-color: var(--second-light-color); */
+
+}
+
+.user_repo_item:nth-child(even) {
+   /* background-color: var(--main-light-color); */
+
+}
+
+.user_repo_item h4,
+.user_repo_item h3 {
+   line-height: 25px;
+}
+
+.user_repo_item h4 {
+   display: flex;
+   align-items: center;
+   margin-top: var(--size-0-5-rem);
+}
+
+.user_repo_item h4 i,
+.user_repo_item h4 svg {
+   width: 20px;
+   height: 20px;
+   margin-right: var(--size-0-5-rem);
+}
+
+
+
+.user_repo_item:last-child {
+   border-bottom: none;
+   padding-bottom: 0;
+}
+
+.user_repo_item_stats {
+   margin-top: var(--size-1-rem);
+   display: flex;
+   align-items: center;
+   width: 100%;
+   justify-content: flex-start;
+}
+
+.user_repo_item_stats p,
+.user_repo_item_stats span {
+   margin-right: var(--size-0-5-rem);
+}
+
+@media (max-width: 770px) {
+   .user_repos {
+      padding: var(--size-1-rem);
+   }
+
+   .user_repo_item_stats {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+   }
+
+   .user_repo_item_stats>span {
+      padding-top: var(--size-1-rem);
+   }
+
+}

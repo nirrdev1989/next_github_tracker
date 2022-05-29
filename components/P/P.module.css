@@ -1,15 +1,20 @@
-.p{
+.p {
    margin: 0;
+   line-height: 20px;
+}
+
+.x_small {
+   font-size: 12px;
 }
 
 .small {
- font-size: 14px;
+   font-size: 14px;
 }
 
-.medium{
- font-size: 16px;
+.medium {
+   font-size: 15px;
 }
 
-.large{
- font-size: 18px;
+.large {
+   font-size: 17px;
 }
