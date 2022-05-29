@@ -1,11 +1,11 @@
-.star{
+.star {
    font-size: 25px;
    cursor: pointer;
    color: var(--three-light-color);
    font-weight: bold;
-   transition: 0.5s ease all;
+   transition: var(--transaction-0-5-s);
 }
 
-.fill{
-   color: var( --main-yellow-color);
+.fill {
+   color: var(--main-yellow-color);
 }
