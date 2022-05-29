@@ -7,26 +7,41 @@ import Title from "../components/Titles/Title";
 import { withLayout } from "../layout/Layout";
 import axios from "axios"
 import { users } from "../fake-db/users";
-
+import Searching from "../components/Searching/Searching";
+import styles from "../styles/Home.page.module.css"
+import Input from "../components/Input/Input";
+import { useRouter } from "next/router";
 
 interface HomeProps {
 
 }
 
-function Home({ }: HomeProps): JSX.Element {
-  // const [rating, setRating] = useState(3)
+function HomePage({ }: HomeProps): JSX.Element {
+  const router = useRouter()
+
+  console.log(router.query)
+
 
   return (
-    < >
-      <div className="page_header">
-        <Title type="h1">Home page</Title>
+    <div className={styles.home_page_container}>
+      <div className={`page_header ${styles.home_header}`}>
+        <Title type="h1">Wellcome to github search your user or repo</Title>
       </div>
+
+      <div className={styles.search} >
+        <Searching />
+      </div>
+
+      <div className={styles.search_results}>
+        <P size="medium">No results</P>
+      </div>
+
       {/* <P size="large">dasdasdasd  </P>
       <P  > fsdfds </P>
       <P size="small" > fsdfdsf </P>
       <Rating isEdit={true} rating={rating} setRating={setRating} />
       <Button onClick={() => { }} extraClass="main_green" >Check &#10140;</Button> */}
-    </>
+    </div>
   )
 }
 
@@ -40,7 +55,7 @@ function Home({ }: HomeProps): JSX.Element {
 //   }
 // }
 
-export default withLayout(Home)
+export default withLayout(HomePage)
 
 // public getUserGitHubProfile(userName: string): Observable<GithubUserProfile> {
 //   return this.http.get<GithubUserProfile>('https://api.github.com/users/' + userName)
@@ -96,3 +111,4 @@ export default withLayout(Home)
 // user_repositories_url: "https://api.github.com/users/{user}/repos{?type,page,per_page,sort}"
 // user_search_url: "https://api.github.com/search/users?q={query}{&page,per_page,sort,order}"
 // user_url: "https://api.github.com/users/{user}"
+
