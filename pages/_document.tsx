@@ -8,11 +8,16 @@ export default class MyDocument extends Document {
          ...initialProps
       }
    }
+
+
    render(): JSX.Element {
       return (
-         <Html lang="en">
-            <Head />
-            <body>
+         <Html lang="en" >
+            <Head >
+               <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+
+            </Head>
+            <body data-mode="light">
                <Main />
                <NextScript />
             </body>
