@@ -4,11 +4,11 @@ import styles from "./Button.module.css"
 
 interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
    children: ReactNode
-   extraClass: string
+   color?: string
 }
 
-export default function Button({ children, extraClass, ...props }: ButtonProps): JSX.Element {
+export default function Button({ children, color, ...props }: ButtonProps): JSX.Element {
    return (
-      <button {...props} className={`${styles.button} ${styles[extraClass]}`} >{children}</button>
+      <button {...props} className={`${styles.button} ${styles[color]}`} >{children}</button>
    )
 }
