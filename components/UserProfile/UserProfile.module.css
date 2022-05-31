@@ -23,7 +23,7 @@
 @media (max-width: 770px) {
 
    .user_profile {
-      padding: var(--size-1-rem);
+      /* padding: var(--size-1-rem); */
    }
 
    .user_profile_stats {

@@ -1,7 +1,7 @@
 .layout_container {
    display: grid;
    min-height: 100vh;
-   gap: 0 var(--size-1-rem);
+   gap: 0 var(--size-2-rem);
    grid-template-rows: auto 1fr auto;
    grid-template-columns: auto 230px minmax(320px, 1200px) auto;
    grid-template-areas:
@@ -17,12 +17,19 @@
 
 .sidebar_container {
    grid-area: sidebar;
-   background-color: var(--main-light-color);
+   background-color: var(--second-light-color);
+   border-right: 2px solid var(--main-light-color);
+
 }
 
 .main_container {
    grid-area: main;
-   /* background-color: var(--main-light-color); */
+   margin-left: var(--size-2-rem);
+   margin-right: var(--size-2-rem);
+}
+
+.main_container>div {
+   /* margin-bottom: var(--size-1-rem); */
 }
 
 .footer_container {
@@ -44,6 +51,11 @@
 
    .header_container {
       display: block;
+   }
+
+   .main_container {
+      margin-left: var(--size-1-rem);
+      margin-right: var(--size-1-rem);
    }
 
    .main_container>div {

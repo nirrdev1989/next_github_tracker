@@ -36,7 +36,11 @@
 .user_profile_content {
    display: grid;
    grid-template-columns: 1fr;
-   gap: var(--size-1-rem);
+   /* gap: var(--size-1-rem); */
+}
+
+.user_profile_content>div {
+   margin-bottom: var(--size-2-rem);
 }
 
 @media (max-width: 770px) {
