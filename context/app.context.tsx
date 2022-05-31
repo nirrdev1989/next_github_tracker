@@ -1,41 +1,67 @@
-import { createContext, PropsWithChildren, ReactNode, useContext, useState } from "react";
+import { createContext, PropsWithChildren, ReactNode, useCallback, useContext, useEffect, useState } from "react";
+import { users, repos } from "../fake-db/users";
+import Cookie from "js-cookie"
+import { _Menu, _MenuItem } from "../models/Menu";
 
 
-
-export interface App_Context {
-   // something: string
-   activeMenuTab: number
-   isCurrentActive: number
-   openTab?: (index: number) => void
+export interface _AppContext {
 }
 
-const AppContext = createContext<App_Context | null>({
-   activeMenuTab: -1,
-   isCurrentActive: -2,
-})
+const AppContext = createContext(null)
 
 export function useAppContext() {
    return useContext(AppContext)
 }
 
-export function AppContextProvider({ activeMenuTab, isCurrentActive, children }: PropsWithChildren<App_Context>): JSX.Element {
-   // const [s, setSomething] = useState<string>("")
-   const [_activeMenuTab, setActiveMenuTab] = useState<number>(activeMenuTab)
-   const [_isCurrentActive, setIsCurrentActive] = useState<number>(isCurrentActive)
+export function AppContextProvider({ children }: PropsWithChildren<_AppContext>): JSX.Element {
 
-   function openTab(index: number) {
-      if (index === _isCurrentActive) {
-         setIsCurrentActive(-1)
-         setActiveMenuTab(-1)
-         return
+   const [menuList, setMenuList] = useState<_Menu>({
+      "users": { type: "users", items: [] },
+      "repos": { type: "repos", items: [] }
+   })
+
+
+   const addItemToMenu = useCallback((name: string, type: string) => {
+      const itemFound = menuList[type].items.find((item) => item.name === name)
+
+      if (!itemFound) {
+         const newItem: _MenuItem = {
+            id: Math.floor(Math.random() * 100000000),
+            name: name
+         }
+
+         menuList[type].items.push(newItem)
+
+         Cookie.set(type, JSON.stringify(menuList[type].items))
+
+         setMenuList({ ...menuList })
       }
-      setIsCurrentActive(index)
-      setActiveMenuTab(index)
+      // }
+
+   }, [menuList])
+
+   function removeItemFromMenu(name: string, type: string) {
+
+      menuList[type].items = menuList[type].items.filter((item) => item.name !== name)
+
+      Cookie.set(type, JSON.stringify(menuList[type].items))
+
+      setMenuList({ ...menuList })
    }
 
+   useEffect(() => {
+      setMenuList({
+         "users": users,
+         "repos": repos
+      })
+   }, [])
+
+
    return (
-      <AppContext.Provider value={{ activeMenuTab: _activeMenuTab, isCurrentActive: _isCurrentActive, openTab }}>
+      <AppContext.Provider value={{ menuList, addItemToMenu, removeItemFromMenu }}>
          {children}
       </AppContext.Provider>
    )
 }
+
+
