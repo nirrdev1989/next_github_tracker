@@ -1,7 +1,3 @@
-export interface _GithubUserCreds {
-   id: number
-   userName: string
-}
 
 export interface _GithubUserProfile {
    login: string,

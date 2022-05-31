@@ -71,7 +71,7 @@ export interface _UserRepos {
    archived: boolean;
    disabled: boolean;
    open_issues_count: number;
-   license?: any;
+   license?: License;
    allow_forking: boolean;
    is_template: boolean;
    topics: any[];
@@ -80,6 +80,14 @@ export interface _UserRepos {
    open_issues: number;
    watchers: number;
    default_branch: string;
+}
+
+export interface License {
+   key: string;
+   name: string;
+   spdx_id: string;
+   url: string;
+   node_id: string;
 }
 
 
