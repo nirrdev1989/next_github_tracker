@@ -1,6 +1,16 @@
 import { _UserLikeOwner } from "./UserLikeOwner"
 
-export interface _GitUserEvents {
+export interface _Actor {
+   avatar_url: string
+   display_login: string
+   gravatar_id: string
+   id: number
+   login: string
+   url: string
+}
+
+
+export interface _GitHubUserEvents {
    actor: _Actor
    created_at: string
    id: string
@@ -10,25 +20,57 @@ export interface _GitUserEvents {
    type: string
 }
 
-
-export interface _Commits {
-   author: {
-      email: string,
-      name: string
-   }
-   distinct: boolean
-   message: string
-   sha: string
-   url: string
-}
-
-
 export interface _Repo {
    id: number
    name: string
    url: string
 }
 
+export interface _Author {
+   email: string;
+   name: string;
+}
+
+export interface _Commit {
+   sha: string;
+   author: _Author;
+   message: string;
+   distinct: boolean;
+   url: string;
+}
+
+export interface _Payload {
+   push_id?: number;
+   size?: number;
+   distinct_size?: number;
+   ref?: string;
+   head?: string;
+   before?: string;
+   commits?: _Commit[];
+   ref_type?: string;
+   master_branch?: string;
+   description?: string;
+   pusher_type?: string
+}
+
+// OLD
+// export interface _Payload {
+//    description?: string
+//    master_branch?: string
+//    pusher_type: string
+//    ref_type: string
+//    action: string
+//    comment: Comment
+//    forkee: _Forkee
+//    issue: _Issue
+//    before: string
+//    commits: _Commits[]
+//    distinct_size: number
+//    head: string
+//    push_id: number
+//    ref: string
+//    size: number
+// }
 
 export interface _Comment {
    author_association: string
@@ -42,7 +84,6 @@ export interface _Comment {
    updated_at: string
    url: string
 }
-
 
 export interface _Issue {
    active_lock_reason: any
@@ -70,34 +111,6 @@ export interface _Issue {
    updated_at: string
    url: string
    user: _UserLikeOwner
-}
-
-export interface _Payload {
-   description: string
-   master_branch: string
-   pusher_type: string
-   ref_type: string
-   action: string
-   comment: Comment
-   forkee: _Forkee
-   issue: _Issue
-   before: string
-   commits: _Commits[]
-   distinct_size: number
-   head: string
-   push_id: number
-   ref: string
-   size: number
-}
-
-
-export interface _Actor {
-   avatar_url: string
-   display_login: string
-   gravatar_id: string
-   id: number
-   login: string
-   url: string
 }
 
 
