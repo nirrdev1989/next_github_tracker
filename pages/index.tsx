@@ -6,7 +6,7 @@ import Rating from "../components/Rating/Rating";
 import Title from "../components/Titles/Title";
 import { withLayout } from "../layout/Layout";
 import axios from "axios"
-import { users, usersSearch, _UsersSearchResults } from "../fake-db/users";
+import { users, usersSearch, _SearchResults } from "../fake-db/users";
 import Searching from "../components/Searching/Searching";
 import styles from "../styles/Home.page.module.css"
 import Input from "../components/Input/Input";
@@ -14,38 +14,57 @@ import { useRouter } from "next/router";
 import { _UserLikeOwner } from "../models/UserLikeOwner";
 import Image from "next/image";
 import UsersList from "../components/UsersList/UsersList";
+import { convertArrayToObject } from "../utils/convert";
+import { _UserRepos } from "../models/UserRepos";
+import Axios from "../utils/axios";
+import ReposList from "../components/ReposList/ReposList";
 
 
 
+interface HomeProps { }
 
-interface HomeProps {
-
+async function getData(url: string, callData: Function) {
+  try {
+    const { data } = await Axios.get(url)
+    callData(null, data)
+  } catch (error) {
+    callData(error, null)
+  }
 }
 
 function HomePage({ }: HomeProps): JSX.Element {
   const router = useRouter()
-  const [searchResults, setSearchResults] = useState<_UsersSearchResults>()
+  const [searchResults, setSearchResults] = useState<_SearchResults<any>>({
+    items: [],
+    total_count: 0,
+    incomplete_results: true
+  })
 
-  async function getUsers() {
-    try {
-      const { data } = await axios.get<_UsersSearchResults>(
-        `https://api.github.com/search/users?q=${router.query.search}&page=1`
-      )
-
-      setSearchResults(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   useEffect(() => {
-    const searchValue = router.query.search
-    const type = router.query.type
-    console.log(searchValue)
-    if (searchValue !== undefined && searchValue !== "") {
-      getUsers()
+    const searchValue = router.query?.search
+    const type = router.query?.type
+
+    if (searchValue !== undefined && type !== undefined) {
+      if (type === "users") {
+        getData(`/search/users?q=${searchValue}&page=1`, (error, data: _SearchResults<_UserLikeOwner>) => {
+          setSearchResults(data)
+        })
+      } else if (type === "repos") {
+        getData(`/search/repositories?q=${searchValue}&page=1`, (error, data: _SearchResults<_UserRepos>) => {
+          setSearchResults(data)
+        })
+      }
     }
   }, [router.query.search, router.query.type])
+
+  useEffect(() => {
+    setSearchResults({
+      items: [],
+      total_count: 0,
+      incomplete_results: true
+    })
+  }, [router.query?.research])
 
 
   return (
@@ -56,12 +75,16 @@ function HomePage({ }: HomeProps): JSX.Element {
 
       <div className={styles.search} >
         <Searching />
+        {searchResults?.total_count > 0 && <P size="small">Results {searchResults.total_count}</P>}
       </div>
 
       <div className={styles.search_results}>
-        {searchResults?.items.length > 0 ?
-          <UsersList users={searchResults.items} /> :
-          <P size="medium">No results</P>}
+        {searchResults.items.length > 0 && router.query.type === "users" &&
+          <UsersList users={searchResults.items} />}
+        {searchResults.items.length > 0 && router.query.type === "repos" &&
+          <ReposList repos={searchResults.items} />}
+
+        {searchResults?.items.length === 0 && <P size="large">No results</P>}
       </div>
 
       {/* <Rating isEdit={true} rating={rating} setRating={setRating} /> */}

@@ -1,17 +1,13 @@
 import { AppProps } from 'next/dist/shared/lib/router/router'
 import Head from 'next/head'
 import { useEffect } from 'react'
+import { useSubject, useBehaviorSubject } from 'use-rxjs-state'
+import { AppContextProvider } from '../context/app.context'
 import { ThemeContextProvider } from '../context/theme.context'
 import '../styles/globals.css'
 
+
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-
-  useEffect(() => {
-    if (document.body) {
-      console.log(document.body)
-    }
-  }, [])
-
 
   return <>
     <Head>
@@ -21,7 +17,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     </Head>
 
     <ThemeContextProvider>
-      <Component {...pageProps} />
+      <AppContextProvider>
+        <Component {...pageProps} />
+      </AppContextProvider>
     </ThemeContextProvider>
   </>
 }
