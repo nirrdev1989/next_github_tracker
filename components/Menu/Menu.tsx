@@ -1,92 +1,94 @@
-
-import { PropsWithChildren, useState } from "react"
 import { ListIcon, UsersIcon } from "../../icons"
 import styles from "./Menu.module.css"
-import { _MenuItem } from "../../models/Menu";
+// import { _MenuItem } from "../../models/Menu";
 import Link from "next/link";
-import { users } from "../../fake-db/users";
 import { useRouter } from "next/router";
-// import { useAppContext } from "../../context/app.context";
+import { useState, Children, cloneElement, isValidElement, PropsWithChildren, useEffect, createContext, useContext } from "react"
+import { _MenuItem } from "../../models/Menu";
 
-const menuItems: _MenuItem[] = [
-   { name: "Users", icon: UsersIcon },
-   { name: "Repos", icon: ListIcon }
-]
+const MenuContext = createContext(null)
 
+interface MenuWrapperProps extends PropsWithChildren<any> {
+   active?: number
+}
 
-interface MenuProps { }
+export function MenuWrapper({ children, active }: MenuWrapperProps): JSX.Element {
+   const [selectedItem, setSelectedItem] = useState<number>(active)
+   const [isCurrentActive, setIsCurrentActive] = useState<number>(active)
 
-export default function Menu({ }: MenuProps): JSX.Element {
-   // const {activeMenuTab, isCurrentActive, openTab} = useAppContext()
-   const [activeMenuTab, setActiveMenuTab] = useState<number>(0)
-   const [isCurrentActive, setIsCurrentActive] = useState<number>(0)
-   const { query } = useRouter()
-   // console.log(router)
-
-   function openTab(index: number) {
+   function selectItem(index: number) {
       if (index === isCurrentActive) {
          setIsCurrentActive(-1)
-         setActiveMenuTab(-1)
+         setSelectedItem(-1)
          return
       }
+      setSelectedItem(index)
       setIsCurrentActive(index)
-      setActiveMenuTab(index)
    }
 
-   return (
-      <div className={styles.menu_container}>
-         <div className={styles.menu_items}>
-            {menuItems.map((menuItem, i) => {
-               return (
-                  <MenuItem
-                     key={menuItem.name}
-                     menuItem={menuItem}
-                     isCurrentActive={isCurrentActive}
-                     activeMenuTab={activeMenuTab}
-                     i={i}
-                     openTab={openTab}
-                  >
+   useEffect(() => {
+      if (active === undefined) {
+         // if (Children.count(children) === 1) {
+         setSelectedItem(0)
+         setIsCurrentActive(0)
+         // }
+      }
+   }, [children])
 
-                     {users.map((user) => {
-                        return (
-                           <div key={user.userName} className={`${query?.userName === user.userName && styles.menu_item_options_active}`}>
-                              <Link href={`/users/${user.userName}`}>
-                                 <a> {user.userName} </a>
-                              </Link>
-                           </div>
-                        )
-                     })}
-                  </MenuItem>
-               )
+   return (
+      <MenuContext.Provider value={{ selectedItem, selectItem, isCurrentActive }}>
+         <div className={styles.menu_container}>
+            {Children.map(children, (child, index) => {
+               return <> {child} </>
+               //  if (isValidElement(child)){
+               // }
+               // return cloneElement(child, { index: index })
             })}
+
+         </div>
+      </MenuContext.Provider>
+   )
+}
+
+interface MenuItemsProps extends PropsWithChildren<any> {
+   title: string
+   icon: JSX.Element
+   index: number
+}
+
+MenuWrapper.MenuItems = function ({ title, icon, index, children }: MenuItemsProps): JSX.Element {
+   const { selectedItem, selectItem, isCurrentActive } = useContext(MenuContext)
+
+   return (
+      <div className={`${styles.menu_item}`}>
+         <div
+            className={`${styles.menu_item_header} ${index === selectedItem ? styles.active : ""}`}
+            onClick={() => selectItem(index)}
+         >
+            {icon}
+            <span>{title}</span>
+         </div>
+         <div className={`${styles.menu_item_options} ${index === selectedItem && index === isCurrentActive ? styles.open : ""} `} >
+            {children}
          </div>
       </div>
    )
 }
 
 
-interface MenuItemProps extends PropsWithChildren<any> {
-   activeMenuTab: number
-   isCurrentActive: number
-   menuItem: _MenuItem
-   i: number
-   openTab: (index: number) => void
+interface MenuItemProps {
+   item: _MenuItem
+   type: string
 }
 
-function MenuItem({ children, openTab, menuItem, activeMenuTab, isCurrentActive, i }: MenuItemProps): JSX.Element {
 
+MenuWrapper.MenuItem = function ({ item, type }: MenuItemProps): JSX.Element {
+   const { query } = useRouter()
    return (
-      <div className={styles.menu_item}>
-         <div
-            className={`${styles.menu_item_header} ${activeMenuTab === i && isCurrentActive === i ? styles.active : ""}`}
-            onClick={() => openTab(i)}
-         >
-            {menuItem.icon}
-            <span>{menuItem.name}</span>
-         </div>
-         <div className={`${styles.menu_item_options} ${activeMenuTab === i && isCurrentActive === i ? styles.open : ""} `}>
-            {children}
-         </div>
+      <div key={item.name} className={`${query?.name === item.name && styles.menu_item_options_active}`}>
+         <Link href={`/${type}/${item.name}`}>
+            <a> {item.name} </a>
+         </Link>
       </div>
    )
 }
