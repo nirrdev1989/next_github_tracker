@@ -3,16 +3,20 @@ import Footer from "../components/Footer/Footer"
 import Header from "../components/Header/Header"
 import Sidebar from "../components/Sidebar/Sidebar"
 import Title from "../components/Titles/Title"
-import { AppContextProvider, App_Context } from "../context/app.context"
+import { AppContextProvider } from "../context/app.context"
 import styles from "./Layout.module.css"
+import { useSubject, useBehaviorSubject } from "use-rxjs-state"
+import { modeStore } from "../rxjs-store/store"
+
 
 
 interface LayoutProps {
    children: ReactNode
 }
 
-
 function Layout({ children }: LayoutProps) {
+   const [isDarkMode, setDarkMode] = useBehaviorSubject<boolean>(modeStore)
+
    return (
       <div className={styles.layout_container}>
          <div className={styles.header_container}>
