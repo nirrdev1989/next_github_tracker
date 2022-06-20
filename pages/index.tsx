@@ -1,76 +1,58 @@
-import { GetStaticProps } from "next";
 import { useEffect, useState } from "react";
-import Button from "../components/Button/Button";
-import P from "../components/P/P";
-import Rating from "../components/Rating/Rating";
-import Title from "../components/Titles/Title";
+import P from "../components/util-components/P/P";
+import Title from "../components/util-components/Titles/Title";
 import { withLayout } from "../layout/Layout";
-import axios from "axios"
-import { users, usersSearch, _SearchResults } from "../fake-db/users";
+import { _SearchResults } from "../fake-db/users";
 import Searching from "../components/Searching/Searching";
 import styles from "../styles/Home.page.module.css"
-import Input from "../components/Input/Input";
 import { useRouter } from "next/router";
-import { _UserLikeOwner } from "../models/UserLikeOwner";
-import Image from "next/image";
-import UsersList from "../components/UsersList/UsersList";
-import { convertArrayToObject } from "../utils/convert";
-import { _UserRepos } from "../models/UserRepos";
-import Axios from "../utils/axios";
-import ReposList from "../components/ReposList/ReposList";
-
-
+import { _GithubUserLikeOwner } from "../models/GithubUserLikeOwner";
+import UsersSearchList from "../components/Users/UsersSearchList/UsersSearchList";
+import { _GitHubRepo } from "../models/GithubRepo";
+import { getData } from "../utils/fetcher";
+import ReposSearchList from "../components/Repos/ReposSearchList/ReposSearchList";
 
 interface HomeProps { }
 
-async function getData(url: string, callData: Function) {
-  try {
-    const { data } = await Axios.get(url)
-    callData(null, data)
-  } catch (error) {
-    callData(error, null)
-  }
+const initialSearchState: _SearchResults<any> = {
+  items: [],
+  total_count: 0,
+  incomplete_results: true
 }
 
 function HomePage({ }: HomeProps): JSX.Element {
   const router = useRouter()
-  const [searchResults, setSearchResults] = useState<_SearchResults<any>>({
-    items: [],
-    total_count: 0,
-    incomplete_results: true
-  })
-
+  const [searchResults, setSearchResults] = useState<_SearchResults<any>>(initialSearchState)
 
   useEffect(() => {
     const searchValue = router.query?.search
     const type = router.query?.type
+    const page = router.query?.page
 
+    let url = ""
     if (searchValue !== undefined && type !== undefined) {
       if (type === "users") {
-        getData(`/search/users?q=${searchValue}&page=1`, (error, data: _SearchResults<_UserLikeOwner>) => {
-          setSearchResults(data)
-        })
+        url = `/search/users?q=${searchValue}&page=${page}`
       } else if (type === "repos") {
-        getData(`/search/repositories?q=${searchValue}&page=1`, (error, data: _SearchResults<_UserRepos>) => {
-          setSearchResults(data)
-        })
+        url = `/search/repositories?q=${searchValue}&page=${page}`
       }
+
+      getData(url, (error, data: _SearchResults<_GithubUserLikeOwner | _GitHubRepo>) => {
+        setSearchResults(data)
+      })
     }
-  }, [router.query.search, router.query.type])
+  }, [router.query.search, router.query.type, router.query?.page])
 
   useEffect(() => {
-    setSearchResults({
-      items: [],
-      total_count: 0,
-      incomplete_results: true
-    })
+    setSearchResults(initialSearchState)
   }, [router.query?.research])
 
 
   return (
     <div className={styles.home_page_container}>
+
       <div className={`page_header ${styles.home_header}`}>
-        <Title type="h1">Wellcome to github search your user or repo</Title>
+        <Title type="h1">Search...</Title>
       </div>
 
       <div className={styles.search} >
@@ -80,9 +62,9 @@ function HomePage({ }: HomeProps): JSX.Element {
 
       <div className={styles.search_results}>
         {searchResults.items.length > 0 && router.query.type === "users" &&
-          <UsersList users={searchResults.items} />}
+          <UsersSearchList users={searchResults.items} />}
         {searchResults.items.length > 0 && router.query.type === "repos" &&
-          <ReposList repos={searchResults.items} />}
+          <ReposSearchList repos={searchResults.items} />}
 
         {searchResults?.items.length === 0 && <P size="large">No results</P>}
       </div>
@@ -92,39 +74,16 @@ function HomePage({ }: HomeProps): JSX.Element {
   )
 }
 
-// export const getStaticProps: GetStaticProps = async () => {
 
-//   // const { data } = await axios.post('https://api.github.com/users/' +)
-//   return {
-//     props: {
-
-//     }
-//   }
-// }
 
 export default withLayout(HomePage)
 
-// public getUserGitHubProfile(userName: string): Observable<GithubUserProfile> {
-//   return this.http.get<GithubUserProfile>('https://api.github.com/users/' + userName)
-// }
-
-// public getRepos(userName: string): Observable<any> {
-//   // FOR PRIVETE
 //   // const options = {
 //   //     headers: new HttpHeaders({
 //   //         "Accept": "application/vnd.github.cloak-preview",
 //   //         "Authorization": `Token f2dd0413faf57cd97863a8ed7263584d13a25203`
 
-//   //     })
-//   // }
-//   // return this.http.get('https://api.github.com/repos/Nir-ruslan-yakobov/project_report_time/events', options)
 
-//   return this.http.get<any>(`https://api.github.com/users/${userName}/repos`)
-// }
-
-// public getGists(userName: string): Observable<Gist[]> {
-//   return this.http.get<Gist[]>(`https://api.github.com/users/${userName}/gists`)
-// }
 
 // authorizations_url: "https://api.github.com/authorizations"
 // code_search_url: "https://api.github.com/search/code?q={query}{&page,per_page,sort,order}"

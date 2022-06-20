@@ -20,6 +20,7 @@ export default class MyDocument extends Document {
             <body data-mode="light">
                <Main />
                <NextScript />
+               <div id="modal-root"></div>
             </body>
          </Html>
       )
