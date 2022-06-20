@@ -2,22 +2,24 @@ import axios from "axios";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, GetStaticPathsResult, GetServerSideProps } from 'next'
 import Image from "next/image";
 import { ParsedUrlQuery } from 'querystring'
-import P from "../../components/P/P";
-import UserRepos from "../../components/UserRepos/UserRepos";
-import Title from "../../components/Titles/Title";
-import UserProfile from "../../components/UserProfile/UserProfile";
-import { users } from "../../fake-db/users";
+import P from "../../components/util-components/P/P";
+// import UserRepos from "../../components/Repos/UserRepos/UserRepos";
+import Title from "../../components/util-components/Titles/Title";
+import UserProfile from "../../components/Users/UserProfile/UserProfile";
+import { events, users } from "../../fake-db/users";
 import { withLayout } from '../../layout/Layout'
 import { _GithubUserProfile } from '../../models/UserProfile'
 import styles from "../../styles/User.page.module.css"
-import { _UserRepos } from "../../models/UserRepos";
+import { _GitHubRepo } from "../../models/GithubRepo";
 import List from "../../components/List/List";
 import { EmailIcon, GithubIcon, ListCardIcon, TwitterIcon } from "../../icons";
 import UserEvents from "../../components/UserEvents/UserEvents";
-
+import { _GitHubEvents } from "../../models/GithubEvents";
+import UserRepos from "../../components/Repos/UserRepos/UserRepos";
 interface UserProfileProps extends Record<string, unknown> {
    userProfile: _GithubUserProfile
-   userRepos: _UserRepos
+   userRepos?: _GitHubRepo
+   events?: _GitHubEvents[]
    // userReps: _Gi
 }
 let userProfile: _GithubUserProfile = {
@@ -57,7 +59,7 @@ let userProfile: _GithubUserProfile = {
 
 }
 function UserProfilePage({ }: UserProfileProps): JSX.Element {
-   console.log(userProfile)
+   // console.log(userProfile)
    return (
       <>
          <div className={`page_header ${styles.user_profile_header}`}>
@@ -80,7 +82,7 @@ function UserProfilePage({ }: UserProfileProps): JSX.Element {
 
          <div className={styles.user_profile_content}>
             <UserProfile userProfile={userProfile} />
-            <UserEvents />
+            <UserEvents events={events} />
             {/* <UserRepos /> */}
          </div>
       </>
@@ -94,12 +96,21 @@ export default withLayout(UserProfilePage)
 
 export const getServerSideProps: GetServerSideProps<UserProfileProps> = async (context) => {
    // const { data } = await axios.get('https://api.github.com/users/' + context.params.name)
-
+   // const events = await axios.get(`https://api.github.com/users/${context.params.name}/events`)
+   // if (!data) {
+   //    return {
+   //      notFound: true,
+   //    };
+   //  }
    return {
-      props: {
-         userProfile: {} as _GithubUserProfile,
-         userRepos: {} as _UserRepos,
 
+      props: {
+
+         userProfile: {} as _GithubUserProfile,
+         // userRepos: {} as _GitHubRepo,
+         // userEvents: {} as _GitHubEvents[],
+         // userEvents: [],
+         events: []
 
          // userProfile: data
       }
@@ -129,7 +140,7 @@ export const getServerSideProps: GetServerSideProps<UserProfileProps> = async (c
 //    return {
 //       props: {
 //          // userProfile: {} as _GithubUserProfile,
-//          userRepos: {} as _UserRepos,
+//          userRepos: {} as _GitHubRepo,
 
 
 //          userProfile: data

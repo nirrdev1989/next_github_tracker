@@ -21,13 +21,14 @@ export function AppContextProvider({ children }: PropsWithChildren<_AppContext>)
    })
 
 
-   const addItemToMenu = useCallback((name: string, type: string) => {
+   const addItemToMenu = useCallback((name: string, link: string, type: string) => {
       const itemFound = menuList[type].items.find((item) => item.name === name)
 
       if (!itemFound) {
          const newItem: _MenuItem = {
             id: Math.floor(Math.random() * 100000000),
-            name: name
+            name: name,
+            link: link
          }
 
          menuList[type].items.push(newItem)

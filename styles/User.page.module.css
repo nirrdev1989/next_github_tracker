@@ -1,6 +1,8 @@
 .user_profile_header {
    display: flex;
    align-items: center;
+   margin-bottom: var(--size-1-rem);
+   /* animation: fade-in 0.5s forwards; */
 }
 
 .user_profile_header a:hover {
@@ -36,12 +38,25 @@
 .user_profile_content {
    display: grid;
    grid-template-columns: 1fr;
+   /* animation:  slide-in-fade 1s forwards; */
    /* gap: var(--size-1-rem); */
 }
 
 .user_profile_content>div {
    margin-bottom: var(--size-2-rem);
 }
+
+/* @keyframes slide-in-fade {
+   0% {
+      opacity: 0;
+      transform: translateX(100%);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateX(0);
+   }
+} */
 
 @media (max-width: 770px) {
    .user_profile_header>div {

@@ -1,12 +1,13 @@
 import { HTMLAttributes, DetailedHTMLProps, ReactNode, useState, useEffect, FunctionComponent } from "react"
-import Footer from "../components/Footer/Footer"
-import Header from "../components/Header/Header"
-import Sidebar from "../components/Sidebar/Sidebar"
-import Title from "../components/Titles/Title"
+import Footer from "./Footer/Footer"
+import Header from "./Header/Header"
+import Sidebar from "./Sidebar/Sidebar"
+import Title from "../components/util-components/Titles/Title"
 import { AppContextProvider } from "../context/app.context"
 import styles from "./Layout.module.css"
 import { useSubject, useBehaviorSubject } from "use-rxjs-state"
 import { modeStore } from "../rxjs-store/store"
+import Navbar from "../components/Navbar/Navbar"
 
 
 

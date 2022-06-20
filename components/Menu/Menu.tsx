@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, Children, cloneElement, isValidElement, PropsWithChildren, useEffect, createContext, useContext } from "react"
 import { _MenuItem } from "../../models/Menu";
+import MyLink from "../util-components/MyLink.tsx/MyLink";
 
 const MenuContext = createContext(null)
 
@@ -86,9 +87,9 @@ MenuWrapper.MenuItem = function ({ item, type }: MenuItemProps): JSX.Element {
    const { query } = useRouter()
    return (
       <div key={item.name} className={`${query?.name === item.name && styles.menu_item_options_active}`}>
-         <Link href={`/${type}/${item.name}`}>
-            <a> {item.name} </a>
-         </Link>
+         <MyLink to={item.link}>
+            {item.name}
+         </MyLink>
       </div>
    )
 }

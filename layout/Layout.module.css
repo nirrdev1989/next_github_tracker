@@ -7,7 +7,7 @@
    grid-template-areas:
       ". header header ."
       ".sidebar main ."
-      "footer footer footer footer"
+      "footer footer footer footer";
 }
 
 .header_container {
@@ -19,13 +19,13 @@
    grid-area: sidebar;
    background-color: var(--second-light-color);
    border-right: 2px solid var(--main-light-color);
-
 }
 
 .main_container {
    grid-area: main;
    margin-left: var(--size-2-rem);
    margin-right: var(--size-2-rem);
+   animation: slide-in-fade 0.5s forwards;
 }
 
 .main_container>div {
@@ -34,6 +34,18 @@
 
 .footer_container {
    grid-area: footer;
+}
+
+@keyframes slide-in-fade {
+   0% {
+      opacity: 0;
+      transform: translateX(100%);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateX(0);
+   }
 }
 
 @media (max-width: 765px) {
@@ -53,6 +65,7 @@
       display: block;
    }
 
+   .header_container,
    .main_container {
       margin-left: var(--size-1-rem);
       margin-right: var(--size-1-rem);
@@ -61,5 +74,6 @@
    .main_container>div {
       display: flex;
       flex-direction: column;
+
    }
 }

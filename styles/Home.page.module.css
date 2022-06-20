@@ -2,6 +2,11 @@
    margin-bottom: var(--size-1-rem);
 }
 
+.search>p {
+   margin-top: var(--size-0-5-rem);
+   color: var(--three-light-color);
+}
+
 @media (max-width: 770px) {
    .home_page_container {
       margin: var(--size-1-rem);

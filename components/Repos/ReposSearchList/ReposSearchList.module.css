@@ -1,0 +1,46 @@
+.repo_list_item {
+   display: flex;
+   flex-direction: column;
+   width: 98%;
+   padding: var(--size-1-rem) 0;
+   gap: var(--size-0-5-rem);
+   border-bottom: solid var(--three-light-color) 1px;
+}
+
+.repo_list_item button {
+   background-color: transparent;
+   float: right;
+   font-size: 24px;
+}
+
+.repo_list_item p>svg {
+   margin-right: var(--size-0-5-rem) !important;
+}
+
+.repo_list_item_stars_icon>span {
+   font-size: 13px;
+}
+
+.repo_list_item_language_icons>span {
+   font-size: 13px;
+   color: var(--three-light-color);
+   margin-right: var(--size-0-5-rem);
+
+}
+
+.repo_list_item_language_icons i,
+.repo_list_item_language_icons svg {
+   width: 20px;
+   height: 20px;
+   margin-right: var(--size-0-5-rem);
+}
+
+.repo_list_item_stars_icon>svg {
+   margin: 0 var(--size-0-5-rem);
+   color: var(--second-yellow-color);
+}
+
+
+.repo_list_item:last-child {
+   border-bottom: none;
+}

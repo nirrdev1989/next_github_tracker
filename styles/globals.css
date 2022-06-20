@@ -10,14 +10,19 @@ body {
   font-family: monospace;
   color: var(--main-dark-color);
   background-color: var(--second-light-color);
+  /* animation: fade-in 0.5s forwards; */
+}
+
+.bar {
+  height: 5px !important;
 }
 
 :root {
   --main-dark-color: rgb(26, 26, 26);
 
   --main-light-color: white;
-  --second-light-color: whitesmoke;
-  --three-light-color: rgb(180, 180, 180);
+  --second-light-color: rgb(246, 246, 246);
+  --three-light-color: rgb(133, 133, 133);
 
   --main-green-color: rgb(35, 197, 197);
   --second-green-color: rgb(7, 165, 165);
@@ -30,6 +35,9 @@ body {
 
   --main-yellow-color: rgb(236, 201, 47);
   --second-yellow-color: rgb(234, 209, 100);
+
+  --main-orange-color: rgb(255, 94, 36);
+
 
   --size-0-5-rem: 0.5rem;
   --size-1-rem: 1rem;
@@ -46,9 +54,9 @@ body {
 [data-mode="dark"] {
   --main-dark-color: white;
 
-  --main-light-color: rgb(41, 41, 41);
-  --second-light-color: rgb(56, 56, 56);
-  --three-light-color: rgb(153, 153, 153);
+  --main-light-color: rgb(29, 29, 29);
+  --second-light-color: rgb(41, 41, 41);
+  --three-light-color: rgb(185, 185, 185);
 
   --main-green-color: rgb(35, 197, 197);
   --second-green-color: rgb(7, 165, 165);
@@ -64,6 +72,8 @@ body {
   --main-yellow-color: rgb(236, 201, 47);
   --second-yellow-color: rgb(234, 209, 100);
 
+  --main-orange-color: rgb(255, 94, 36);
+
   --size-0-5-rem: 0.5rem;
   --size-1-rem: 1rem;
   --size-1-5-rem: 1.5rem;
@@ -77,6 +87,10 @@ body {
   --box-shadow: rgba(246, 246, 246, 0.2) 0px 7px 29px 0px;
 
 
+}
+
+.progress_bar {
+  z-index: 500;
 }
 
 ::-webkit-scrollbar {
@@ -109,13 +123,11 @@ a:hover {
 }
 
 input {
-  /* outline-color: var(--main-dark-color); */
   padding: 0.3rem;
 }
 
 input:focus {
   /* outline: none; */
-  /* box-shadow: 0 0 0 1px var(--main-blue-color); */
 }
 
 button {
@@ -129,5 +141,33 @@ button, input {
 }
 
 .page_header {
+  margin-top: var(--size-0-5-rem);
   padding: var(--size-1-rem) 0;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(169, 169, 169, 0.5);
+  animation: fade-in 0.5s forwards;
+  z-index: 500;
+  -webkit-touch-callout: none;
+
+  /* pointer-events: none; */
 }
