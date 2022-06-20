@@ -17,6 +17,8 @@ import { getData } from "../../../utils/fetcher"
 import { progressBarConfig } from "../../../utils/progress-bar"
 import { useAnimateEnd } from "../../../hooks/useAnimateEnd"
 import Button from "../../util-components/Button/Button"
+import UsersSearchList from "../UsersSearchList/UsersSearchList"
+import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 
 let userProfile: _GithubUserProfile = {
    login: 'mschwarzmueller',
@@ -86,11 +88,13 @@ export default function UserProfile({ userProfile }: UserProfileProps): JSX.Elem
    useEffect(() => {
       if (dataType !== "") {
          progressBar.start()
-         getData(`/users/${userProfile.login}/${dataType.toLowerCase()}`, (error, data: _GithubGist[] | _GitHubRepo[]) => {
-            setShowModl(() => true)
-            setData(() => data)
-            progressBar.done()
-         })
+         getData(
+            `/users/${userProfile.login}/${dataType.toLowerCase()}`,
+            (error, data: _GithubGist[] | _GitHubRepo[] | _GithubUserLikeOwner[]) => {
+               setShowModl(() => true)
+               setData(() => data)
+               progressBar.done()
+            })
       }
    }, [dataType])
 
@@ -114,15 +118,19 @@ export default function UserProfile({ userProfile }: UserProfileProps): JSX.Elem
          }>
             {dataType === "Gists" && <GistsList gists={data} />}
             {dataType === "Repos" && <ReposSearchList repos={data} />}
+            {dataType === "Followers" && <UsersSearchList users={data} />}
+
          </Modal>
 
          <div className={styles.user_profile_stats}>
             <P size="small">
-               {FollowIcon} Followers:
+               {FollowIcon}
+               <span className={styles.user_profile_stats_action} onClick={() => switchDataType("Followers")}> Followers:</span>
                <Badge color={userProfile.followers > 0 ? "green" : "red"}>{userProfile.followers}</Badge>
             </P>
             <P size="small">
-               {PullRequestIcon} <span className={styles.user_profile_stats_action} onClick={() => switchDataType("Repos")}> Public repos:</span>
+               {PullRequestIcon}
+               <span className={styles.user_profile_stats_action} onClick={() => switchDataType("Repos")}> Public repos:</span>
                <Badge color={userProfile.public_repos > 0 ? "green" : "red"}>{userProfile.public_repos}</Badge>
             </P>
             <P size="small">

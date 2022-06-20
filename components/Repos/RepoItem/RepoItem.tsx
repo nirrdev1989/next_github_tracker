@@ -1,4 +1,4 @@
-import { HTMLAttributes, DetailedHTMLProps } from "react"
+import { HTMLAttributes, DetailedHTMLProps, useState } from "react"
 import { DateIcon, languageIcons, StarIcon, FollowIcon, ForkIcon, IssueIcon } from "../../../icons"
 import { _GitHubEvents } from "../../../models/GithubEvents"
 import { _GitHubRepo } from "../../../models/GithubRepo"
@@ -7,6 +7,8 @@ import P from "../../util-components/P/P"
 import Title from "../../util-components/Titles/Title"
 import UserEvents from "../../UserEvents/UserEvents"
 import styles from "./RepoItem.module.css"
+import Modal from "../../Modal/Modal"
+import IssuesList from "../IssuesList/IssuesList"
 
 
 interface RopoItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -14,9 +16,15 @@ interface RopoItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>
    events: _GitHubEvents[]
 }
 
-export default function RepoItem({ repo, events }: RopoItemProps) {
+export default function RepoItem({ repo, events }: RopoItemProps): JSX.Element {
+   const [showModal, setShowModl] = useState<boolean>(false)
+
    return (
       <div className={styles.user_repo_item}>
+         <Modal show={showModal} setShowModl={setShowModl} title={"Issues"} >
+            <IssuesList />
+         </Modal>
+
          <span className={styles.user_repo_item_dates}>
             <P size="x_small">{DateIcon} Created: {new Date(repo.created_at).toLocaleDateString()}</P>
             <P size="x_small">{DateIcon} Pushed:  {new Date(repo.pushed_at).toLocaleDateString()}</P>
@@ -44,14 +52,14 @@ export default function RepoItem({ repo, events }: RopoItemProps) {
                {repo.description}
                <span className={styles.repo__item_issues_icon}>
                   {IssueIcon}
-                  <span>Issues: {repo.open_issues_count}</span>
+                  <span onClick={() => setShowModl(() => true)}>Issues: {repo.open_issues_count}</span>
                </span>
             </P>
          </div>
 
          {repo.topics.length > 0 &&
             <div className={styles.user_repo_topics_container}>
-               <P size="small">Topics:</P>
+               <Title type="h4">Topics:</Title>
                <div className={styles.user_repo_topics}>
                   {repo.topics.map((topic) => {
                      return <span key={topic}>{topic}</span>
@@ -59,7 +67,7 @@ export default function RepoItem({ repo, events }: RopoItemProps) {
                </div>
             </div>}
 
-         <div className={styles.user_repo_content}>
+         <div className={styles.user_repo_item_content}>
             <UserEvents events={events} />
          </div>
       </div>

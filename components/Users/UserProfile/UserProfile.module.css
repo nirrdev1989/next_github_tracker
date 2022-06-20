@@ -8,6 +8,12 @@
    display: flex;
 }
 
+.user_profile_stats_action {
+   font-weight: 700;
+   font-size: 14px;
+
+}
+
 .user_profile_stats_action:hover {
    text-decoration: underline;
    cursor: pointer;

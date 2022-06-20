@@ -117,8 +117,17 @@ export interface _Organization {
    site_admin: boolean;
 }
 
+export interface _PullRequest {
+   url: string;
+   html_url: string;
+   diff_url: string;
+   patch_url: string;
+   merged_at?: any;
+}
 
 export interface _GithubRepoIssue {
+   pull_request?: _PullRequest
+   draft?: boolean
    url: string;
    repository_url: string;
    labels_url: string;
@@ -137,8 +146,8 @@ export interface _GithubRepoIssue {
    assignees: any[];
    milestone?: any;
    comments: number;
-   created_at: Date;
-   updated_at: Date;
+   created_at: string;
+   updated_at: string;
    closed_at?: any;
    author_association: string;
    active_lock_reason?: any;

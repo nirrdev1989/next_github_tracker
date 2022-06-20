@@ -18,7 +18,7 @@ export default function GistsList({ gists }: GistsListProps) {
                      Created: <span className={styles.marked}>{timeDifference(new Date().getTime(), new Date(gist.created_at).getTime())}</span>
                      Updated: <span className={styles.marked}> {timeDifference(new Date().getTime(), new Date(gist.updated_at).getTime())}</span>
                      <span className={styles.gist_link} >
-                        <a href={gist.html_url}>Link to gist</a>
+                        <a href={gist.html_url} target="_black">Link to gist</a>
                      </span>
                   </P>
                   {Object.keys(gist.files).length > 0 &&
@@ -39,8 +39,6 @@ export default function GistsList({ gists }: GistsListProps) {
                      </P>}
 
                   <P size="x_small"><span className={styles.gist_item_comments}>Comments: {gist.comments}</span> </P>
-
-
                </div>
             )
          })}
