@@ -1,0 +1,43 @@
+.gist_item {
+   display: flex;
+   flex-direction: column;
+   gap: var(--size-0-5-rem);
+   /* background-color: var(--second-light-color); */
+   margin-top: var(--size-1-rem);
+   margin-right: var(--size-1-rem);
+   padding: var(--size-0-5-rem);
+   border-bottom: solid var(--three-light-color) 1px;
+
+}
+
+.marked {
+   color: var(--main-orange-color);
+   margin-right: var(--size-0-5-rem);
+   font-size: 14px;
+}
+
+.gist_link {
+   /* display: flex; */
+   /* justify-content: center; */
+   /* align-items: center; */
+}
+
+/* .gist_link svg {
+   font-size: 18px;
+   line-height: 40px;
+} */
+
+.gist_item_description {
+   margin-left: var(--size-0-5-rem);
+   color: var(--three-light-color);
+
+}
+
+.gist_item_comments {
+   color: var(--three-light-color);
+}
+
+.gist_item_files>span {
+   margin-right: var(--size-1-rem);
+
+}
