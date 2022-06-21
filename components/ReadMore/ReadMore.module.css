@@ -1,0 +1,27 @@
+.read_more_btn {
+   font-weight: bolder;
+   font-size: 12px;
+   color: var(--second-blue-color);
+}
+
+.open {
+   animation: fade-in 0.7s forwards;
+}
+
+.read_more_btn:hover {
+   cursor: pointer;
+   text-decoration: underline;
+}
+
+
+@keyframes fade-in {
+   0% {
+      opacity: 0;
+      /* transform: translateY(-100%); */
+   }
+
+   100% {
+      opacity: 1;
+      /* transform: translateY(0); */
+   }
+}
