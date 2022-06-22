@@ -6,13 +6,14 @@ import styles from "./MyLink.module.css"
 interface MyLinkProps extends DetailedHTMLProps<LinkHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
    children: ReactNode
    to: string
+   disabled?: boolean
 }
 
-export default function MyLink({ children, to }: MyLinkProps) {
+export default function MyLink({ children, to, disabled = false }: MyLinkProps) {
    const route = useRouter()
    return (
       <>
-         {to === route.asPath ? <span>{children}</span> :
+         {to === route.asPath || disabled ? <span style={{ marginLeft: "var(--size-0-5-rem)" }} >{children}</span> :
             <Link href={to} passHref={true}>
                <a>{children}</a>
             </Link>}

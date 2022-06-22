@@ -1,23 +1,26 @@
+import Image from "next/image"
 import { HTMLAttributes, DetailedHTMLProps } from "react"
-import { issuesList } from "../../../fake-db/issues"
+// import { issuesList } from "../../../fake-db/issues"
 import { CommentIcon, LockIcon, UnLockIcon } from "../../../icons"
 import { _GithubRepoIssue } from "../../../models/GithubRepo"
 import { timeDifference } from "../../../utils/date"
+import ReadMore from "../../ReadMore/ReadMore"
 import Title from "../../Titles/Title"
+import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
 import styles from "./IssuesList.module.css"
 
 
 interface IssuesListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-   issues?: _GithubRepoIssue[]
+   issues: _GithubRepoIssue[]
 }
 
-export default function IssuesList({ }: IssuesListProps): JSX.Element {
-   console.log(issuesList[0])
+export default function IssuesList({ issues }: IssuesListProps): JSX.Element {
+   console.log(issues)
    return (
       <div className={styles.issues}>
 
-         {issuesList.map((issue) => {
+         {issues.map((issue) => {
             return (
                <div key={issue.node_id} className={styles.issue_item}>
                   <Title type="h3">
@@ -34,12 +37,19 @@ export default function IssuesList({ }: IssuesListProps): JSX.Element {
                      </span>
 
                   </P>
+                  <span className={styles.issue_item_creator_img}>
+                     <Image style={{ borderRadius: "50%" }} width={25} height={25} objectFit="cover" src={issue.user.avatar_url} />
+                     <MyLink to={`/users/${issue.user.login}`} >
+                        {issue.user.login}
+                     </MyLink>
+
+                  </span>
                   <div className={styles.issue_item_description}>
-                     <P size="x_small">
-                        {issue.body}
-                     </P>
+                     <span>
+                        <ReadMore text={issue.body} lengthLimit={100} />
+                     </span>
                      <P size="medium">
-                        {CommentIcon} {issue.comments}
+                        {CommentIcon} <span style={{ color: "var(--main-dark-color)" }}>{issue.comments}</span>
                      </P>
                   </div>
 
@@ -49,7 +59,7 @@ export default function IssuesList({ }: IssuesListProps): JSX.Element {
                         <div className={styles.issue_item_labels}>
                            {issue.labels.map((label) => {
                               return (
-                                 <span>{label}</span>
+                                 <span key={label.node_id} style={{ backgroundColor: `#${label.color}` }} >{label.name}</span>
                               )
                            })}
                         </div>

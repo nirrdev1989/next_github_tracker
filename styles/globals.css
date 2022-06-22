@@ -22,7 +22,9 @@ body {
 
   --main-light-color: white;
   --second-light-color: rgb(246, 246, 246);
-  --three-light-color: rgb(133, 133, 133);
+  --three-light-color: rgb(142, 142, 142);
+  --four-light-color: #888;
+
 
   --main-green-color: rgb(35, 197, 197);
   --second-green-color: rgb(7, 165, 165);
@@ -37,6 +39,7 @@ body {
   --second-yellow-color: rgb(234, 209, 100);
 
   --main-orange-color: rgb(255, 94, 36);
+
 
 
   --size-0-5-rem: 0.5rem;
@@ -56,7 +59,8 @@ body {
 
   --main-light-color: rgb(29, 29, 29);
   --second-light-color: rgb(41, 41, 41);
-  --three-light-color: rgb(185, 185, 185);
+  --three-light-color: rgb(133, 133, 133);
+  --four-light-color: #888;
 
   --main-green-color: rgb(35, 197, 197);
   --second-green-color: rgb(7, 165, 165);
@@ -91,6 +95,8 @@ body {
 
 .progress_bar {
   z-index: 500;
+  color: rgb(45, 232, 201);
+  color: linear-gradient(212deg, rgba(45, 232, 201, 1) 0%, rgba(9, 34, 121, 1) 51%, rgba(255, 0, 53, 1) 100%);
 }
 
 ::-webkit-scrollbar {

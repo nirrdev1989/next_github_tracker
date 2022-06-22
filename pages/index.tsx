@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import P from "../components/util-components/P/P";
 import Title from "../components/util-components/Titles/Title";
 import { withLayout } from "../layout/Layout";
-import { _SearchResults } from "../fake-db/users";
 import Searching from "../components/Searching/Searching";
 import styles from "../styles/Home.page.module.css"
 import { useRouter } from "next/router";
@@ -11,6 +10,8 @@ import UsersSearchList from "../components/Users/UsersSearchList/UsersSearchList
 import { _GitHubRepo } from "../models/GithubRepo";
 import { getData } from "../utils/fetcher";
 import ReposSearchList from "../components/Repos/ReposSearchList/ReposSearchList";
+import { _SearchResults } from "../models/Search";
+
 
 interface HomeProps { }
 

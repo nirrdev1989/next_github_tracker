@@ -1,9 +1,6 @@
-import { ListIcon, UsersIcon } from "../../icons"
 import styles from "./Menu.module.css"
-// import { _MenuItem } from "../../models/Menu";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState, Children, cloneElement, isValidElement, PropsWithChildren, useEffect, createContext, useContext } from "react"
+import { useState, Children, PropsWithChildren, useEffect, createContext, useContext } from "react"
 import { _MenuItem } from "../../models/Menu";
 import MyLink from "../util-components/MyLink.tsx/MyLink";
 

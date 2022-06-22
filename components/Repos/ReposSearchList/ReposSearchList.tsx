@@ -43,26 +43,25 @@ export default function ReposSearchList({ repos }: ReposSearchListProps): JSX.El
 
                      {objectRepos[repo.name] ?
                         <Button onClick={() => removeItemFromMenu(repo.name, "repos")}>{MinusIcon}</Button> :
-                        <Button onClick={() => addItemToMenu(repo.name, `/repos/${repo.name}?=${repo.owner.login}`, "repos")}>{PlusGreenIcon}</Button>
+                        <Button onClick={() => addItemToMenu(repo.name, `/repos/${repo.name}?user=${repo.owner.login}`, "repos")}>{PlusGreenIcon}</Button>
                      }
                   </P>
-                  <P size="medium">
-                     {UserIcon}
+
+                  <div className={styles.repo_list_item_creator}>
+                     <Image style={{ borderRadius: "50%" }} width={25} height={25} objectFit="cover" src={repo.owner.avatar_url} />
                      <MyLink to={`/users/${repo.owner.login}`}>
                         {repo.owner.login}
                      </MyLink>
-                     {/* <Link href={`/users/${repo.owner.login}`}>
-                        <a>{repo.owner.login}</a>
-                     </Link> */}
-                     {/* <Title type="h4">{languageIcons[repo.language]} {repo.language}</Title> */}
+                  </div>
+                  <P size="medium">
+                     {/* {UserIcon} */}
+
                   </P>
                   {repo.description &&
                      <P size="x_small">
-                        {InfoIcon}{repo.description}
+                        {repo.description}
                      </P>
                   }
-
-
                </div>
             )
          })}

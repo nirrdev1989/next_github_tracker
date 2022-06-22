@@ -1,5 +1,5 @@
 import { createContext, PropsWithChildren, ReactNode, useCallback, useContext, useEffect, useState } from "react";
-import { users, repos } from "../fake-db/users";
+import { usersMenu, reposMenu } from "../fake-db/menu";
 import Cookie from "js-cookie"
 import { _Menu, _MenuItem } from "../models/Menu";
 
@@ -52,8 +52,8 @@ export function AppContextProvider({ children }: PropsWithChildren<_AppContext>)
 
    useEffect(() => {
       setMenuList({
-         "users": users,
-         "repos": repos
+         "users": usersMenu,
+         "repos": reposMenu
       })
    }, [])
 

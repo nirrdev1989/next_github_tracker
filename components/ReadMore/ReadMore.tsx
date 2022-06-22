@@ -1,9 +1,8 @@
-import { HTMLAttributes, DetailedHTMLProps, ReactNode, useState } from "react"
+import { HTMLAttributes, DetailedHTMLProps, useState } from "react"
 import styles from "./ReadMore.module.css"
 
 
 interface ReadMoreProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-   // children: ReactNode
    text: string
    lengthLimit: number
 }

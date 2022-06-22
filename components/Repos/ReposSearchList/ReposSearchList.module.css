@@ -44,3 +44,13 @@
 .repo_list_item:last-child {
    border-bottom: none;
 }
+
+.repo_list_item_creator {
+   display: flex;
+   /* gap: var(--size-1-rem); */
+   align-items: center;
+}
+
+.repo_list_item_creator a {
+   margin-left: var(--size-1-rem);
+}

@@ -1,152 +1,132 @@
-import { CodeIcon, DateIcon, EmailIcon, FollowIcon, GithubIcon, InfoIcon, LeftArrowIcon, ListCardIcon, LocationIcon, PullRequestIcon, RightArrowIcon, StarIcon, TwitterIcon, WorkIcon } from "../../../icons"
+import { CodeIcon, DateIcon, FollowIcon, LeftArrowIcon, LocationIcon, PullRequestIcon, RightArrowIcon, WorkIcon } from "../../../icons"
 import { _GithubUserProfile } from "../../../models/GithubUserProfile"
-import { localDate, timeDifference } from "../../../utils/date"
 import Badge from "../../util-components/Badge/Badge"
 import P from "../../util-components/P/P"
-import Title from "../../util-components/Titles/Title"
 import styles from "./UserProfile.module.css"
-import { HTMLAttributes, DetailedHTMLProps, ReactNode, useState, useEffect } from "react"
-import Modal from "../../Modal/Modal"
-import { gists } from "../../../fake-db/gists"
+import { HTMLAttributes, DetailedHTMLProps, useState, useEffect } from "react"
+import { MoadlWrapper } from "../../Modal/Modal"
 import { _GithubGist } from "../../../models/GithubGists"
 import GistsList from "../../Gists/GistsList"
-import { allrepose } from "../../Repos/UserRepos/fake-data"
 import ReposSearchList from "../../Repos/ReposSearchList/ReposSearchList"
 import { _GitHubRepo } from "../../../models/GithubRepo"
 import { getData } from "../../../utils/fetcher"
-import { progressBarConfig } from "../../../utils/progress-bar"
-import { useAnimateEnd } from "../../../hooks/useAnimateEnd"
 import Button from "../../util-components/Button/Button"
 import UsersSearchList from "../UsersSearchList/UsersSearchList"
 import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 
-let userProfile: _GithubUserProfile = {
-   login: 'mschwarzmueller',
-   id: 16095164,
-   node_id: 'MDQ6VXNlcjE2MDk1MTY0',
-   avatar_url: 'https://avatars.githubusercontent.com/u/16095164?v=4',
-   gravatar_id: '',
-   url: 'https://api.github.com/users/mschwarzmueller',
-   html_url: 'https://github.com/mschwarzmueller',
-   followers_url: 'https://api.github.com/users/mschwarzmueller/followers',
-   following_url: 'https://api.github.com/users/mschwarzmueller/following{/other_user}',
-   gists_url: 'https://api.github.com/users/mschwarzmueller/gists{/gist_id}',
-   starred_url: 'https://api.github.com/users/mschwarzmueller/starred{/owner}{/repo}',
-   subscriptions_url: 'https://api.github.com/users/mschwarzmueller/subscriptions',
-   organizations_url: 'https://api.github.com/users/mschwarzmueller/orgs',
-   repos_url: 'https://api.github.com/users/mschwarzmueller/repos',
-   events_url: 'https://api.github.com/users/mschwarzmueller/events{/privacy}',
-   received_events_url: 'https://api.github.com/users/mschwarzmueller/received_events',
-   type: 'User',
-   site_admin: false,
-   name: 'Maximilian ',
-   company: null,
-   blog: '',
-   location: null,
-   email: null,
-   hireable: null,
-   bio: null,
-   twitter_username: null,
-   public_repos: 43,
-   public_gists: 0,
-   followers: 5452,
-   following: 0,
-   created_at: '2015-12-01T06:11:29Z',
-   updated_at: '2022-03-16T06:23:35Z'
-}
+
 
 // https://api.github.com/users/nirkaufman/gists
 interface UserProfileProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    userProfile: _GithubUserProfile
 }
 
-const progressBar = progressBarConfig()
-
-const getDataOptions = {
-   gists: {
-      title: "Gists",
-      name: "gists"
-   }
-}
 
 export default function UserProfile({ userProfile }: UserProfileProps): JSX.Element {
    const [showModal, setShowModl] = useState(false)
    const [data, setData] = useState<any[]>([])
    const [dataType, setDataType] = useState<string>("")
-
-   // const [loading, setLoading] = useState<boolean>(false)
-
+   const [pageNumber, setPageNumber] = useState<number>(1)
 
    function switchDataType(type: string) {
       if (type === dataType) {
          setShowModl(() => true)
          return
       }
+      setPageNumber(() => 1)
       setDataType(() => type)
    }
 
    useEffect(() => {
       if (dataType !== "") {
-         progressBar.start()
          getData(
-            `/users/${userProfile.login}/${dataType.toLowerCase()}`,
+            `/users/${userProfile.login}/${dataType.toLowerCase()}?page=${pageNumber}`,
             (error, data: _GithubGist[] | _GitHubRepo[] | _GithubUserLikeOwner[]) => {
                setShowModl(() => true)
                setData(() => data)
-               progressBar.done()
             })
       }
-   }, [dataType])
+   }, [dataType, pageNumber])
+
+   useEffect(() => {
+      setDataType(() => "")
+      setPageNumber(() => 1)
+   }, [userProfile.login])
 
    return (
       <div className={`${styles.user_profile}`}>
-         <Modal show={showModal} setShowModl={setShowModl} title={dataType} footer={
-            <>
-               <Button color="main_transparent" onClick={() => {
-                  // setPageNumber(+router.query?.page - 1)
-               }}>
-                  {LeftArrowIcon}
-               </Button>
-               <Button color="main_transparent" onClick={() => {
-                  // setPageNumber(+router.query?.page + 1)
-               }}>
-                  {RightArrowIcon}
-               </Button>
 
-               <small>Page-{1}</small>
-            </>
-         }>
-            {dataType === "Gists" && <GistsList gists={data} />}
-            {dataType === "Repos" && <ReposSearchList repos={data} />}
-            {dataType === "Followers" && <UsersSearchList users={data} />}
+         <MoadlWrapper show={showModal} setShowModl={setShowModl} >
+            <MoadlWrapper.Header title={`${dataType}`} >
+               <P size="x_small">{userProfile.name}</P>
+            </MoadlWrapper.Header>
+            <MoadlWrapper.Body>
+               {dataType === "Gists" && <GistsList gists={data} />}
+               {dataType === "Repos" && <ReposSearchList repos={data} />}
+               {dataType === "Followers" && <UsersSearchList users={data} />}
+            </MoadlWrapper.Body>
+            <MoadlWrapper.Footer>
+               <>
+                  <Button disabled={pageNumber <= 1} color="main_transparent" onClick={() => {
+                     setPageNumber((prev) => prev - 1)
+                  }}>
+                     {LeftArrowIcon}
+                  </Button>
+                  <Button disabled={data.length < 30} color="main_transparent" onClick={() => {
+                     setPageNumber((prev) => prev + 1)
+                  }}>
+                     {RightArrowIcon}
+                  </Button>
 
-         </Modal>
-
+                  <small>Page-{pageNumber}</small>
+               </>
+            </MoadlWrapper.Footer>
+         </MoadlWrapper>
          <div className={styles.user_profile_stats}>
-            <P size="small">
+            <div>
                {FollowIcon}
-               <span className={styles.user_profile_stats_action} onClick={() => switchDataType("Followers")}> Followers:</span>
+               <Button
+                  color="main_transparent"
+                  disabled={userProfile.followers <= 0}
+                  onClick={() => switchDataType("Followers")}
+               >
+                  Followers
+               </Button>
                <Badge color={userProfile.followers > 0 ? "green" : "red"}>{userProfile.followers}</Badge>
-            </P>
-            <P size="small">
+            </div>
+
+            <div>
                {PullRequestIcon}
-               <span className={styles.user_profile_stats_action} onClick={() => switchDataType("Repos")}> Public repos:</span>
+               <Button
+                  color="main_transparent"
+                  disabled={userProfile.public_repos <= 0}
+                  onClick={() => switchDataType("Repos")}
+               >
+                  Public repos
+               </Button>
                <Badge color={userProfile.public_repos > 0 ? "green" : "red"}>{userProfile.public_repos}</Badge>
-            </P>
-            <P size="small">
-               {CodeIcon} <span className={styles.user_profile_stats_action} onClick={() => switchDataType("Gists")} >Public gists:</span>
+            </div>
+            <div>
+               {CodeIcon}
+               <Button
+                  color="main_transparent"
+                  disabled={userProfile.public_gists <= 0}
+                  onClick={() => switchDataType("Gists")}
+               >
+                  Public gists
+               </Button>
                <Badge color={userProfile.public_gists > 0 ? "green" : "red"}>{userProfile.public_gists}</Badge>
-            </P>
+            </div>
          </div>
          <div className={styles.user_profile_info}>
             <P size="x_small">{DateIcon} Created: {new Date(userProfile.created_at).toLocaleDateString()}</P>
             <P size="x_small">{LocationIcon} Location: {userProfile.location || "not fiiled"}</P>
             <P size="x_small">{WorkIcon} Company: {userProfile.company || "not fiiled"}</P>
-            <P
+            {userProfile.bio && <P
                style={{ maxHeight: "60px", overflowX: "hidden", marginTop: "var(--size-0-5-rem)" }}
                size="x_small">
-               {userProfile.bio || "not fiiled"}
-            </P>
+               {userProfile.bio || ""}
+            </P>}
          </div>
       </div>
    )

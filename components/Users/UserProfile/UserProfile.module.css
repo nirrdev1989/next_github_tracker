@@ -6,17 +6,11 @@
 
 .user_profile_stats {
    display: flex;
+   align-items: center;
 }
 
-.user_profile_stats_action {
-   font-weight: 700;
-   font-size: 14px;
-
-}
-
-.user_profile_stats_action:hover {
-   text-decoration: underline;
-   cursor: pointer;
+.user_profile_stats .button {
+   padding-right: 0;
 }
 
 @media (max-width: 770px) {
