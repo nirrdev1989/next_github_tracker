@@ -1,22 +1,14 @@
-import { HTMLAttributes, DetailedHTMLProps, ReactNode, useState, useEffect, FunctionComponent } from "react"
+import { ReactNode, FunctionComponent } from "react"
 import Footer from "./Footer/Footer"
 import Header from "./Header/Header"
 import Sidebar from "./Sidebar/Sidebar"
-import Title from "../components/util-components/Titles/Title"
-import { AppContextProvider } from "../context/app.context"
 import styles from "./Layout.module.css"
-import { useSubject, useBehaviorSubject } from "use-rxjs-state"
-import { modeStore } from "../rxjs-store/store"
-import Navbar from "../components/Navbar/Navbar"
-
-
 
 interface LayoutProps {
    children: ReactNode
 }
 
 function Layout({ children }: LayoutProps) {
-   const [isDarkMode, setDarkMode] = useBehaviorSubject<boolean>(modeStore)
 
    return (
       <div className={styles.layout_container}>
@@ -42,7 +34,6 @@ function Layout({ children }: LayoutProps) {
 
 export const withLayout = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
    return function withLayotComponent(props: T): JSX.Element {
-      // console.log(props)
       return (
          // <AppContextProvider isCurrentActive={props.isCurrentActive} activeMenuTab={props.activeMenuTab}>
          <Layout>

@@ -1,4 +1,4 @@
-import { HTMLAttributes, DetailedHTMLProps, useState, useEffect, ChangeEvent, HTMLInputTypeAttribute } from "react"
+import { HTMLAttributes, DetailedHTMLProps, useState, useEffect, ChangeEvent } from "react"
 import { LeftArrowIcon, RightArrowIcon, SearchIcon } from "../../icons"
 import Button from "../util-components/Button/Button"
 import Input from "../util-components/Input/Input"

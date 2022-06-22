@@ -1,6 +1,5 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react"
 import styles from "./Button.module.css"
-// import classNames from "classnames"
 
 interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
    children: ReactNode

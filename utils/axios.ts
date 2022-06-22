@@ -6,7 +6,7 @@ const Axios = axios.create({
    headers: {
       // "Accept": "application/vnd.github.v3+json",
       "Accept": "application/vnd.github.cloak-preview",
-      "Authorization": `token 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`
+      "Authorization": `token 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`
    },
 })
 

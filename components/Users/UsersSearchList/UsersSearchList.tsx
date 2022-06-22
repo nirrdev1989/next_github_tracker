@@ -1,13 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
-import { HTMLAttributes, DetailedHTMLProps, ReactNode, useState, useEffect } from "react"
+import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { useAppContext } from "../../../context/app.context"
-import { FollowIcon, MinusIcon, PlusGreenIcon } from "../../../icons"
+import { MinusIcon, PlusGreenIcon } from "../../../icons"
 import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 import { convertArrayToObject } from "../../../utils/convert"
 import Button from "../../util-components/Button/Button"
 import P from "../../util-components/P/P"
-import Title from "../../util-components/Titles/Title"
 import styles from "./UsersSearchList.module.css"
 
 
@@ -17,9 +16,9 @@ interface UsersSearchListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
 
 export default function UsersSearchList({ users }: UsersSearchListProps): JSX.Element {
    const { menuList, addItemToMenu, removeItemFromMenu } = useAppContext()
-   // console.log(menuItems)
+
    const objectUsers = convertArrayToObject(menuList["users"].items, "name")
-   console.log(users[0])
+
    return (
       <div className={styles.users_list}>
          {users.map((user) => {

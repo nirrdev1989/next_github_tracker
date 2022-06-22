@@ -70,7 +70,6 @@ function HomePage({ }: HomeProps): JSX.Element {
         {searchResults?.items.length === 0 && <P size="large">No results</P>}
       </div>
 
-      {/* <Rating isEdit={true} rating={rating} setRating={setRating} /> */}
     </div>
   )
 }
@@ -78,13 +77,6 @@ function HomePage({ }: HomeProps): JSX.Element {
 
 
 export default withLayout(HomePage)
-
-//   // const options = {
-//   //     headers: new HttpHeaders({
-//   //         "Accept": "application/vnd.github.cloak-preview",
-//   //         "Authorization": `Token f2dd0413faf57cd97863a8ed7263584d13a25203`
-
-
 
 // authorizations_url: "https://api.github.com/authorizations"
 // code_search_url: "https://api.github.com/search/code?q={query}{&page,per_page,sort,order}"

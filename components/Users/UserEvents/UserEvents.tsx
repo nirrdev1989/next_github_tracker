@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { useRouter } from "next/router"
 import { HTMLAttributes, DetailedHTMLProps, useState, useEffect } from "react"
 import { EventIcon, LeftArrowIcon, PullRequestIcon, RightArrowIcon } from "../../../icons"
 import { _GitHubEvents } from "../../../models/GithubEvents"
@@ -13,8 +12,7 @@ import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
 import Title from "../../util-components/Titles/Title"
 import styles from "./UserEvents.module.css"
-// import { convertArrayToObject } from "../../utils/convert"
-// import { useAppContext } from "../../context/app.context"
+
 
 interface UserEventsProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    userProfile: _GithubUserProfile | _GithubUserLikeOwner
@@ -24,11 +22,10 @@ interface UserEventsProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElemen
 
 
 
-// GET EVENTS BUT HAVE CHECK IF ITS USE EVENTS OR REPO EVENTS
 export default function UserEvents({ userProfile, eventsUrl, events }: UserEventsProps): JSX.Element {
    const [data, setData] = useState<_GitHubEvents[]>([])
    const [pageNumber, setPageNumber] = useState<number>(0)
-   console.log("events render", pageNumber)
+
    useEffect(() => {
       console.log(pageNumber, data.length)
       if (pageNumber >= 1) {
@@ -42,14 +39,12 @@ export default function UserEvents({ userProfile, eventsUrl, events }: UserEvent
 
    useEffect(() => {
       setData(() => [])
-      // setPageNumber(() => 1)
    }, [userProfile.login])
 
    let currentEvents = data.length ? data : events
 
    return (
       <div>
-
          <div className={styles.user_events_header}>
             <div>
                <Title type="h3">

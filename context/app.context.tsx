@@ -4,8 +4,7 @@ import Cookie from "js-cookie"
 import { _Menu, _MenuItem } from "../models/Menu";
 
 
-export interface _AppContext {
-}
+export interface _AppContext { }
 
 const AppContext = createContext(null)
 

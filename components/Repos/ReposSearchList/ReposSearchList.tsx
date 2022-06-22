@@ -1,14 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
-import { HTMLAttributes, DetailedHTMLProps, ReactNode, useState, useEffect } from "react"
+import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { useAppContext } from "../../../context/app.context"
-import { InfoIcon, languageIcons, MinusIcon, PlusGreenIcon, PullRequestIcon, StarIcon, UserIcon } from "../../../icons"
+import { languageIcons, MinusIcon, PlusGreenIcon, StarIcon } from "../../../icons"
 import { _GitHubRepo } from "../../../models/GithubRepo"
 import { convertArrayToObject } from "../../../utils/convert"
 import Button from "../../util-components/Button/Button"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
-import Title from "../../util-components/Titles/Title"
 import styles from "./ReposSearchList.module.css"
 
 
@@ -53,10 +52,7 @@ export default function ReposSearchList({ repos }: ReposSearchListProps): JSX.El
                         {repo.owner.login}
                      </MyLink>
                   </div>
-                  <P size="medium">
-                     {/* {UserIcon} */}
 
-                  </P>
                   {repo.description &&
                      <P size="x_small">
                         {repo.description}

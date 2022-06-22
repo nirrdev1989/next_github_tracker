@@ -1,6 +1,5 @@
 import { DetailedHTMLProps, ReactNode, HTMLAttributes } from "react"
 import styles from "./Badge.module.css"
-// import classNames from "classnames"
 
 interface BadgeProps extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
    children: ReactNode

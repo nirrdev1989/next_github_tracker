@@ -16,7 +16,6 @@ import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 
 
 
-// https://api.github.com/users/nirkaufman/gists
 interface UserProfileProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    userProfile: _GithubUserProfile
 }

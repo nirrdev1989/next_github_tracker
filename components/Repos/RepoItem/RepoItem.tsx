@@ -5,7 +5,6 @@ import { _GitHubRepo, _GithubRepoIssue } from "../../../models/GithubRepo"
 import Badge from "../../util-components/Badge/Badge"
 import P from "../../util-components/P/P"
 import Title from "../../util-components/Titles/Title"
-import UserEvents from "../../Users/UserEvents/UserEvents"
 import styles from "./RepoItem.module.css"
 import { MoadlWrapper } from "../../Modal/Modal"
 import IssuesList from "../IssuesList/IssuesList"
@@ -91,24 +90,6 @@ export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
                <small>Page-{pageNumber}</small>
             </MoadlWrapper.Footer>
          </MoadlWrapper>
-         {/* <Modal show={showModal} setShowModl={setShowModl} title={dataType} footer={
-            <>
-               <Button disabled={pageNumber <= 1} color="main_transparent" onClick={() => {
-                  setPageNumber((prev) => prev - 1)
-               }}>
-                  {LeftArrowIcon}
-               </Button>
-               <Button disabled={issues.length < 30} color="main_transparent" onClick={() => {
-                  setPageNumber((prev) => prev + 1)
-               }}>
-                  {RightArrowIcon}
-               </Button>
-
-               <small>Page-{pageNumber}</small>
-            </>
-         }>
-            {issues.length > 0 && <IssuesList issues={issues} />}
-         </Modal> */}
 
          <div className={styles.user_repo_item_dates}>
             <P size="x_small">{DateIcon} Created: {new Date(repo.created_at).toLocaleDateString()}</P>

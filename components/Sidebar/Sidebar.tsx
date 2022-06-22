@@ -5,15 +5,12 @@ import { useThemeContext } from "../../context/theme.context"
 import { ListIcon, MoonIcon, SunIcon, UsersIcon } from "../../icons"
 import { MenuWrapper } from "../Menu/Menu"
 import styles from "./Sidebar.module.css"
-import { useSubject, useBehaviorSubject } from "use-rxjs-state"
-import { modeStore } from "../../rxjs-store/store";
 
 interface SidebarProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
 
 export default function Sidebar({ }: SidebarProps) {
    const { switchMode, isDarkMode } = useThemeContext()
    const { menuList } = useAppContext()
-   // const [isDarkMode, setDarkMode] = useBehaviorSubject<boolean>(modeStore)
 
    return (
       <div className={styles.sidebar}>

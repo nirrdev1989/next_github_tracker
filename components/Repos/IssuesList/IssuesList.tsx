@@ -1,13 +1,12 @@
 import Image from "next/image"
 import { HTMLAttributes, DetailedHTMLProps } from "react"
-// import { issuesList } from "../../../fake-db/issues"
 import { CommentIcon, LockIcon, UnLockIcon } from "../../../icons"
 import { _GithubRepoIssue } from "../../../models/GithubRepo"
 import { timeDifference } from "../../../utils/date"
 import ReadMore from "../../ReadMore/ReadMore"
-import Title from "../../Titles/Title"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
+import Title from "../../util-components/Titles/Title"
 import styles from "./IssuesList.module.css"
 
 
