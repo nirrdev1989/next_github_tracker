@@ -95,8 +95,7 @@ body {
 
 .progress_bar {
   z-index: 500;
-  color: rgb(45, 232, 201);
-  color: linear-gradient(212deg, rgba(45, 232, 201, 1) 0%, rgba(9, 34, 121, 1) 51%, rgba(255, 0, 53, 1) 100%);
+
 }
 
 ::-webkit-scrollbar {
@@ -132,9 +131,7 @@ input {
   padding: 0.3rem;
 }
 
-input:focus {
-  /* outline: none; */
-}
+
 
 button {
   text-align: center;
@@ -174,6 +171,4 @@ button, input {
   animation: fade-in 0.5s forwards;
   z-index: 500;
   -webkit-touch-callout: none;
-
-  /* pointer-events: none; */
 }

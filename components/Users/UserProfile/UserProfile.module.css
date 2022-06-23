@@ -13,6 +13,18 @@
    padding-right: 0;
 }
 
+.user_profile_info {
+   display: flex;
+   flex-direction: column;
+   gap: var(--size-0-5-rem);
+}
+
+.user_profile_info p {
+   max-height: 100px;
+   overflow-x: hidden;
+   opacity: 0.8;
+}
+
 @media (max-width: 770px) {
    .user_profile_stats {
       flex-direction: column;

@@ -15,7 +15,7 @@
    width: 100%;
    display: flex;
    justify-content: space-between;
-   /* align-items: center; */
+   border-bottom: 2px solid var(--four-light-color);
 }
 
 
@@ -28,7 +28,7 @@
 .model_body {
    overflow-x: hidden;
    height: 80%;
-   width: 99%;
+   width: 100%;
 }
 
 .model_footer {
@@ -37,6 +37,8 @@
    align-items: center;
    height: 10%;
    justify-content: center;
+   border-top: 2px solid var(--four-light-color);
+   padding-top: var(--size-1-rem);
 }
 
 .modal_title {

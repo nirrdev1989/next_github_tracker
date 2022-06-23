@@ -10,6 +10,7 @@ import { MoadlWrapper } from "../../Modal/Modal"
 import IssuesList from "../IssuesList/IssuesList"
 import { getData, httpCall } from "../../../utils/fetcher"
 import Button from "../../util-components/Button/Button"
+import { useRouter } from "next/router"
 
 
 interface RopoItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -37,6 +38,7 @@ export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
    const [issues, setIssues] = useState<_GithubRepoIssue[]>([])
    const [dataType, setDataType] = useState<string>("")
    const [pageNumber, setPageNumber] = useState<number>(1)
+   const router = useRouter()
 
    function switchDataType(type: string) {
       if (type === dataType) {
@@ -62,7 +64,7 @@ export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
    useEffect(() => {
       setDataType(() => "")
       setPageNumber(() => 1)
-   }, [repo.name])
+   }, [repo.name, router.query])
 
 
    return (
@@ -92,34 +94,39 @@ export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
          </MoadlWrapper>
 
          <div className={styles.user_repo_item_dates}>
-            <P size="x_small">{DateIcon} Created: {new Date(repo.created_at).toLocaleDateString()}</P>
-            <P size="x_small">{DateIcon} Pushed:  {new Date(repo.pushed_at).toLocaleDateString()}</P>
-            <P size="x_small">{DateIcon} Updated: {new Date(repo.updated_at).toLocaleDateString()}</P>
+            <span>{DateIcon} Created: {new Date(repo.created_at).toLocaleDateString()}</span>
+            <span>{DateIcon} Pushed:  {new Date(repo.pushed_at).toLocaleDateString()}</span>
+            <span>{DateIcon} Updated: {new Date(repo.updated_at).toLocaleDateString()}</span>
          </div>
 
          <div className={styles.user_repo_item_stats}>
-            <P size="small" className={styles.repo__item_stars_icon}>
-               <span style={{ color: "var(--second-yellow-color)" }}>{StarIcon}</span> Stars
+            <span>
+               {StarIcon} Stars
                <Badge color={repo.stargazers_count > 0 ? "green" : "red"}>{repo.stargazers_count}</Badge>
-            </P>
-            <P size="small" >
+            </span>
+            <span >
                {FollowIcon} Watchers
                <Badge color={repo.watchers_count > 0 ? "green" : "red"}>{repo.watchers_count}</Badge>
-            </P>
-            <P size="small" >
+            </span>
+            <span >
                {ForkIcon} Forks
                <Badge color={repo.forks_count > 0 ? "green" : "red"}>{repo.forks_count}</Badge>
-            </P>
+            </span>
          </div>
 
          <div className={styles.user_repo_item_info}>
             <Title type="h4">{languageIcons[repo.language]} {repo.language}</Title>
             <P size="x_small">
-               {repo.description}
-               {repo.open_issues_count > 0 && <span className={styles.repo__item_issues_icon}>
-                  {IssueIcon}
-                  <span onClick={() => switchDataType("Issues")}>Issues: {repo.open_issues_count}</span>
-               </span>}
+               <span style={{ opacity: 0.7 }} >{repo.description}</span>
+               {IssueIcon}
+               <Button
+                  style={{ fontSize: "13px", paddingLeft: 0 }}
+                  color="main_transparent"
+                  disabled={repo.open_issues_count === 0}
+                  onClick={() => switchDataType("Issues")}
+               >
+                  Issues {repo.open_issues_count}
+               </Button>
             </P>
          </div>
 

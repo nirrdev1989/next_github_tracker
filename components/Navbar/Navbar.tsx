@@ -4,7 +4,7 @@ import { HTMLAttributes, DetailedHTMLProps, useState, useEffect } from "react"
 import { useAppContext } from "../../context/app.context"
 import { useThemeContext } from "../../context/theme.context"
 import { useAnimateEnd } from "../../hooks/useAnimateEnd"
-import { CloseIcon, HamburgerIcon, ListIcon, MoonIcon, SunIcon, UserIcon } from "../../icons"
+import { CloseIcon, HamburgerIcon, ListIcon, MoonIcon, RepoIcon, SunIcon, UserIcon } from "../../icons"
 import { MenuWrapper } from "../Menu/Menu"
 
 
@@ -64,7 +64,7 @@ export default function Navbar({ }: NavbarProps) {
                      return <MenuWrapper.MenuItem item={user} key={user.id} type={"users"} />
                   })}
                </MenuWrapper.MenuItems>
-               <MenuWrapper.MenuItems title="Repos" index={1} icon={ListIcon}>
+               <MenuWrapper.MenuItems title="Repos" index={1} icon={RepoIcon}>
                   {menuList["repos"].items.map((repo) => {
                      return <MenuWrapper.MenuItem item={repo} key={repo.id} type={"repos"} />
                   })}

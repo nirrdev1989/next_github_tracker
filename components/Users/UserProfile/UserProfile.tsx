@@ -118,11 +118,10 @@ export default function UserProfile({ userProfile }: UserProfileProps): JSX.Elem
             </div>
          </div>
          <div className={styles.user_profile_info}>
-            <P size="x_small">{DateIcon} Created: {new Date(userProfile.created_at).toLocaleDateString()}</P>
-            <P size="x_small">{LocationIcon} Location: {userProfile.location || "not fiiled"}</P>
-            <P size="x_small">{WorkIcon} Company: {userProfile.company || "not fiiled"}</P>
+            <span>{DateIcon} Created: {new Date(userProfile.created_at).toLocaleDateString()}</span>
+            <span>{LocationIcon} Location: {userProfile.location || "not fiiled"}</span>
+            <span>{WorkIcon} Company: {userProfile.company || "not fiiled"}</span>
             {userProfile.bio && <P
-               style={{ maxHeight: "60px", overflowX: "hidden", marginTop: "var(--size-0-5-rem)" }}
                size="x_small">
                {userProfile.bio || ""}
             </P>}

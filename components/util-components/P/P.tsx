@@ -6,8 +6,8 @@ interface PProps extends DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>,
    size?: "small" | "medium" | "large" | "x_small"
 }
 
-export default function P({ children, size = "medium", ...props }: PProps): JSX.Element {
+export default function P({ children, size = "medium", ...rest }: PProps): JSX.Element {
    return (
-      <p {...props} className={`${styles.p} ${styles[size]}`} >{children}</p>
+      <p {...rest} className={`${styles.p} ${styles[size]}`} >{children}</p>
    )
 }

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { HTMLAttributes, DetailedHTMLProps, useState, useEffect } from "react"
-import { EventIcon, LeftArrowIcon, PullRequestIcon, RightArrowIcon } from "../../../icons"
+import { EventIcon, LeftArrowIcon, PullRequestIcon, RepoIcon, RightArrowIcon } from "../../../icons"
 import { _GitHubEvents } from "../../../models/GithubEvents"
 import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 import { _GithubUserProfile } from "../../../models/GithubUserProfile"
@@ -69,34 +69,34 @@ export default function UserEvents({ userProfile, eventsUrl, events }: UserEvent
 
 
          <div className={styles.user_events}>
-            {currentEvents.map((event) => {
+            {currentEvents.length > 0 && currentEvents.map((event) => {
                return (
                   <div key={event.id} className={styles.user_event_item}>
                      <div className={styles.marked}>
                         {timeDifference(new Date().getTime(), new Date(event.created_at).getTime())}
                      </div>
                      <div className={styles.user_event_item_info}>
-                        <div className={styles.user_event_img}>
+                        <span className={styles.user_event_img}>
                            <Image style={{ borderRadius: "50%" }} width={35} height={35} objectFit="cover" src={event.actor.avatar_url} />
+                        </span>
+
+                        <span>
                            <MyLink to={`/users/${event.actor.login}`}>
                               {event.actor.login}
                            </MyLink>
-                        </div>
+                        </span>
 
-                        <P size="small">
-                           <span className={styles.user_event_item_type}>{event.type}</span>
-                        </P>
+                        <span className={styles.user_event_item_type}>{event.type}</span>
 
-                        <P size="small">
-                           <span>
-                              {PullRequestIcon}
-                           </span>
+                        <span>
+                           {RepoIcon}
                            <MyLink
+                              style={{ marginLeft: "var(--size-0-5-rem)" }}
                               disabled={event.payload.action === "started" || userProfile.type === "Bot"}
                               to={`/repos/${event.repo.name.split("/")[1]}?user=${event.actor.login}`}>
                               {event.repo.name}
                            </MyLink>
-                        </P>
+                        </span>
                      </div>
                      {event.payload.commits &&
                         <div className={styles.user_event_item_commits}>

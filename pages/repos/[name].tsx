@@ -8,6 +8,7 @@ import { _GitHubEvents } from "../../models/GithubEvents"
 import styles from "../../styles/Repo.page.module.css"
 import Image from "next/image"
 import UserEvents from "../../components/Users/UserEvents/UserEvents"
+import MyLink from "../../components/util-components/MyLink.tsx/MyLink"
 
 
 interface RepoPageProps extends Record<string, unknown> {
@@ -24,7 +25,9 @@ function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
                <Image style={{ borderRadius: "50%" }} width={50} height={50} objectFit="cover" src={repo.owner.avatar_url} />
             </div>
             <Title type="h1">
-               <a href={repo.html_url} target="_blank"> {repo.name}</a>
+               <MyLink style={{ fontSize: "15px", marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
+                  {repo.owner.login}
+               </MyLink>/<a href={repo.html_url} target="_blank">{repo.name}</a>
             </Title>
          </div>
 

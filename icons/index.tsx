@@ -1,5 +1,5 @@
 import { FiUsers } from "react-icons/fi";
-import { AiOutlineComment, AiFillUnlock, AiFillLock, AiFillCloseCircle, AiOutlineUser, AiFillMinusCircle, AiOutlineSearch, AiTwotoneStar, AiOutlineIssuesClose, AiOutlineUnorderedList, AiFillGithub, AiOutlineMail, AiOutlineInfoCircle, AiOutlineFork, AiOutlinePullRequest } from "react-icons/ai"
+import { AiOutlineFile, AiOutlineComment, AiFillUnlock, AiFillLock, AiFillCloseCircle, AiOutlineUser, AiFillMinusCircle, AiOutlineSearch, AiTwotoneStar, AiOutlineIssuesClose, AiOutlineUnorderedList, AiFillGithub, AiOutlineMail, AiOutlineInfoCircle, AiOutlineFork, AiOutlinePullRequest } from "react-icons/ai"
 import { MdDateRange } from "react-icons/md";
 import { RiUserFollowLine, RiMoonClearLine, RiCloseLine } from "react-icons/ri";
 import { IoLocationOutline } from "react-icons/io5";
@@ -9,15 +9,19 @@ import { ImSun } from "react-icons/im";
 import { FcPlus } from "react-icons/fc";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiRepost } from "react-icons/bi";
-
+import { RiGitRepositoryCommitsLine } from "react-icons/ri";
+import { GoRepo } from "react-icons/go"
 export const GithubIcon = <i style={{ color: "var(--main-dark-color)" }} className="devicon-github-original colored"></i>
 export const TwitterIcon = <i className="devicon-twitter-original colored"></i>
 
+
+// export const RepoCommitsIcon = <RiGitRepositoryCommitsLine/>
+export const FileIcon = <AiOutlineFile />
+export const RepoIcon = <GoRepo />
 export const CommentIcon = <AiOutlineComment />
 export const UnLockIcon = <AiFillUnlock />
 export const LockIcon = <AiFillLock />
 export const CloseRedIcon = <AiFillCloseCircle />
-export const RepoIcon = <BiRepost />
 export const RightArrowIcon = <BsFillArrowRightSquareFill />
 export const LeftArrowIcon = <BsFillArrowLeftSquareFill />
 export const CloseIcon = <RiCloseLine />
@@ -27,7 +31,7 @@ export const EventIcon = <BsCalendar4Event />
 export const MinusIcon = <AiFillMinusCircle color="var(--main-red-color)" />
 export const PlusGreenIcon = <FcPlus />
 export const SearchIcon = <AiOutlineSearch />
-export const StarIcon = <AiTwotoneStar />
+export const StarIcon = <AiTwotoneStar color="var(--second-yellow-color)" />
 export const CodeIcon = <BsCodeSlash />
 export const UsersIcon = <FiUsers />
 export const ListIcon = <AiOutlineUnorderedList />

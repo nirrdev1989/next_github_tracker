@@ -15,11 +15,10 @@ interface IssuesListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElemen
 }
 
 export default function IssuesList({ issues }: IssuesListProps): JSX.Element {
-   console.log(issues)
    return (
       <div className={styles.issues}>
 
-         {issues.map((issue) => {
+         {issues.length > 0 && issues.map((issue) => {
             return (
                <div key={issue.node_id} className={styles.issue_item}>
                   <Title type="h3">

@@ -9,13 +9,13 @@ interface MyLinkProps extends DetailedHTMLProps<LinkHTMLAttributes<HTMLAnchorEle
    disabled?: boolean
 }
 
-export default function MyLink({ children, to, disabled = false }: MyLinkProps) {
+export default function MyLink({ children, to, disabled = false, ...rest }: MyLinkProps) {
    const route = useRouter()
    return (
       <>
-         {to === route.asPath || disabled ? <span style={{ marginLeft: "var(--size-0-5-rem)" }} >{children}</span> :
+         {to === route.asPath || disabled ? <span {...rest} style={{ marginLeft: "var(--size-0-5-rem)" }} >{children}</span> :
             <Link href={to} passHref={true}>
-               <a>{children}</a>
+               <a {...rest}>{children}</a>
             </Link>}
       </>
    )

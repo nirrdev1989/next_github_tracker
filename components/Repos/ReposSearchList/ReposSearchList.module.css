@@ -1,56 +1,46 @@
-.repo_list_item {
-   display: flex;
-   flex-direction: column;
-   width: 98%;
-   padding: var(--size-1-rem) 0;
-   gap: var(--size-0-5-rem);
-   border-bottom: solid var(--three-light-color) 1px;
-}
+ .repo_list_item {
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+    padding: var(--size-1-rem) 0;
+    gap: var(--size-1-rem);
+    border-bottom: solid var(--three-light-color) 1px;
+ }
 
-.repo_list_item button {
-   background-color: transparent;
-   float: right;
-   font-size: 24px;
-}
+ .repo_list_item:last-child {
+    border-bottom: none
+ }
 
-.repo_list_item p>svg {
-   margin-right: var(--size-0-5-rem) !important;
-}
+ .repo_list_item_header {
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+ }
 
-.repo_list_item_stars_icon>span {
-   font-size: 13px;
-}
+ .repo_list_item_header_left {
+    display: flex;
+    align-items: center;
+    /* gap: var(--size-1-rem); */
+ }
 
-.repo_list_item_language_icons>span {
-   font-size: 13px;
-   color: var(--three-light-color);
-   margin-right: var(--size-0-5-rem);
+ .repo_list_item_info i,
+ .repo_list_item_info svg {
+    width: 20px;
+    height: 20px;
+ }
 
-}
+ .repo_list_item button {
+    background-color: transparent;
+    font-size: 24px;
+ }
 
-.repo_list_item_language_icons i,
-.repo_list_item_language_icons svg {
-   width: 20px;
-   height: 20px;
-   margin-right: var(--size-0-5-rem);
-}
+ .repo_list_item_description {
+    color: var(--four-light-color);
+ }
 
-.repo_list_item_stars_icon>svg {
-   margin: 0 var(--size-0-5-rem);
-   color: var(--second-yellow-color);
-}
-
-
-.repo_list_item:last-child {
-   border-bottom: none;
-}
-
-.repo_list_item_creator {
-   display: flex;
-   /* gap: var(--size-1-rem); */
-   align-items: center;
-}
-
-.repo_list_item_creator a {
-   margin-left: var(--size-1-rem);
-}
+ .repo_list_item_info {
+    display: flex;
+    gap: var(--size-1-rem);
+    align-items: center;
+    font-size: 12px;
+ }

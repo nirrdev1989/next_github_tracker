@@ -24,7 +24,7 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
       <>
          <div className={`page_header ${styles.user_profile_header}`}>
             <div className={styles.user_profile_img}>
-               <Image width={100} height={100} objectFit="cover" src={userProfile.avatar_url} />
+               <Image style={{ borderRadius: "50%" }} width={100} height={100} objectFit="cover" src={userProfile.avatar_url} />
             </div>
             <div className={styles.user_profile_info}>
                <div>
@@ -32,10 +32,10 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
                   <P style={{ marginBottom: "0.5rem" }} size="small">{userProfile.login}</P>
                </div>
                <div className={styles.user_profile_links}>
-                  {userProfile.blog && <P size="small">{ListCardIcon} <a href={userProfile.blog} target="_blank">Blog</a></P>}
-                  {userProfile.twitter_username && <P size="small">{TwitterIcon} <a href={`https://twitter.com/${userProfile.twitter_username}`} target="_blank">Twitter</a></P>}
-                  {userProfile.email && <P size="small">{EmailIcon} <a href={`mailto:${userProfile.email}`} target="_blank">Email</a></P>}
-                  <P size="small">{GithubIcon} <a href={userProfile.html_url} target="_blank">Github</a></P>
+                  {userProfile.blog && <span >{ListCardIcon} <a href={userProfile.blog} target="_blank">Blog</a></span>}
+                  {userProfile.twitter_username && <span>{TwitterIcon} <a href={`https://twitter.com/${userProfile.twitter_username}`} target="_blank">Twitter</a></span>}
+                  {userProfile.email && <span>{EmailIcon} <a href={`mailto:${userProfile.email}`} target="_blank">Email</a></span>}
+                  <span>{GithubIcon} <a href={userProfile.html_url} target="_blank">Github</a></span>
                </div>
             </div>
          </div>
