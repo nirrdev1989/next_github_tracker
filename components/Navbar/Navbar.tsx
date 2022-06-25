@@ -61,12 +61,12 @@ export default function Navbar({ }: NavbarProps) {
             <MenuWrapper active={0}>
                <MenuWrapper.MenuItems title="Users" index={0} icon={UserIcon}>
                   {menuList["users"].items.map((user) => {
-                     return <MenuWrapper.MenuItem item={user} key={user.id} type={"users"} />
+                     return <MenuWrapper.MenuItem item={user} key={user.id} />
                   })}
                </MenuWrapper.MenuItems>
                <MenuWrapper.MenuItems title="Repos" index={1} icon={RepoIcon}>
                   {menuList["repos"].items.map((repo) => {
-                     return <MenuWrapper.MenuItem item={repo} key={repo.id} type={"repos"} />
+                     return <MenuWrapper.MenuItem item={repo} key={repo.id} />
                   })}
                </MenuWrapper.MenuItems>
             </MenuWrapper>

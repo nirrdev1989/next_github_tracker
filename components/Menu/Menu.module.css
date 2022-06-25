@@ -1,16 +1,17 @@
-.menu_container {
-   /* padding: 1rem; */
-}
+.menu_container {}
 
 .menu_item_header {
-   line-height: 35px;
    cursor: pointer;
-   width: 100%;
    display: flex;
    align-items: center;
    transition: var(--transaction-0-5-s);
    font-weight: 600;
    font-size: 16px;
+   margin: var(--size-0-5-rem) 0;
+}
+
+.menu_item_header.active {
+   color: var(--main-blue-color);
 }
 
 .menu_item_header.active:hover,
@@ -18,50 +19,40 @@
    color: var(--second-blue-color);
 }
 
-.menu_item_header.active {
-   color: var(--main-blue-color);
-}
-
 .menu_item_header svg {
    margin-right: var(--size-0-5-rem);
-   font-size: 20px;
 }
 
 .menu_item_options {
    overflow-x: hidden;
-   position: relative;
    visibility: hidden;
    opacity: 0;
    max-height: 0px;
    transition: max-height 0.5s ease;
-   width: 90%;
-   margin: auto;
 }
 
-
 .menu_item_options.open {
-   border-left: 1px solid var(--three-light-color);
    visibility: visible;
    height: auto;
-   max-height: 230px;
+   max-height: 250px;
    opacity: 1;
    transition: max-height 0.6s, opacity 2s, visibility 3s ease;
 }
 
-.menu_item_options>div {
-   /* padding: 0 0.3rem; */
-   padding-left: var(--size-1-rem);
-   line-height: 20px;
-   opacity: 0.7;
+.menu_item_option {
+   opacity: 0.5;
    transition: var(--transaction-0-5-s);
-   cursor: pointer;
-   font-size: 15px;
+   margin-bottom: var(--size-0-5-rem);
+   padding-left: var(--size-1-5-rem);
+
 }
 
-.menu_item_options>div:hover {
+.menu_item_options_active,
+.menu_item_option:hover {
    opacity: 1;
 }
 
-.menu_item_options_active {
-   color: var(--main-blue-color);
+.menu_item_options_active span,
+.menu_item_options_active a {
+   margin-left: 0 !important;
 }

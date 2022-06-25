@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { HTMLAttributes, DetailedHTMLProps, useState, useEffect } from "react"
-import { EventIcon, LeftArrowIcon, PullRequestIcon, RepoIcon, RightArrowIcon } from "../../../icons"
+import { EventIcon, LeftArrowIcon, RepoIcon, RightArrowIcon } from "../../../icons"
 import { _GitHubEvents } from "../../../models/GithubEvents"
 import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 import { _GithubUserProfile } from "../../../models/GithubUserProfile"
@@ -27,7 +27,6 @@ export default function UserEvents({ userProfile, eventsUrl, events }: UserEvent
    const [pageNumber, setPageNumber] = useState<number>(0)
 
    useEffect(() => {
-      console.log(pageNumber, data.length)
       if (pageNumber >= 1) {
          getData(
             `${eventsUrl}?page=${pageNumber}`,
@@ -72,18 +71,20 @@ export default function UserEvents({ userProfile, eventsUrl, events }: UserEvent
             {currentEvents.length > 0 && currentEvents.map((event) => {
                return (
                   <div key={event.id} className={styles.user_event_item}>
-                     <div className={styles.marked}>
-                        {timeDifference(new Date().getTime(), new Date(event.created_at).getTime())}
-                     </div>
                      <div className={styles.user_event_item_info}>
-                        <span className={styles.user_event_img}>
-                           <Image style={{ borderRadius: "50%" }} width={35} height={35} objectFit="cover" src={event.actor.avatar_url} />
-                        </span>
+                        <div className={styles.user_event_item_user}>
+                           <span className={styles.user_event_img}>
+                              <Image style={{ borderRadius: "50%" }} width={35} height={35} objectFit="cover" src={event.actor.avatar_url} />
+                           </span>
 
-                        <span>
-                           <MyLink to={`/users/${event.actor.login}`}>
-                              {event.actor.login}
-                           </MyLink>
+                           <span>
+                              <MyLink to={`/users/${event.actor.login}`}>
+                                 {event.actor.login}
+                              </MyLink>
+                           </span>
+                        </div>
+                        <span className={styles.marked}>
+                           {timeDifference(new Date().getTime(), new Date(event.created_at).getTime())}
                         </span>
 
                         <span className={styles.user_event_item_type}>{event.type}</span>

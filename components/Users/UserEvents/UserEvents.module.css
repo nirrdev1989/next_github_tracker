@@ -32,6 +32,12 @@
    font-size: 14px;
 }
 
+.user_event_item_user {
+   display: flex;
+   align-items: center;
+   gap: var(--size-1-rem);
+}
+
 .user_event_item_commits {
    margin-top: var(--size-1-rem);
    display: flex;
@@ -48,6 +54,14 @@
    color: var(--main-dark-color);
 }
 
+
+@media (max-width: 750px) {
+   .user_event_item_info {
+      flex-direction: column;
+      gap: var(--size-0-5-rem);
+      justify-content: flex-start;
+   }
+}
 
 @media (max-width: 500px) {
    .user_event_item_info {

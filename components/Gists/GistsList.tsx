@@ -47,7 +47,7 @@ export default function GistsList({ gists }: GistsListProps) {
 
                   {gist.description &&
                      <P size="x_small">
-                        {InfoIcon}
+                        {/* {InfoIcon} */}
                         <span className={styles.gist_item_description}>
                            {gist.description}
                         </span>

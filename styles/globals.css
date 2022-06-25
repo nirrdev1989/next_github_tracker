@@ -65,7 +65,7 @@ body {
   --main-green-color: rgb(35, 197, 197);
   --second-green-color: rgb(7, 165, 165);
 
-  --main-blue-color: rgb(22, 110, 211);
+  --main-blue-color: rgb(42, 123, 216);
   --second-blue-color: rgb(28, 146, 205);
 
 
@@ -171,4 +171,11 @@ button, input {
   animation: fade-in 0.5s forwards;
   z-index: 500;
   -webkit-touch-callout: none;
+}
+
+@media (max-width: 850px) {
+  .page_header {
+    display: flex;
+    flex-direction: column;
+  }
 }

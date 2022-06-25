@@ -1,18 +1,24 @@
 import styles from "./Menu.module.css"
 import { useRouter } from "next/router";
-import { useState, Children, PropsWithChildren, useEffect, createContext, useContext } from "react"
+import { useState, Children, PropsWithChildren, useEffect, createContext, useContext, isValidElement } from "react"
 import { _MenuItem } from "../../models/Menu";
 import MyLink from "../util-components/MyLink.tsx/MyLink";
 
-const MenuContext = createContext(null)
+interface _MenuContext {
+   selectedItem: number
+   selectItem?: (index: number) => void
+   isCurrentActive?: number
+}
+
+const MenuContext = createContext<_MenuContext | undefined>(undefined)
 
 interface MenuWrapperProps extends PropsWithChildren<any> {
    active?: number
 }
 
 export function MenuWrapper({ children, active }: MenuWrapperProps): JSX.Element {
-   const [selectedItem, setSelectedItem] = useState<number>(active)
-   const [isCurrentActive, setIsCurrentActive] = useState<number>(active)
+   const [selectedItem, setSelectedItem] = useState<number>(active || 0)
+   const [isCurrentActive, setIsCurrentActive] = useState<number>(active || 0)
 
    function selectItem(index: number) {
       if (index === isCurrentActive) {
@@ -33,13 +39,17 @@ export function MenuWrapper({ children, active }: MenuWrapperProps): JSX.Element
       }
    }, [children])
 
+   if (!children) {
+      return null
+   }
+
    return (
       <MenuContext.Provider value={{ selectedItem, selectItem, isCurrentActive }}>
          <div className={styles.menu_container}>
             {Children.map(children, (child, index) => {
-               return <> {child} </>
-               //  if (isValidElement(child)){
-               // }
+               if (isValidElement(child)) {
+                  return <> {child} </>
+               }
                // return cloneElement(child, { index: index })
             })}
 
@@ -56,6 +66,10 @@ interface MenuItemsProps extends PropsWithChildren<any> {
 
 MenuWrapper.MenuItems = function ({ title, icon, index, children }: MenuItemsProps): JSX.Element {
    const { selectedItem, selectItem, isCurrentActive } = useContext(MenuContext)
+
+   // if (!selectedItem) {
+   //    return null
+   // }
 
    return (
       <div className={`${styles.menu_item}`}>
@@ -74,16 +88,16 @@ MenuWrapper.MenuItems = function ({ title, icon, index, children }: MenuItemsPro
 }
 
 
-interface MenuItemProps {
+interface MenuItemProps extends PropsWithChildren<any> {
    item: _MenuItem
-   type: string
 }
 
 
-MenuWrapper.MenuItem = function ({ item, type }: MenuItemProps): JSX.Element {
+MenuWrapper.MenuItem = function ({ item, children }: MenuItemProps): JSX.Element {
    const { query } = useRouter()
    return (
-      <div key={item.name} className={`${query?.name === item.name && styles.menu_item_options_active}`}>
+      <div key={item.name} className={`${styles.menu_item_option} ${query?.name === item.name && styles.menu_item_options_active}`}>
+
          <MyLink to={item.link}>
             {item.name}
          </MyLink>

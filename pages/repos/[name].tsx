@@ -24,11 +24,13 @@ function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
             <div className={styles.repo_owner_img}>
                <Image style={{ borderRadius: "50%" }} width={50} height={50} objectFit="cover" src={repo.owner.avatar_url} />
             </div>
-            <Title type="h1">
-               <MyLink style={{ fontSize: "15px", marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
-                  {repo.owner.login}
-               </MyLink>/<a href={repo.html_url} target="_blank">{repo.name}</a>
-            </Title>
+            <div>
+               <Title type="h1">
+                  <MyLink style={{ fontSize: "15px", marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
+                     {repo.owner.login}
+                  </MyLink>/<a href={repo.html_url} target="_blank">{repo.name}</a>
+               </Title>
+            </div>
          </div>
 
          <div className={styles.repo_item_content}>

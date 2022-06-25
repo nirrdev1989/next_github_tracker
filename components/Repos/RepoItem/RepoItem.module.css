@@ -7,6 +7,11 @@
    gap: var(--size-1-5-rem);
 }
 
+.user_repo_item_stats {
+   display: flex;
+
+}
+
 .user_repo_item_dates {
    display: flex;
    gap: var(--size-1-rem);
@@ -85,16 +90,18 @@
 
 @media (max-width: 770px) {
 
-   .user_repo_item_dates,
-   .user_repo_item_stats {
+   .user_repo_item_stats,
+   .user_repo_item_dates {
+      display: flex;
       flex-direction: column;
       align-items: flex-start;
       width: 100%;
    }
 
-   .user_repo_item_stats>p {
-      margin-bottom: var(--size-1-rem);
+   .user_repo_item_stats {
+      gap: var(--size-1-rem);
    }
+
 
    .user_repo_topics {
       grid-template-columns: repeat(2, auto);
