@@ -10,7 +10,11 @@
 
 .user_profile_header h1 {
    margin-bottom: 0.1rem;
+   display: flex;
+   align-items: center;
 }
+
+
 
 .user_profile_header i,
 .user_profile_header svg {

@@ -9,6 +9,10 @@ import styles from "../../styles/Repo.page.module.css"
 import Image from "next/image"
 import UserEvents from "../../components/Users/UserEvents/UserEvents"
 import MyLink from "../../components/util-components/MyLink.tsx/MyLink"
+import { useAppContext } from "../../context/app.context"
+import Button from "../../components/util-components/Button/Button"
+import { MinusIcon, PlusGreenIcon } from "../../icons"
+import MenuActions from "../../components/MenuActions/MenuActions"
 
 
 interface RepoPageProps extends Record<string, unknown> {
@@ -18,6 +22,8 @@ interface RepoPageProps extends Record<string, unknown> {
 }
 
 function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
+   // const { menuList, addItemToMenu, removeItemFromMenu } = useAppContext()
+
    return (
       <>
          <div className={`page_header ${styles.repo_header}`}>
@@ -29,6 +35,8 @@ function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
                   <MyLink style={{ fontSize: "15px", marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
                      {repo.owner.login}
                   </MyLink>/<a href={repo.html_url} target="_blank">{repo.name}</a>
+
+                  <MenuActions name={repo.name} type="repos" url={`/repos/${repo.name}?user=${repo.owner.login}`} />
                </Title>
             </div>
          </div>

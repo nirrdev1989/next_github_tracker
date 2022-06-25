@@ -3,6 +3,11 @@
    display: flex;
 }
 
+.repo_header h1 {
+   display: flex;
+   align-items: center;
+}
+
 
 
 .repo_item_content {

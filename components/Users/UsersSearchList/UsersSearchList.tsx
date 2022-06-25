@@ -4,6 +4,7 @@ import { useAppContext } from "../../../context/app.context"
 import { MinusIcon, PlusGreenIcon } from "../../../icons"
 import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 import { convertArrayToObject } from "../../../utils/convert"
+import MenuActions from "../../MenuActions/MenuActions"
 import Button from "../../util-components/Button/Button"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
@@ -15,10 +16,6 @@ interface UsersSearchListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
 }
 
 export default function UsersSearchList({ users }: UsersSearchListProps): JSX.Element {
-   const { menuList, addItemToMenu, removeItemFromMenu } = useAppContext()
-
-   const objectUsers = convertArrayToObject(menuList["users"].items, "name")
-
    return (
       <div className={styles.users_list}>
          {users.length > 0 && users.map((user) => {
@@ -30,13 +27,9 @@ export default function UsersSearchList({ users }: UsersSearchListProps): JSX.El
                         <MyLink style={{ fontSize: "17px" }} to={`/users/${user.login}`}>
                            {user.login}
                         </MyLink>
-                        {/* <span>Type: {user.type}</span> */}
                      </div>
                      <div>
-                        {objectUsers[user.login] ?
-                           <Button onClick={() => removeItemFromMenu(user.login, "users")}>{MinusIcon}</Button> :
-                           <Button onClick={() => addItemToMenu(user.login, `/users/${user.login}`, "users")}>{PlusGreenIcon}</Button>
-                        }
+                        <MenuActions name={user.login} url={`/users/${user.login}`} type="users" />
                      </div>
                   </div>
 

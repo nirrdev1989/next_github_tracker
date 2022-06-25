@@ -8,9 +8,12 @@ import { withLayout } from '../../layout/Layout'
 import { _GithubUserProfile } from '../../models/GithubUserProfile'
 import styles from "../../styles/User.page.module.css"
 import { _GitHubRepo } from "../../models/GithubRepo";
-import { EmailIcon, GithubIcon, ListCardIcon, TwitterIcon } from "../../icons";
+import { EmailIcon, GithubIcon, ListCardIcon, MinusIcon, PlusGreenIcon, TwitterIcon } from "../../icons";
 import UserEvents from "../../components/Users/UserEvents/UserEvents";
 import { _GitHubEvents } from "../../models/GithubEvents";
+import { useAppContext } from "../../context/app.context";
+import Button from "../../components/util-components/Button/Button";
+import MenuActions from "../../components/MenuActions/MenuActions";
 
 
 
@@ -20,6 +23,8 @@ interface UserProfileProps extends Record<string, unknown> {
 }
 
 function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element {
+
+   // const objectUsers = convertArrayToObject(menuList["users"].items, "name")
    return (
       <>
          <div className={`page_header ${styles.user_profile_header}`}>
@@ -28,7 +33,10 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
             </div>
             <div className={styles.user_profile_info}>
                <div>
-                  <Title type="h1">{userProfile.name}</Title>
+                  <Title type="h1">
+                     {userProfile.name}
+                     <MenuActions name={userProfile.login} type="users" url={`/users/${userProfile.login}`} />
+                  </Title>
                   <P style={{ marginBottom: "0.5rem" }} size="small">{userProfile.login}</P>
                </div>
                <div className={styles.user_profile_links}>

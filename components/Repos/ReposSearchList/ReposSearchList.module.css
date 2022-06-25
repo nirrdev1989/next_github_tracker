@@ -29,10 +29,7 @@
     height: 20px;
  }
 
- .repo_list_item button {
-    background-color: transparent;
-    font-size: 24px;
- }
+
 
  .repo_list_item_description {
     color: var(--four-light-color);

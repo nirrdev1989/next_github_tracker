@@ -5,6 +5,7 @@ import { useAppContext } from "../../../context/app.context"
 import { ForkIcon, languageIcons, MinusIcon, PlusGreenIcon, StarIcon } from "../../../icons"
 import { _GitHubRepo } from "../../../models/GithubRepo"
 import { convertArrayToObject } from "../../../utils/convert"
+import MenuActions from "../../MenuActions/MenuActions"
 import Button from "../../util-components/Button/Button"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
@@ -16,8 +17,6 @@ interface ReposSearchListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
 }
 
 export default function ReposSearchList({ repos }: ReposSearchListProps): JSX.Element {
-   const { menuList, addItemToMenu, removeItemFromMenu } = useAppContext()
-   const objectRepos = convertArrayToObject(menuList["repos"].items, "name")
 
    return (
       <div className={styles.users_list}>
@@ -37,10 +36,7 @@ export default function ReposSearchList({ repos }: ReposSearchListProps): JSX.El
                      </div>
 
                      <div>
-                        {objectRepos[repo.name] ?
-                           <Button onClick={() => removeItemFromMenu(repo.name, "repos")}>{MinusIcon}</Button> :
-                           <Button onClick={() => addItemToMenu(repo.name, `/repos/${repo.name}?user=${repo.owner.login}`, "repos")}>{PlusGreenIcon}</Button>
-                        }
+                        <MenuActions name={repo.name} url={`/repos/${repo.name}?user=${repo.owner.login}`} type="repos" />
                      </div>
                   </div>
 
