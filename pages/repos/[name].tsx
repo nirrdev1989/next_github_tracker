@@ -32,7 +32,7 @@ function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
             </div>
             <div>
                <Title type="h1">
-                  <MyLink style={{ fontSize: "15px", marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
+                  <MyLink style={{ marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
                      {repo.owner.login}
                   </MyLink>/<a href={repo.html_url} target="_blank">{repo.name}</a>
 

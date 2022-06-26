@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { useAppContext } from "../../../context/app.context"
-import { ForkIcon, languageIcons, MinusIcon, PlusGreenIcon, StarIcon } from "../../../icons"
+import { ForkIcon, IssueIcon, languageIcons, MinusIcon, PlusGreenIcon, StarIcon } from "../../../icons"
 import { _GitHubRepo } from "../../../models/GithubRepo"
 import { convertArrayToObject } from "../../../utils/convert"
 import MenuActions from "../../MenuActions/MenuActions"
@@ -56,6 +56,9 @@ export default function ReposSearchList({ repos }: ReposSearchListProps): JSX.El
 
                      <span>{ForkIcon}</span>
                      <span>Forks {repo.forks_count}</span>
+
+                     <span>{IssueIcon}</span>
+                     <span>Issues {repo.open_issues_count}</span>
                   </div>
 
                </div>

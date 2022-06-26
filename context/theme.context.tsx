@@ -2,11 +2,11 @@ import { createContext, PropsWithChildren, useContext, useEffect, useState } fro
 import Cookie from "js-cookie"
 
 export interface _ThemeContext {
-   // isDarkMode: boolean
-   // switchMode?: () => void
+   isDarkMode: boolean
+   switchMode?: () => void
 }
 
-const ThemeContext = createContext(null)
+const ThemeContext = createContext<_ThemeContext | null>(null)
 
 
 export function useThemeContext() {

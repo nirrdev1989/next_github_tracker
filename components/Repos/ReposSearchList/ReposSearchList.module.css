@@ -32,7 +32,8 @@
 
 
  .repo_list_item_description {
-    color: var(--four-light-color);
+    opacity: 0.7;
+    /* color: var(--four-light-color); */
  }
 
  .repo_list_item_info {

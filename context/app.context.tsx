@@ -1,26 +1,34 @@
 import { createContext, PropsWithChildren, ReactNode, useCallback, useContext, useEffect, useState } from "react";
-import { usersMenu, reposMenu } from "../fake-db/menu";
+import { usersMenu, reposMenu, searchMenu, settingsMenu } from "../fake-db/menu";
 import Cookie from "js-cookie"
 import { _Menu, _MenuItem } from "../models/Menu";
+import { successToast, warningToast } from "../utils/toast";
 
 
-export interface _AppContext { }
+export interface _AppContext {
+   menuList: _Menu
+   addItemToMenu: (name: string, link: string, type: string) => void
+   removeItemFromMenu: (name: string, type: string) => void
+}
 
-const AppContext = createContext(null)
+const AppContext = createContext<_AppContext | null>(null)
 
 export function useAppContext() {
    return useContext(AppContext)
 }
 
-export function AppContextProvider({ children }: PropsWithChildren<_AppContext>): JSX.Element {
+export function AppContextProvider({ children }: PropsWithChildren<any>): JSX.Element {
 
    const [menuList, setMenuList] = useState<_Menu>({
       "users": { type: "users", items: [] },
-      "repos": { type: "repos", items: [] }
+      "repos": { type: "repos", items: [] },
+      "search": { type: "search", items: [] },
+      "settings": { type: "settings", items: [] },
    })
 
 
-   const addItemToMenu = useCallback((name: string, link: string, type: string) => {
+
+   function addItemToMenu(name: string, link: string, type: string) {
       const itemFound = menuList[type].items.find((item) => item.name === name)
 
       if (!itemFound) {
@@ -35,10 +43,12 @@ export function AppContextProvider({ children }: PropsWithChildren<_AppContext>)
          Cookie.set(type, JSON.stringify(menuList[type].items))
 
          setMenuList({ ...menuList })
+
+         successToast(`${name} added to ${type} list`)
       }
       // }
 
-   }, [menuList])
+   }
 
    function removeItemFromMenu(name: string, type: string) {
 
@@ -47,13 +57,19 @@ export function AppContextProvider({ children }: PropsWithChildren<_AppContext>)
       Cookie.set(type, JSON.stringify(menuList[type].items))
 
       setMenuList({ ...menuList })
+
+      warningToast(`${name} removed from ${type} list`)
+
    }
 
    useEffect(() => {
       setMenuList({
          "users": usersMenu,
-         "repos": reposMenu
+         "repos": reposMenu,
+         "search": searchMenu,
+         "settings": settingsMenu
       })
+
    }, [])
 
 

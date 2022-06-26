@@ -1,0 +1,21 @@
+.home_page_container>div {
+   margin-bottom: var(--size-1-rem);
+}
+
+.search>p {
+   margin-top: var(--size-0-5-rem);
+   color: var(--main-green-color);
+   font-size: 12px;
+}
+
+.search button {
+   font-size: 20px;
+   text-decoration: underline;
+   padding-left: 0 !important;
+}
+
+@media (max-width: 770px) {
+   .home_page_container {
+      margin: var(--size-1-rem);
+   }
+}

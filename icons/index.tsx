@@ -1,5 +1,5 @@
 import { FiUsers } from "react-icons/fi";
-import { AiOutlineFile, AiOutlineComment, AiFillUnlock, AiFillLock, AiFillCloseCircle, AiOutlineUser, AiFillMinusCircle, AiOutlineSearch, AiTwotoneStar, AiOutlineIssuesClose, AiOutlineUnorderedList, AiFillGithub, AiOutlineMail, AiOutlineInfoCircle, AiOutlineFork, AiOutlinePullRequest } from "react-icons/ai"
+import { AiOutlineSetting, AiOutlineFile, AiOutlineComment, AiFillUnlock, AiFillLock, AiFillCloseCircle, AiOutlineUser, AiFillMinusCircle, AiOutlineSearch, AiTwotoneStar, AiOutlineIssuesClose, AiOutlineUnorderedList, AiFillGithub, AiOutlineMail, AiOutlineInfoCircle, AiOutlineFork, AiOutlinePullRequest } from "react-icons/ai"
 import { MdDateRange } from "react-icons/md";
 import { RiUserFollowLine, RiMoonClearLine, RiCloseLine } from "react-icons/ri";
 import { IoLocationOutline } from "react-icons/io5";
@@ -16,6 +16,7 @@ export const TwitterIcon = <i className="devicon-twitter-original colored"></i>
 
 
 // export const RepoCommitsIcon = <RiGitRepositoryCommitsLine/>
+export const SettingsIcon = <AiOutlineSetting />
 export const FileIcon = <AiOutlineFile />
 export const RepoIcon = <GoRepo />
 export const CommentIcon = <AiOutlineComment />

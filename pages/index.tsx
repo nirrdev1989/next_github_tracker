@@ -22,37 +22,39 @@ const initialSearchState: _SearchResults<any> = {
 }
 
 function HomePage({ }: HomeProps): JSX.Element {
-  const router = useRouter()
-  const [searchResults, setSearchResults] = useState<_SearchResults<any>>(initialSearchState)
+  // const router = useRouter()
+  // const [searchResults, setSearchResults] = useState<_SearchResults<any>>(initialSearchState)
 
-  useEffect(() => {
-    const searchValue = router.query?.search
-    const type = router.query?.type
-    const page = router.query?.page
+  // useEffect(() => {
+  //   const searchValue = router.query?.search
+  //   const type = router.query?.type
+  //   const page = router.query?.page
 
-    let url = ""
-    if (searchValue !== undefined && type !== undefined) {
-      if (type === "users") {
-        url = `/search/users?q=${searchValue}&page=${page}`
-      } else if (type === "repos") {
-        url = `/search/repositories?q=${searchValue}&page=${page}`
-      }
 
-      getData(url, (error, data: _SearchResults<_GithubUserLikeOwner | _GitHubRepo>) => {
-        setSearchResults(data)
-      })
-    }
-  }, [router.query.search, router.query.type, router.query?.page])
+  //   let url = ""
+  //   if (searchValue !== undefined && type !== undefined) {
+  //     console.log("SERCHING")
+  //     if (type === "users") {
+  //       url = `/search/users?q=${searchValue}&page=${page}`
+  //     } else if (type === "repos") {
+  //       url = `/search/repositories?q=${searchValue}&page=${page}`
+  //     }
 
-  useEffect(() => {
-    setSearchResults(initialSearchState)
-  }, [router.query?.research])
+  //     getData(url, (error, data: _SearchResults<_GithubUserLikeOwner | _GitHubRepo>) => {
+  //       setSearchResults(data)
+  //     })
+  //   }
+  // }, [router.query.search, router.query.type, router.query?.page])
+
+  // useEffect(() => {
+  //   setSearchResults(initialSearchState)
+  // }, [router.query?.research])
 
 
   return (
     <div className={styles.home_page_container}>
 
-      <div className={`page_header ${styles.home_header}`}>
+      {/* <div className={`page_header ${styles.home_header}`}>
         <Title type="h1">Search...</Title>
       </div>
 
@@ -67,8 +69,7 @@ function HomePage({ }: HomeProps): JSX.Element {
         {searchResults.items.length > 0 && router.query.type === "repos" &&
           <ReposSearchList repos={searchResults.items} />}
 
-        {searchResults?.items.length === 0 && <P size="large">No results</P>}
-      </div>
+      </div> */}
 
     </div>
   )

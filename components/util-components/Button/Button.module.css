@@ -16,6 +16,11 @@
    opacity: 1;
 }
 
+.main_red {
+   background-color: var(--main-red-color);
+   color: var(--main-light-color);
+}
+
 .main_green {
    background-color: var(--main-green-color);
    color: var(--main-light-color);

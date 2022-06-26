@@ -1,0 +1,34 @@
+.auth_token_content {
+   display: flex;
+   flex-direction: column;
+   gap: var(--size-2-rem);
+}
+
+.auth_token_info p {
+   margin-bottom: var(--size-0-5-rem);
+   opacity: 0.7;
+}
+
+.auth_token_proccess_steps_container {
+   display: flex;
+   flex-direction: column;
+   gap: var(--size-1-rem);
+}
+
+.auth_token_proccess_steps_container p {
+   display: flex;
+   gap: var(--size-0-5-rem);
+}
+
+.auth_token_save_form {
+   display: flex;
+   gap: var(--size-1-rem);
+   margin-bottom: var(--size-2-rem);
+}
+
+.auth_token_save_form input {
+   width: 400px;
+   background-color: var(--main-light-color);
+   color: var(--main-dark-color);
+   border: 2px solid var(--main-dark-color);
+}

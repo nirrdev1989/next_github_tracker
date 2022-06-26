@@ -1,13 +1,24 @@
 import axios from 'axios'
+import Cookie from "js-cookie"
+
+let headers = {}
+
+if (Cookie.get("jwt_token")) {
+   headers = {
+      "Accept": "application/vnd.github.v3+json",
+      // "Accept": "application/vnd.github.cloak-preview",
+      "Authorization": `token ${Cookie.get("jwt_token")}`
+   }
+} else {
+   headers = {
+      "Accept": "application/vnd.github.v3+json",
+   }
+}
 
 const Axios = axios.create({
    baseURL: 'https://api.github.com',
    // withCredentials: true,
-   headers: {
-      // "Accept": "application/vnd.github.v3+json",
-      "Accept": "application/vnd.github.cloak-preview",
-      "Authorization": `token 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`
-   },
+   headers: headers
 })
 
 Axios.interceptors.request.use((request) => {
@@ -17,7 +28,6 @@ Axios.interceptors.request.use((request) => {
 })
 
 Axios.interceptors.response.use((response) => {
-   const { url, method } = response.config
    return response
 }, (error) => {
    // console.log('AXIOS MIDDALEWARE RESPONSE ERROR: ', error.response)

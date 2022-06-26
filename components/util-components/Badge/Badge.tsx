@@ -6,8 +6,8 @@ interface BadgeProps extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, 
    color?: "red" | "green" | "blue" | "yellow" | "outline"
 }
 
-export default function Badge({ color, children }: BadgeProps): JSX.Element {
+export default function Badge({ color, children, ...rest }: BadgeProps): JSX.Element {
    return (
-      <span className={`${styles.badge} ${styles[color]}`} >{children}</span>
+      <span {...rest} className={`${styles.badge} ${styles[color]}`} >{children}</span>
    )
 }

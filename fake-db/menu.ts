@@ -10,8 +10,67 @@ export let reposMenu: _MenuItemList = {
    items: []
 }
 
+export let searchMenu: _MenuItemList = {
+   type: "search",
+   items: []
+}
+
+export let settingsMenu: _MenuItemList = {
+   type: "settings",
+   items: []
+}
+
 const loadUsers = Cookie.get("users")
 const loadRepos = Cookie.get("repos")
+const loadSearch = Cookie.get("search")
+const loadSettings = Cookie.get("settings")
+
+if (loadSettings) {
+   settingsMenu = {
+      type: "settings",
+      items: JSON.parse(loadSettings)
+   }
+} else {
+   settingsMenu = {
+      type: settingsMenu.type,
+      items: [
+         {
+            "id": 8678678678,
+            "name": "auth",
+            "link": "/settings/auth"
+         },
+         // {
+         //    "id": 324343654645,
+         //    "name": "users",
+         //    "link": "/search/users"
+         // }
+      ]
+   }
+}
+
+if (loadSearch) {
+   searchMenu = {
+      type: "search",
+      items: JSON.parse(loadSearch)
+   }
+} else {
+   searchMenu = {
+      type: searchMenu.type,
+      items: [
+         {
+            "id": 5345345,
+            "name": "repos",
+            "link": "/search/repos"
+         },
+         {
+            "id": 867867867,
+            "name": "users",
+            "link": "/search/users"
+         }
+      ]
+   }
+}
+
 
 if (loadRepos) {
    reposMenu = {
