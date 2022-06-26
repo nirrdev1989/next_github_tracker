@@ -63,7 +63,7 @@ function SearchPage({ typeName, newSearch }: SearchPageProps): JSX.Element {
    return (
       <div>
          <div className={`page_header`}>
-            <Title type="h1">Search...</Title>
+            <Title type="h1">Search</Title>
             <P size="small">{router.query?.name}</P>
          </div>
 

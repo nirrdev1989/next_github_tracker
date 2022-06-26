@@ -15,12 +15,10 @@ interface MenuActionsProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEleme
 
 export default function MenuActions({ name, type, url }: MenuActionsProps) {
    const { menuList, addItemToMenu, removeItemFromMenu } = useAppContext()
-   const object = convertArrayToObject(menuList[type].items, "name")
-
 
    return (
       <>
-         {object[name] ?
+         {menuList[type].items.find((item) => item.link === url) ?
             <Button style={{ fontSize: "22px", paddingBottom: 0 }} color="main_transparent" onClick={() => removeItemFromMenu(name, type)}>{MinusIcon}</Button> :
             <Button style={{ fontSize: "22px", paddingBottom: 0 }} color="main_transparent" onClick={() => addItemToMenu(name, url, type)}>{PlusGreenIcon}</Button>
          }

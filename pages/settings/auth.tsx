@@ -46,7 +46,7 @@ function AuthPage({ }: AuthPageProps): JSX.Element {
    return (
       <>
          <div className={`page_header`}>
-            <Title type="h1">Auth...</Title>
+            <Title type="h1">Auth</Title>
          </div>
 
          <div className={styles.auth_token_content}>
