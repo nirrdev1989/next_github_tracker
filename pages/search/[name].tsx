@@ -86,7 +86,7 @@ function SearchPage({ typeName, newSearch }: SearchPageProps): JSX.Element {
                   <small>Page-{pageNumber}</small>
                </>}
 
-            {searchResults?.total_count > 0 && <P size="small">Results {searchResults.total_count}</P>}
+            {searchResults?.total_count > 0 && <P size="small">Results {searchResults.total_count} for {router.query.search}</P>}
          </div>
 
          <div className={styles.search_results}>
