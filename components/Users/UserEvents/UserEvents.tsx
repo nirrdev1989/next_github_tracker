@@ -74,33 +74,31 @@ export default function UserEvents({ userProfile, eventsUrl, events }: UserEvent
                return (
                   <div key={event.id} className={styles.user_event_item}>
                      <div className={styles.user_event_item_info}>
-                        <div className={styles.user_event_item_user}>
-                           <span className={styles.user_event_img}>
-                              <Image style={{ borderRadius: "50%" }} width={35} height={35} objectFit="cover" src={event.actor.avatar_url} />
-                           </span>
+                        <span className={styles.user_event_img}>
+                           <Image style={{ borderRadius: "50%" }} width={35} height={35} objectFit="cover" src={event.actor.avatar_url} />
+                        </span>
 
-                           <span>
-                              <MyLink to={`/users/${event.actor.login}`}>
-                                 {event.actor.login}
-                              </MyLink>
-                           </span>
-                        </div>
+                        <span>
+                           <MyLink to={`/users/${event.actor.login}`}>
+                              {event.actor.login}
+                           </MyLink>
+                        </span>
                         <span className={styles.marked}>
                            {timeDifference(new Date().getTime(), new Date(event.created_at).getTime())}
                         </span>
-
-                        <span className={styles.user_event_item_type}>{event.type}</span>
-
-                        <span>
-                           {RepoIcon}
-                           <MyLink
-                              style={{ marginLeft: "var(--size-0-5-rem)" }}
-                              disabled={event.payload.action === "started" || userProfile.type === "Bot"}
-                              to={`/repos/${event.repo.name.split("/")[1]}?user=${event.actor.login}`}>
-                              {event.repo.name}
-                           </MyLink>
-                        </span>
                      </div>
+
+                     <span className={styles.user_event_item_type}>{event.type}</span>
+
+                     <span>
+                        {RepoIcon}
+                        <MyLink
+                           style={{ marginLeft: "var(--size-0-5-rem)" }}
+                           disabled={event.payload.action === "started" || userProfile.type === "Bot"}
+                           to={`/repos/${event.repo.name.split("/")[1]}?user=${event.actor.login}`}>
+                           {event.repo.name}
+                        </MyLink>
+                     </span>
                      {event.payload.commits &&
                         <div className={styles.user_event_item_commits}>
                            <P size="small">Commits:</P>

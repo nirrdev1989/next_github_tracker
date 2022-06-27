@@ -25,9 +25,9 @@ export default function ReadMore({ text, lengthLimit }: ReadMoreProps): JSX.Elem
       return null
    }
    return (
-      <>
-         <div className={`${styles.read_more_text} ${open ? styles.open : ""}`}> {limitText}</div>
+      <div className={`${open ? styles.open : ""}`}>
+         <div className={`${styles.read_more_text} `}> {limitText}</div>
          {text.length > lengthLimit && <div className={styles.read_more_btn} onClick={toggleText} >{open ? "Read less" : "Read more"}</div>}
-      </>
+      </div>
    )
 }
