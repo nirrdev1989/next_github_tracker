@@ -1,4 +1,4 @@
-import { HTMLAttributes, DetailedHTMLProps, ReactNode, CSSProperties } from "react"
+import { HTMLAttributes, DetailedHTMLProps, ReactNode } from "react"
 import styles from "./P.module.css"
 
 interface PProps extends DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement> {

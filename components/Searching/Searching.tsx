@@ -25,6 +25,13 @@ export default function Searching({ }: SearchingProps): JSX.Element {
                search: value,
             }
          })
+
+         // router.push({
+         //    pathname: `${router.pathname}`,
+         //    query: {
+         //       search: value,
+         //    }
+         // })
       }
    }
 
@@ -33,6 +40,10 @@ export default function Searching({ }: SearchingProps): JSX.Element {
          searching()
       }
    }
+
+   // useEffect(() => {
+   //    setValue(() => "")
+   // }, [router.pathname])
 
    useEffect(() => {
       setValue(() => "")

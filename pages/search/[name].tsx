@@ -14,9 +14,10 @@ import P from "../../components/util-components/P/P"
 import { GetServerSideProps } from "next"
 import Button from "../../components/util-components/Button/Button"
 import { LeftArrowIcon, RightArrowIcon } from "../../icons"
+import { usePaginate } from "../../hooks/usePaginate"
 
 interface SearchPageProps extends Record<string, unknown> {
-   typeName: string
+   dataType: string
    newSearch: boolean
 }
 
@@ -26,11 +27,15 @@ const initialSearchState: _SearchResults<any> = {
    incomplete_results: true
 }
 
-function SearchPage({ typeName, newSearch }: SearchPageProps): JSX.Element {
+function SearchPage({ dataType, newSearch }: SearchPageProps): JSX.Element {
    const router = useRouter()
-   const [searchResults, setSearchResults] = useState<_SearchResults<any>>(initialSearchState)
+   const [data, setData] = useState<_SearchResults<any>>(initialSearchState)
    const [pageNumber, setPageNumber] = useState<number>(1)
    const [isNewSearch, setIsNewSearch] = useState<boolean>(newSearch)
+
+   // const { data, setPageNumber, pageNumber, isNewSearch, router } = usePaginate({
+   //    pageCount: 1, dataType, range: 30, url: "", newSearch, initialData: initialSearchState
+   // })
 
 
 
@@ -38,27 +43,19 @@ function SearchPage({ typeName, newSearch }: SearchPageProps): JSX.Element {
       const searchValue = router.query?.search
       const name = router.query?.name
 
-      let url = ""
       if (searchValue !== undefined && name !== undefined) {
-         console.log("SERCHING")
-         if (name === "users") {
-            url = `/search/users?q=${searchValue}&page=${pageNumber}`
-         } else if (name === "repos") {
-            url = `/search/repositories?q=${searchValue}&page=${pageNumber}`
-         }
-
-         getData(url, (error, data: _SearchResults<_GithubUserLikeOwner | _GitHubRepo>) => {
+         getData(`/search/${name}?q=${searchValue}&page=${pageNumber}`, (error, data: _SearchResults<_GithubUserLikeOwner | _GitHubRepo>) => {
             setIsNewSearch(() => false)
-            setSearchResults(data)
+            setData(data)
          })
       }
    }, [router.query.search, pageNumber])
 
    useEffect(() => {
-      setSearchResults(initialSearchState)
+      setData(initialSearchState)
       setPageNumber(() => 1)
       setIsNewSearch(() => true)
-   }, [typeName])
+   }, [dataType])
 
    return (
       <div>
@@ -83,17 +80,17 @@ function SearchPage({ typeName, newSearch }: SearchPageProps): JSX.Element {
                      {RightArrowIcon}
                   </Button>
 
-                  <small>Page-{pageNumber}</small>
+                  <small>Page-{pageNumber}  </small>
                </>}
 
-            {searchResults?.total_count > 0 && <P size="small">Results {searchResults.total_count} for {router.query.search}</P>}
+            {data?.total_count > 0 && <P size="small">Results {data.total_count} for {router.query.search}</P>}
          </div>
 
          <div className={styles.search_results}>
-            {searchResults.items.length > 0 && typeName === "users" && router.query.search &&
-               <UsersSearchList users={searchResults.items} />}
-            {searchResults.items.length > 0 && typeName === "repos" && router.query.search &&
-               <ReposSearchList repos={searchResults.items} />}
+            {data.items.length > 0 && dataType === "users" && router.query.search &&
+               <UsersSearchList users={data.items} />}
+            {data.items.length > 0 && dataType === "repositories" && router.query.search &&
+               <ReposSearchList repos={data.items} />}
 
          </div>
       </div>
@@ -113,7 +110,7 @@ export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (co
    }
    return {
       props: {
-         typeName: name as string,
+         dataType: name as string,
          newSearch: true
       }
    }

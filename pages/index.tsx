@@ -24,11 +24,9 @@ function HomePage({ }: HomeProps): JSX.Element {
 
         <div className={styles.home_page_content_repo}>
           <span>
-            Feel free to leave a star
+            Feel free to leave a star  {StarIcon}
           </span>
-          <span>
-            {StarIcon}
-          </span>
+
           <span>
             <a style={{ color: "var(--main-green-color)" }} href="https://github.com/nirrdev1989/next_github_tracker" target="_blank" rel="noreferrer" >View repository</a>
           </span>

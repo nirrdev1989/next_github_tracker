@@ -55,9 +55,9 @@ if (loadSearch) {
       items: [
          {
             "id": 5345345,
-            "name": "repos",
-            "link": "/search/repos",
-            fullName: "repos"
+            "name": "repositories",
+            "link": "/search/repositories",
+            fullName: "repositories"
          },
          {
             "id": 867867867,

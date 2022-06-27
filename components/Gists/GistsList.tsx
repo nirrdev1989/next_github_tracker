@@ -30,7 +30,7 @@ export default function GistsList({ gists }: GistsListProps) {
                         </span>
                      </span>
                      <span className={styles.gist_link} >
-                        <a href={gist.html_url} target="_black">Link to gist</a>
+                        <a rel="noreferrer" href={gist.html_url} target="_black">Link to gist</a>
                      </span>
                   </div>
 
