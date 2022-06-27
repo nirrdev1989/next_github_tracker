@@ -29,7 +29,7 @@ function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
                <Title type="h1">
                   <MyLink style={{ marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
                      {repo.owner.login}
-                  </MyLink>/<a href={repo.html_url} target="_blank">{repo.name}</a>
+                  </MyLink>/<a rel="noopener" href={repo.html_url} target="_blank">{repo.name}</a>
 
                   <MenuActions fullName={`${repo.name}/${repo.owner.login}`} name={repo.name} type="repos" url={`/repos/${repo.name}?user=${repo.owner.login}`} />
                </Title>

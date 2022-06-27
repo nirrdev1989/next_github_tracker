@@ -13,8 +13,8 @@ export default function Footer({ }: FooterProps): JSX.Element {
          </div>
 
          <div className={styles.footer_links}>
-            <a href="https://github.com/nirrdev1989/next_github_tracker" target="_blank">{GithubIcon2}</a>
-            <a href="https://www.linkedin.com/in/nir-yakobov-82ab4b1b4/" target="_blank">{LinkedinIcon}</a>
+            <a rel="noopener" href="https://github.com/nirrdev1989/next_github_tracker" target="_blank">{GithubIcon2}</a>
+            <a rel="noopener" href="https://www.linkedin.com/in/nir-yakobov-82ab4b1b4/" target="_blank">{LinkedinIcon}</a>
          </div>
       </footer>
    )
