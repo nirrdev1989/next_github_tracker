@@ -31,7 +31,7 @@ export default function IssuesList({ issues }: IssuesListProps): JSX.Element {
                      Created: <span className={styles.marked}>{timeDifference(new Date().getTime(), new Date(issue.created_at).getTime())}</span>
                      Updated: <span className={styles.marked}> {timeDifference(new Date().getTime(), new Date(issue.updated_at).getTime())}</span>
                      <span className={styles.issue_item_link} >
-                        <a rel="noopener" href={issue.html_url} target="_blank">Link to issue</a>
+                        <a rel="noreferrer" href={issue.html_url} target="_blank">Link to issue</a>
                      </span>
 
                   </P>

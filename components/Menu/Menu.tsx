@@ -12,6 +12,10 @@ interface _MenuContext {
 
 const MenuContext = createContext<_MenuContext | undefined>(undefined)
 
+export function useMenuContext() {
+   return useContext(MenuContext)
+}
+
 interface MenuWrapperProps extends PropsWithChildren<any> {
    active?: number
 }
@@ -65,8 +69,8 @@ interface MenuItemsProps extends PropsWithChildren<any> {
    index: number
 }
 
-MenuWrapper.MenuItems = function ({ title, icon, index, children }: MenuItemsProps): JSX.Element {
-   const { selectedItem, selectItem, isCurrentActive } = useContext(MenuContext)
+function MenuItems({ title, icon, index, children }: MenuItemsProps): JSX.Element {
+   const { selectedItem, selectItem, isCurrentActive } = useMenuContext()
 
    return (
       <div className={`${styles.menu_item}`}>
@@ -90,7 +94,7 @@ interface MenuItemProps extends PropsWithChildren<any> {
 }
 
 
-MenuWrapper.MenuItem = function ({ item }: MenuItemProps): JSX.Element {
+function MenuItem({ item }: MenuItemProps): JSX.Element {
    const { query } = useRouter()
    return (
       <div key={item.name} className={`${styles.menu_item_option} ${query?.name === item.name && styles.menu_item_options_active}`}>
@@ -101,3 +105,6 @@ MenuWrapper.MenuItem = function ({ item }: MenuItemProps): JSX.Element {
       </div>
    )
 }
+
+MenuWrapper.MenuItems = MenuItems
+MenuWrapper.MenuItem = MenuItem

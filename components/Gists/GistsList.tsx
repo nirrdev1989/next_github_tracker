@@ -39,7 +39,7 @@ export default function GistsList({ gists }: GistsListProps) {
                         <P size="small">Files:</P>
                         <div className={styles.gist_item_files}>
                            {Object.keys(gist.files).map((fileName) => {
-                              return <span className={styles.gist_item_files_item} key={fileName}> {FileIcon} <a target="_blank" rel="noopener" href={gist.files[fileName].raw_url}>{fileName}</a></span>
+                              return <span className={styles.gist_item_files_item} key={fileName}> {FileIcon} <a target="_blank" rel="noreferrer" href={gist.files[fileName].raw_url}>{fileName}</a></span>
                            })}
                         </div>
                      </div>

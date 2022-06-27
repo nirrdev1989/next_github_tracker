@@ -37,10 +37,10 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
                   <P style={{ marginBottom: "0.5rem" }} size="small">{userProfile.login}</P>
                </div>
                <div className={styles.user_profile_links}>
-                  {userProfile.blog && <span >{ListCardIcon} <a rel="noopener" href={userProfile.blog} target="_blank">Blog</a></span>}
-                  {userProfile.twitter_username && <span>{TwitterIcon} <a rel="noopener" href={`https://twitter.com/${userProfile.twitter_username}`} target="_blank">Twitter</a></span>}
-                  {userProfile.email && <span>{EmailIcon} <a rel="noopener" href={`mailto:${userProfile.email}`} target="_blank">Email</a></span>}
-                  <span>{GithubIcon} <a rel="noopener" href={userProfile.html_url} target="_blank">Github</a></span>
+                  {userProfile.blog && <span >{ListCardIcon} <a rel="noreferrer" href={userProfile.blog} target="_blank">Blog</a></span>}
+                  {userProfile.twitter_username && <span>{TwitterIcon} <a rel="noreferrer" href={`https://twitter.com/${userProfile.twitter_username}`} target="_blank">Twitter</a></span>}
+                  {userProfile.email && <span>{EmailIcon} <a rel="noreferrer" href={`mailto:${userProfile.email}`} target="_blank">Email</a></span>}
+                  <span>{GithubIcon} <a rel="noreferrer" href={userProfile.html_url} target="_blank">Github</a></span>
                </div>
             </div>
          </div>

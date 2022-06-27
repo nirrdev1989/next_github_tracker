@@ -30,7 +30,7 @@ function HomePage({ }: HomeProps): JSX.Element {
             {StarIcon}
           </span>
           <span>
-            <a rel="noopener" style={{ color: "var(--main-green-color)" }} href="https://github.com/nirrdev1989/next_github_tracker" target="_blank">View repository</a>
+            <a style={{ color: "var(--main-green-color)" }} href="https://github.com/nirrdev1989/next_github_tracker" target="_blank" rel="noreferrer" >View repository</a>
           </span>
         </div>
       </div>

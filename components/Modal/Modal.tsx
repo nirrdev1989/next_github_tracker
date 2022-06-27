@@ -49,7 +49,7 @@ interface ModalBodyProps {
    children: ReactNode
 }
 
-MoadlWrapper.Body = function ({ children }: ModalBodyProps): JSX.Element {
+function ModalBody({ children }: ModalBodyProps): JSX.Element {
    return (
       <div className={styles.model_body}>
          {children}
@@ -61,7 +61,7 @@ interface ModalFooterProps {
    children: ReactNode
 }
 
-MoadlWrapper.Footer = function ({ children }: ModalFooterProps) {
+function ModalFooter({ children }: ModalFooterProps) {
    return (
       <div className={styles.model_footer}>
          {children}
@@ -74,7 +74,7 @@ interface ModalHeaderProps {
    title: string
 }
 
-MoadlWrapper.Header = function ({ children, title }: ModalHeaderProps): JSX.Element {
+function ModalHeader({ children, title }: ModalHeaderProps): JSX.Element {
    const { setEndStart } = useContext(ModalContext)
    return (
       <div className={styles.model_header}>
@@ -89,7 +89,9 @@ MoadlWrapper.Header = function ({ children, title }: ModalHeaderProps): JSX.Elem
       </div>
    )
 }
-
+MoadlWrapper.Header = ModalHeader
+MoadlWrapper.Body = ModalBody
+MoadlWrapper.Footer = ModalFooter
 
 // interface ModalProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 //    children?: ReactNode
