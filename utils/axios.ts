@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Cookie from "js-cookie"
+import { errorToast } from './toast'
 
 let headers = {}
 
@@ -32,6 +33,8 @@ Axios.interceptors.response.use((response) => {
 }, (error) => {
    // console.log('AXIOS MIDDALEWARE RESPONSE ERROR: ', error.response)
    const message = error.response?.data?.message || "Server error"
+
+   errorToast(message)
 
    return Promise.reject(message)
 })

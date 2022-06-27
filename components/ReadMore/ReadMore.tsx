@@ -7,7 +7,7 @@ interface ReadMoreProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>
    lengthLimit: number
 }
 
-export default function ReadMore({ text, lengthLimit }: ReadMoreProps) {
+export default function ReadMore({ text, lengthLimit }: ReadMoreProps): JSX.Element {
    const [open, setOpen] = useState<boolean>(false)
 
 

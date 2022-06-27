@@ -1,18 +1,21 @@
 
 import { HTMLAttributes, DetailedHTMLProps } from "react"
+import { GithubIcon, GithubIcon2, LinkedinIcon } from "../../icons"
 import styles from "./Footer.module.css"
 
 interface FooterProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
 
-export default function Footer({ }: FooterProps) {
+export default function Footer({ }: FooterProps): JSX.Element {
    return (
       <footer className={styles.footer}>
-         <div>
-            Next js @2022 Nir Yakobov
+         <div className={styles.footer_links_content}>
+            Next.js @2022 Nir Yakobov
          </div>
 
-         <a href="">Go some where</a>
-         <a href="">Go somewhere</a>
+         <div className={styles.footer_links}>
+            <a href="https://github.com/nirrdev1989/next_github_tracker" target="_blank">{GithubIcon2}</a>
+            <a href="https://www.linkedin.com/in/nir-yakobov-82ab4b1b4/" target="_blank">{LinkedinIcon}</a>
+         </div>
       </footer>
    )
 }

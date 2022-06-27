@@ -11,9 +11,9 @@ import { _SearchResults } from "../../models/Search"
 import { getData } from "../../utils/fetcher"
 import styles from "../../styles/Search.page.module.css"
 import P from "../../components/util-components/P/P"
-import { GetServerSideProps, GetServerSidePropsResult } from "next"
+import { GetServerSideProps } from "next"
 import Button from "../../components/util-components/Button/Button"
-import { LeftArrowIcon, RightArrowIcon, SearchIcon } from "../../icons"
+import { LeftArrowIcon, RightArrowIcon } from "../../icons"
 
 interface SearchPageProps extends Record<string, unknown> {
    typeName: string
@@ -104,12 +104,16 @@ function SearchPage({ typeName, newSearch }: SearchPageProps): JSX.Element {
 
 export default withLayout(SearchPage)
 
-
-
-export const getServerSideProps: GetServerSideProps<SearchPageProps> = (context) => {
+export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (context) => {
+   const name = context.query?.name
+   if (!name) {
+      return {
+         notFound: true,
+      }
+   }
    return {
       props: {
-         typeName: context.query?.name,
+         typeName: name as string,
          newSearch: true
       }
    }

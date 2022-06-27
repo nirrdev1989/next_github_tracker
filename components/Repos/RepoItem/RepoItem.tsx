@@ -8,30 +8,14 @@ import Title from "../../util-components/Titles/Title"
 import styles from "./RepoItem.module.css"
 import { MoadlWrapper } from "../../Modal/Modal"
 import IssuesList from "../IssuesList/IssuesList"
-import { getData, httpCall } from "../../../utils/fetcher"
+import { getData } from "../../../utils/fetcher"
 import Button from "../../util-components/Button/Button"
 import { useRouter } from "next/router"
 
 
 interface RopoItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    repo: _GitHubRepo,
-   // events: _GitHubEvents[]
 }
-
-
-// async function getIssuses(url: string) {
-//      try {
-//          const 
-//      } catch (error) {
-
-//      }
-// }
-// async function checkxx() {
-
-//    const { data, error } = await httpCall(`/repos/${repo.owner.login}/${repo.name}/${dataType.toLowerCase()}?page=${pageNumber}`)
-//    setShowModl(() => true)
-//    setIssues(() => data)
-// }
 
 export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
    const [showModal, setShowModl] = useState<boolean>(false)

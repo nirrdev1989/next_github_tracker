@@ -2,12 +2,10 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { HTMLAttributes, DetailedHTMLProps, useState, useEffect } from "react"
 import { useAppContext } from "../../context/app.context"
-import { useThemeContext } from "../../context/theme.context"
 import { useAnimateEnd } from "../../hooks/useAnimateEnd"
 import { useTheme } from "../../hooks/useTheme"
-import { CloseIcon, HamburgerIcon, ListIcon, MoonIcon, RepoIcon, SearchIcon, SettingsIcon, SunIcon, UserIcon } from "../../icons"
+import { CloseIcon, HamburgerIcon, MoonIcon, RepoIcon, SearchIcon, SettingsIcon, SunIcon, UserIcon } from "../../icons"
 import { MenuWrapper } from "../Menu/Menu"
-import MyLink from "../util-components/MyLink.tsx/MyLink"
 
 
 import styles from "./Navbar.module.css"
@@ -16,14 +14,7 @@ interface NavbarProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
    isOpend?: boolean
 }
 
-
-const menuItemActiveList = {
-   "users": 0,
-   "repos": 1,
-   "search": 2
-}
-
-export default function Navbar({ }: NavbarProps) {
+export default function Navbar({ }: NavbarProps): JSX.Element {
    const { isDarkMode, switchMode } = useTheme()
    const { menuList } = useAppContext()
    const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -90,26 +81,6 @@ export default function Navbar({ }: NavbarProps) {
                </MenuWrapper.MenuItems>
             </MenuWrapper>
          </div>
-
-         {/* <div className={styles.nav_base_options}>
-            <div className={styles.nav_base_options_item}>
-               <span>
-                  {SearchIcon}
-               </span>
-               <MyLink to={`/`}>
-                  Search
-               </MyLink>
-            </div>
-
-            <div className={styles.nav_base_options_item}>
-               <span>
-                  {SettingsIcon}
-               </span>
-               <MyLink to={`/`}>
-                  Settings
-               </MyLink>
-            </div>
-         </div> */}
       </nav>
    )
 }

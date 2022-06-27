@@ -8,7 +8,7 @@ import styles from "./Sidebar.module.css"
 
 interface SidebarProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
 
-export default function Sidebar({ }: SidebarProps) {
+export default function Sidebar({ }: SidebarProps): JSX.Element {
    const { switchMode, isDarkMode } = useThemeContext()
    const { menuList } = useAppContext()
 

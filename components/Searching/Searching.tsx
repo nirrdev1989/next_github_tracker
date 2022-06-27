@@ -1,5 +1,5 @@
-import { HTMLAttributes, DetailedHTMLProps, useState, useEffect, ChangeEvent } from "react"
-import { LeftArrowIcon, RightArrowIcon, SearchIcon } from "../../icons"
+import { HTMLAttributes, DetailedHTMLProps, useState, useEffect } from "react"
+import { SearchIcon } from "../../icons"
 import Button from "../util-components/Button/Button"
 import Input from "../util-components/Input/Input"
 import styles from "./Searching.module.css"

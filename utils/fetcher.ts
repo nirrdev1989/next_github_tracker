@@ -23,7 +23,6 @@ export async function getData(url: string, callData: Function) {
    progressBar.start()
    try {
       const { data } = await Axios.get(url)
-      console.log("fetcher", data)
       progressBar.done()
       callData(null, data)
    } catch (error) {

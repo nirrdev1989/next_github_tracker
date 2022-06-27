@@ -8,7 +8,7 @@ interface LayoutProps {
    children: ReactNode
 }
 
-function Layout({ children }: LayoutProps) {
+function Layout({ children }: LayoutProps): JSX.Element {
 
    return (
       <div className={styles.layout_container}>
@@ -35,11 +35,9 @@ function Layout({ children }: LayoutProps) {
 export const withLayout = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
    return function withLayotComponent(props: T): JSX.Element {
       return (
-         // <AppContextProvider isCurrentActive={props.isCurrentActive} activeMenuTab={props.activeMenuTab}>
          <Layout>
             <Component {...props} />
          </Layout>
-         // </AppContextProvider>
       )
    }
 }

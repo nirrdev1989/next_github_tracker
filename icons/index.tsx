@@ -4,7 +4,7 @@ import { MdDateRange } from "react-icons/md";
 import { RiUserFollowLine, RiMoonClearLine, RiCloseLine } from "react-icons/ri";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoIosCodeWorking } from "react-icons/io";
-import { BsCalendar4Event, BsTwitter, BsCardList, BsCodeSlash, BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from "react-icons/bs";
+import { BsGithub, BsCalendar4Event, BsLinkedin, BsTwitter, BsCardList, BsCodeSlash, BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from "react-icons/bs";
 import { ImSun } from "react-icons/im";
 import { FcPlus } from "react-icons/fc";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -16,6 +16,8 @@ export const TwitterIcon = <i className="devicon-twitter-original colored"></i>
 
 
 // export const RepoCommitsIcon = <RiGitRepositoryCommitsLine/>
+export const GithubIcon2 = <BsGithub />
+export const LinkedinIcon = <BsLinkedin />
 export const SettingsIcon = <AiOutlineSetting />
 export const FileIcon = <AiOutlineFile />
 export const RepoIcon = <GoRepo />

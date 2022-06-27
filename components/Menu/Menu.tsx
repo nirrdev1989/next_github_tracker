@@ -44,8 +44,6 @@ export function MenuWrapper({ children, active }: MenuWrapperProps): JSX.Element
       return null
    }
 
-
-
    return (
       <MenuContext.Provider value={{ selectedItem, selectItem, isCurrentActive }}>
          <div className={styles.menu_container}>
@@ -70,10 +68,6 @@ interface MenuItemsProps extends PropsWithChildren<any> {
 MenuWrapper.MenuItems = function ({ title, icon, index, children }: MenuItemsProps): JSX.Element {
    const { selectedItem, selectItem, isCurrentActive } = useContext(MenuContext)
 
-   // if (!selectedItem) {
-   //    return null
-   // }
-
    return (
       <div className={`${styles.menu_item}`}>
          <div
@@ -96,7 +90,7 @@ interface MenuItemProps extends PropsWithChildren<any> {
 }
 
 
-MenuWrapper.MenuItem = function ({ item, children }: MenuItemProps): JSX.Element {
+MenuWrapper.MenuItem = function ({ item }: MenuItemProps): JSX.Element {
    const { query } = useRouter()
    return (
       <div key={item.name} className={`${styles.menu_item_option} ${query?.name === item.name && styles.menu_item_options_active}`}>

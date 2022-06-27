@@ -9,20 +9,15 @@ import styles from "../../styles/Repo.page.module.css"
 import Image from "next/image"
 import UserEvents from "../../components/Users/UserEvents/UserEvents"
 import MyLink from "../../components/util-components/MyLink.tsx/MyLink"
-import { useAppContext } from "../../context/app.context"
-import Button from "../../components/util-components/Button/Button"
-import { MinusIcon, PlusGreenIcon } from "../../icons"
 import MenuActions from "../../components/MenuActions/MenuActions"
 
 
 interface RepoPageProps extends Record<string, unknown> {
    repo: _GitHubRepo
    events?: _GitHubEvents[]
-   // userName: string
 }
 
 function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
-   // const { menuList, addItemToMenu, removeItemFromMenu } = useAppContext()
 
    return (
       <>
@@ -57,7 +52,6 @@ function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
 export default withLayout(RepoPage)
 
 export const getServerSideProps: GetServerSideProps<RepoPageProps> = async (context) => {
-   console.log(context.query)
 
    let repoResult = null
    let eventsResult = null

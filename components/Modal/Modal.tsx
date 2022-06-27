@@ -1,4 +1,4 @@
-import { HTMLAttributes, DetailedHTMLProps, ReactNode, useState, useEffect, createContext, Children, PropsWithChildren, useContext } from "react"
+import { ReactNode, useState, useEffect, createContext, Children, PropsWithChildren, useContext } from "react"
 import styles from "./Modal.module.css"
 import ReactDOM from "react-dom";
 import { CloseIcon } from "../../icons";
@@ -13,7 +13,7 @@ interface MenuWrapperProps extends PropsWithChildren<any> {
 }
 
 
-export function MoadlWrapper({ children, setShowModl, show }: MenuWrapperProps) {
+export function MoadlWrapper({ children, setShowModl, show }: MenuWrapperProps): JSX.Element {
    const [isBrowser, setIsBrowser] = useState<boolean>(false);
    const [endStart, setEndStart] = useAnimateEnd(500, setShowModl)
 
@@ -49,7 +49,7 @@ interface ModalBodyProps {
    children: ReactNode
 }
 
-MoadlWrapper.Body = function ({ children }: ModalBodyProps) {
+MoadlWrapper.Body = function ({ children }: ModalBodyProps): JSX.Element {
    return (
       <div className={styles.model_body}>
          {children}
@@ -74,7 +74,7 @@ interface ModalHeaderProps {
    title: string
 }
 
-MoadlWrapper.Header = function ({ children, title }: ModalHeaderProps) {
+MoadlWrapper.Header = function ({ children, title }: ModalHeaderProps): JSX.Element {
    const { setEndStart } = useContext(ModalContext)
    return (
       <div className={styles.model_header}>
