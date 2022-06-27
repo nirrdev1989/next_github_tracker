@@ -86,9 +86,9 @@ export default function UserEvents({ userProfile, eventsUrl, events }: UserEvent
                         <span className={styles.marked}>
                            {timeDifference(new Date().getTime(), new Date(event.created_at).getTime())}
                         </span>
+                        <span className={styles.user_event_item_type}>{event.type}</span>
                      </div>
 
-                     <span className={styles.user_event_item_type}>{event.type}</span>
 
                      <span>
                         {RepoIcon}
