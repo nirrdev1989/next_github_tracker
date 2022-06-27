@@ -2,7 +2,8 @@ export interface _MenuItem {
    id: number | string
    name: string
    icon?: JSX.Element
-   link: string
+   link: string,
+   fullName?: string
 }
 
 export interface _MenuItemList {

@@ -29,7 +29,7 @@ export default function UsersSearchList({ users }: UsersSearchListProps): JSX.El
                         </MyLink>
                      </div>
                      <div>
-                        <MenuActions name={user.login} url={`/users/${user.login}`} type="users" />
+                        <MenuActions name={user.login} fullName={user.login} url={`/users/${user.login}`} type="users" />
                      </div>
                   </div>
 

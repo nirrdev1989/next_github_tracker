@@ -7,7 +7,7 @@ import { successToast, warningToast } from "../utils/toast";
 
 export interface _AppContext {
    menuList: _Menu
-   addItemToMenu: (name: string, link: string, type: string) => void
+   addItemToMenu: (name: string, fullName: string, link: string, type: string) => void
    removeItemFromMenu: (name: string, type: string) => void
 }
 
@@ -26,16 +26,15 @@ export function AppContextProvider({ children }: PropsWithChildren<any>): JSX.El
       "settings": { type: "settings", items: [] },
    })
 
-
-
-   function addItemToMenu(name: string, link: string, type: string) {
-      const itemFound = menuList[type].items.find((item) => item.name === name)
+   function addItemToMenu(name: string, fullName: string, link: string, type: string) {
+      const itemFound = menuList[type].items.find((item) => item.fullName === fullName)
 
       if (!itemFound) {
          const newItem: _MenuItem = {
             id: Math.floor(Math.random() * 100000000),
-            name: name,
-            link: link
+            name: `${name}`,
+            link: link,
+            fullName: fullName
          }
 
          menuList[type].items.push(newItem)

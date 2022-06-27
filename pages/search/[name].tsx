@@ -105,8 +105,8 @@ function SearchPage({ typeName, newSearch }: SearchPageProps): JSX.Element {
 export default withLayout(SearchPage)
 
 
-export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (context) => {
 
+export const getServerSideProps: GetServerSideProps<SearchPageProps> = (context) => {
    return {
       props: {
          typeName: context.query?.name,

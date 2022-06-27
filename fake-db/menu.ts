@@ -37,7 +37,8 @@ if (loadSettings) {
          {
             "id": 8678678678,
             "name": "auth",
-            "link": "/settings/auth"
+            "link": "/settings/auth",
+            fullName: "auth",
          },
          // {
          //    "id": 324343654645,
@@ -60,12 +61,14 @@ if (loadSearch) {
          {
             "id": 5345345,
             "name": "repos",
-            "link": "/search/repos"
+            "link": "/search/repos",
+            fullName: "repos"
          },
          {
             "id": 867867867,
             "name": "users",
-            "link": "/search/users"
+            "link": "/search/users",
+            fullName: "users"
          }
       ]
    }
@@ -84,7 +87,8 @@ if (loadRepos) {
          {
             "id": 11,
             "name": "bitcoin",
-            "link": "/repos/bitcoin?user=bitcoin"
+            "link": "/repos/bitcoin?user=bitcoin",
+            fullName: "bitcoin/bitcoin"
          }
       ]
    }
@@ -103,22 +107,26 @@ if (loadUsers) {
          {
             "id": 1,
             "name": "nirkaufman",
-            "link": "/users/nirkaufman"
+            "link": "/users/nirkaufman",
+            fullName: "nirkaufman"
          },
          {
             "id": 2,
             "name": "mschwarzmueller",
-            "link": "/users/mschwarzmueller"
+            "link": "/users/mschwarzmueller",
+            fullName: "mschwarzmueller"
          },
          {
             "id": 5,
             "name": "nirrdev1989",
-            "link": "/users/nirrdev1989"
+            "link": "/users/nirrdev1989",
+            fullName: "nirrdev1989"
          },
          {
             "id": 6,
             "name": "bitcoinjs",
-            "link": "/users/bitcoinjs"
+            "link": "/users/bitcoinjs",
+            fullName: "bitcoinjs"
          }
       ]
    }

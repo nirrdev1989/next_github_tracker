@@ -36,7 +36,7 @@ function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
                      {repo.owner.login}
                   </MyLink>/<a href={repo.html_url} target="_blank">{repo.name}</a>
 
-                  <MenuActions name={repo.name} type="repos" url={`/repos/${repo.name}?user=${repo.owner.login}`} />
+                  <MenuActions fullName={`${repo.name}/${repo.owner.login}`} name={repo.name} type="repos" url={`/repos/${repo.name}?user=${repo.owner.login}`} />
                </Title>
             </div>
          </div>

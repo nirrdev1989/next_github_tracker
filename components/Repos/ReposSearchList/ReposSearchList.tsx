@@ -36,7 +36,7 @@ export default function ReposSearchList({ repos }: ReposSearchListProps): JSX.El
                      </div>
 
                      <div>
-                        <MenuActions name={repo.name} url={`/repos/${repo.name}?user=${repo.owner.login}`} type="repos" />
+                        <MenuActions name={repo.name} fullName={`${repo.name}/${repo.owner.login}`} url={`/repos/${repo.name}?user=${repo.owner.login}`} type="repos" />
                      </div>
                   </div>
 

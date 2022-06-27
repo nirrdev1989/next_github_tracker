@@ -35,7 +35,7 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
                <div>
                   <Title type="h1">
                      {userProfile.name}
-                     <MenuActions name={userProfile.login} type="users" url={`/users/${userProfile.login}`} />
+                     <MenuActions fullName={userProfile.login} name={userProfile.login} type="users" url={`/users/${userProfile.login}`} />
                   </Title>
                   <P style={{ marginBottom: "0.5rem" }} size="small">{userProfile.login}</P>
                </div>

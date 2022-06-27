@@ -9,7 +9,7 @@ import { _GitHubRepo } from "../../models/GithubRepo"
 import { _GithubUserLikeOwner } from "../../models/GithubUserLikeOwner"
 import Cookie from "js-cookie"
 import styles from "../../styles/Auth.page.module.css"
-import { successToast, warningToast } from "../../utils/toast"
+import { errorToast, successToast, warningToast } from "../../utils/toast"
 
 interface AuthPageProps extends Record<string, unknown> { }
 
@@ -19,6 +19,10 @@ function AuthPage({ }: AuthPageProps): JSX.Element {
    const [token, setToken] = useState<string>("")
 
    function removeToken() {
+      if (!token) {
+         errorToast("You dose not save token yet")
+         return
+      }
       Cookie.remove("jwt_token")
       setToken(() => "")
       warningToast("Token is removed")
@@ -79,6 +83,18 @@ function AuthPage({ }: AuthPageProps): JSX.Element {
                <P size="x_small">
                   In this application the token will be saved in your cookies and will attached to the requests header
                </P>
+
+               <P size="x_small">
+
+                  You can remove your token at any time, manually from the browser or click
+                  <Button
+                     style={{ color: "var(--main-red-color)" }}
+                     color="main_transparent"
+                     onClick={removeToken}
+                  >
+                     Remove token
+                  </Button>
+               </P>
             </div>
 
             <div className={styles.auth_token_proccess}>
@@ -101,18 +117,14 @@ function AuthPage({ }: AuthPageProps): JSX.Element {
             </div>
 
             <div className={styles.auth_token_save_form}>
-               <input disabled={token !== ""} ref={tokenInput} placeholder="Enter your token" />
-               <Button disabled={token !== ""} color="main_green" onClick={saveToken} >
-                  Save
-               </Button>
-               {token &&
-                  <Button
-                     style={{ color: "var(--main-red-color)", paddingLeft: 0 }}
-                     color="main_transparent"
-                     onClick={removeToken}
-                  >
-                     Remove token
-                  </Button>}
+
+               {!token &&
+                  <>
+                     <input disabled={token !== ""} ref={tokenInput} placeholder="Enter your token" />
+                     <Button disabled={token !== ""} color="main_green" onClick={saveToken} >
+                        Save
+                     </Button>
+                  </>}
             </div>
          </div>
       </>

@@ -16,6 +16,7 @@ interface MenuWrapperProps extends PropsWithChildren<any> {
    active?: number
 }
 
+
 export function MenuWrapper({ children, active }: MenuWrapperProps): JSX.Element {
    const [selectedItem, setSelectedItem] = useState<number>(active || 0)
    const [isCurrentActive, setIsCurrentActive] = useState<number>(active || 0)
@@ -42,6 +43,8 @@ export function MenuWrapper({ children, active }: MenuWrapperProps): JSX.Element
    if (!children) {
       return null
    }
+
+
 
    return (
       <MenuContext.Provider value={{ selectedItem, selectItem, isCurrentActive }}>
@@ -99,7 +102,7 @@ MenuWrapper.MenuItem = function ({ item, children }: MenuItemProps): JSX.Element
       <div key={item.name} className={`${styles.menu_item_option} ${query?.name === item.name && styles.menu_item_options_active}`}>
 
          <MyLink to={item.link}>
-            {item.name}
+            {item.fullName}
          </MyLink>
       </div>
    )

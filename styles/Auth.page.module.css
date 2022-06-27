@@ -24,6 +24,7 @@
    display: flex;
    gap: var(--size-1-rem);
    margin-bottom: var(--size-2-rem);
+   align-items: center;
 }
 
 .auth_token_save_form input {
