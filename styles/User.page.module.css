@@ -32,18 +32,7 @@
    align-self: center;
 }
 
-/* .user_profile_header img {
-   border-radius: 50%;
-} */
 
-/* .user_profile_links {
-   display: flex;
-   align-items: center;
-}
-
-.user_profile_links p {
-   margin-right: var(--size-0-5-rem);
-} */
 
 .user_profile_content {
    display: grid;

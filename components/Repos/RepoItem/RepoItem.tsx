@@ -101,7 +101,7 @@ export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
          <div className={styles.user_repo_item_info}>
             <Title type="h4">{languageIcons[repo.language]} {repo.language}</Title>
             <P size="x_small">
-               <span style={{ opacity: 0.7 }} >{repo.description}</span>
+               <span  >{repo.description}</span>
                {IssueIcon}
                <Button
                   style={{ fontSize: "13px", paddingLeft: 0 }}

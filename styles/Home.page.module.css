@@ -4,10 +4,6 @@
    gap: var(--size-1-rem);
 }
 
-.home_page_content p {
-   opacity: 0.7;
-}
-
 .home_page_content_repo {
    display: flex;
    gap: var(--size-1-rem);
