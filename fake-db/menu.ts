@@ -40,11 +40,6 @@ if (loadSettings) {
             "link": "/settings/auth",
             fullName: "auth",
          },
-         // {
-         //    "id": 324343654645,
-         //    "name": "users",
-         //    "link": "/search/users"
-         // }
       ]
    }
 }
@@ -104,18 +99,6 @@ if (loadUsers) {
    usersMenu = {
       type: usersMenu.type,
       items: [
-         {
-            "id": 1,
-            "name": "nirkaufman",
-            "link": "/users/nirkaufman",
-            fullName: "nirkaufman"
-         },
-         {
-            "id": 2,
-            "name": "mschwarzmueller",
-            "link": "/users/mschwarzmueller",
-            fullName: "mschwarzmueller"
-         },
          {
             "id": 5,
             "name": "nirrdev1989",
