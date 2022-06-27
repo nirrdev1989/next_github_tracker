@@ -25,7 +25,7 @@
    grid-area: main;
    margin-left: var(--size-2-rem);
    margin-right: var(--size-2-rem);
-   animation: slide-in-fade 0.5s forwards;
+   /* animation: slide-in-fade 0.5s forwards; */
 }
 
 .main_container>div {

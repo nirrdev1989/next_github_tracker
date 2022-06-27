@@ -6,12 +6,24 @@
 
 .open {
    animation: fade-in 0.7s forwards;
+   /* max-width: 500px; */
+   max-height: 300px;
+   overflow: hidden;
+   /* white-space: nowrap; */
+   /* text-overflow: ellipsis; */
 }
 
 .read_more_btn:hover {
    cursor: pointer;
    text-decoration: underline;
 }
+
+/* .read_more_text {
+   max-width: 500px;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+} */
 
 
 @keyframes fade-in {
