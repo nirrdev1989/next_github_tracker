@@ -1,14 +1,21 @@
-.home_page_container>div {
-   margin-bottom: var(--size-1-rem);
+.home_page_content {
+   display: flex;
+   flex-direction: column;
+   gap: var(--size-1-rem);
 }
 
-.search>p {
-   margin-top: var(--size-0-5-rem);
-   color: var(--three-light-color);
+.home_page_content p {
+   opacity: 0.7;
 }
 
-@media (max-width: 770px) {
-   .home_page_container {
-      margin: var(--size-1-rem);
-   }
+.home_page_content_repo {
+   display: flex;
+   gap: var(--size-1-rem);
+   font-size: 15px;
 }
+
+.home_page_content_repo i {
+   font-size: 20px;
+}
+
+@media (max-width: 770px) {}

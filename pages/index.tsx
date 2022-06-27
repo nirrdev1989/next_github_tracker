@@ -1,77 +1,41 @@
-import { useEffect, useState } from "react";
 import P from "../components/util-components/P/P";
 import Title from "../components/util-components/Titles/Title";
 import { withLayout } from "../layout/Layout";
-import Searching from "../components/Searching/Searching";
 import styles from "../styles/Home.page.module.css"
-import { useRouter } from "next/router";
 import { _GithubUserLikeOwner } from "../models/GithubUserLikeOwner";
-import UsersSearchList from "../components/Users/UsersSearchList/UsersSearchList";
 import { _GitHubRepo } from "../models/GithubRepo";
-import { getData } from "../utils/fetcher";
-import ReposSearchList from "../components/Repos/ReposSearchList/ReposSearchList";
 import { _SearchResults } from "../models/Search";
+import { StarIcon } from "../icons";
 
 
 interface HomeProps { }
 
-const initialSearchState: _SearchResults<any> = {
-  items: [],
-  total_count: 0,
-  incomplete_results: true
-}
-
 function HomePage({ }: HomeProps): JSX.Element {
-  // const router = useRouter()
-  // const [searchResults, setSearchResults] = useState<_SearchResults<any>>(initialSearchState)
-
-  // useEffect(() => {
-  //   const searchValue = router.query?.search
-  //   const type = router.query?.type
-  //   const page = router.query?.page
-
-
-  //   let url = ""
-  //   if (searchValue !== undefined && type !== undefined) {
-  //     console.log("SERCHING")
-  //     if (type === "users") {
-  //       url = `/search/users?q=${searchValue}&page=${page}`
-  //     } else if (type === "repos") {
-  //       url = `/search/repositories?q=${searchValue}&page=${page}`
-  //     }
-
-  //     getData(url, (error, data: _SearchResults<_GithubUserLikeOwner | _GitHubRepo>) => {
-  //       setSearchResults(data)
-  //     })
-  //   }
-  // }, [router.query.search, router.query.type, router.query?.page])
-
-  // useEffect(() => {
-  //   setSearchResults(initialSearchState)
-  // }, [router.query?.research])
-
-
   return (
-    <div className={styles.home_page_container}>
-
-      {/* <div className={`page_header ${styles.home_header}`}>
-        <Title type="h1">Search...</Title>
+    <>
+      <div className={`page_header`}>
+        <Title type="h1">Github tracker</Title>
       </div>
 
-      <div className={styles.search} >
-        <Searching />
-        {searchResults?.total_count > 0 && <P size="small">Results {searchResults.total_count}</P>}
+      <div className={styles.home_page_content}>
+        <P size="medium">
+          A site that lets you view the details of the repositories or users and their activities, in addition you can keep to yourself lists of your favorite users and repositories
+        </P>
+
+        <div className={styles.home_page_content_repo}>
+          <span>
+            Feel free to leave a star
+          </span>
+          <span>
+            {StarIcon}
+          </span>
+          <span>
+            <a style={{ color: "var(--main-green-color)" }} href="https://github.com/nirrdev1989/next_github_tracker" target="_blank">View repository</a>
+          </span>
+        </div>
       </div>
 
-      <div className={styles.search_results}>
-        {searchResults.items.length > 0 && router.query.type === "users" &&
-          <UsersSearchList users={searchResults.items} />}
-        {searchResults.items.length > 0 && router.query.type === "repos" &&
-          <ReposSearchList repos={searchResults.items} />}
-
-      </div> */}
-
-    </div>
+    </>
   )
 }
 
