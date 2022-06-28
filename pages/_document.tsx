@@ -17,6 +17,7 @@ export default class MyDocument extends Document {
                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
                <meta name="viewport" content="initial-scale=1.0, Width=device-width" />
                <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+               <title>Top Github Tracker</title>
 
             </Head>
             <body data-mode="light">

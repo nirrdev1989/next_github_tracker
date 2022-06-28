@@ -44,7 +44,6 @@ function Layout({ children, title = "", description = "default-description" }: L
 
 export const withLayout = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
    return function withLayotComponent(props: T): JSX.Element {
-      console.log(props)
       return (
          <Layout  >
             <Component {...props} />
