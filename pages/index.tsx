@@ -7,6 +7,7 @@ import { _GitHubRepo } from "../models/GithubRepo";
 import { _SearchResults } from "../models/Search";
 import { StarIcon } from "../icons";
 import Atag from "../components/util-components/Atag/Atag";
+import Head from "next/head";
 
 
 interface HomeProps { }
@@ -14,7 +15,10 @@ interface HomeProps { }
 function HomePage({ }: HomeProps): JSX.Element {
   return (
     <>
-
+      <Head>
+        <title>Home</title>
+        {/* <meta name="description" content="repositories users github tracker" /> */}
+      </Head>
       <div className={`page_header`}>
         <Title type="h1">Github tracker</Title>
       </div>
