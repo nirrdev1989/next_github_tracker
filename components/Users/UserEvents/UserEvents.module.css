@@ -12,6 +12,10 @@
    margin-bottom: 0 !important;
 }
 
+.user_events_header h3 span {
+   color: var(--four-light-color);
+}
+
 .user_event_item {
    margin-top: var(--size-1-rem);
    background-color: var(--main-light-color);

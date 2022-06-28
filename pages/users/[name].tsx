@@ -12,6 +12,9 @@ import { EmailIcon, GithubIcon, ListCardIcon, TwitterIcon } from "../../icons";
 import UserEvents from "../../components/Users/UserEvents/UserEvents";
 import { _GitHubEvents } from "../../models/GithubEvents";
 import MenuActions from "../../components/MenuActions/MenuActions";
+import Atag from "../../components/util-components/Atag/Atag";
+import MyImage from "../../components/util-components/MyImage/MyImage";
+import Head from "next/head";
 
 
 
@@ -24,9 +27,15 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
 
    return (
       <>
+         <Head>
+            {/* <meta name="description" content={description} /> */}
+            <title>{userProfile.name}</title>
+         </Head>
          <div className={`page_header ${styles.user_profile_header}`}>
             <div className={styles.user_profile_img}>
-               <Image style={{ borderRadius: "50%" }} width={100} height={100} objectFit="cover" src={userProfile.avatar_url} />
+
+               <MyImage border="circle" width={100} height={100} src={userProfile.avatar_url} />
+
             </div>
             <div className={styles.user_profile_info}>
                <div>
@@ -37,10 +46,10 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
                   <P style={{ marginBottom: "0.5rem" }} size="small">{userProfile.login}</P>
                </div>
                <div className={styles.user_profile_links}>
-                  {userProfile.blog && <span >{ListCardIcon} <a rel="noreferrer" href={userProfile.blog} target="_blank">Blog</a></span>}
-                  {userProfile.twitter_username && <span>{TwitterIcon} <a rel="noreferrer" href={`https://twitter.com/${userProfile.twitter_username}`} target="_blank">Twitter</a></span>}
-                  {userProfile.email && <span>{EmailIcon} <a rel="noreferrer" href={`mailto:${userProfile.email}`} target="_blank">Email</a></span>}
-                  <span>{GithubIcon} <a rel="noreferrer" href={userProfile.html_url} target="_blank">Github</a></span>
+                  {userProfile.blog && <span >{ListCardIcon} <Atag href={userProfile.blog} >Blog</Atag></span>}
+                  {userProfile.twitter_username && <span>{TwitterIcon} <Atag href={`https://twitter.com/${userProfile.twitter_username}`} >Twitter</Atag></span>}
+                  {userProfile.email && <span>{EmailIcon} <Atag href={`mailto:${userProfile.email}`} >Email</Atag></span>}
+                  <span>{GithubIcon} <Atag href={userProfile.html_url} >Github</Atag></span>
                </div>
             </div>
          </div>

@@ -3,6 +3,8 @@ import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { _GithubRepoIssue } from "../../../models/GithubRepo"
 import { timeDifference } from "../../../utils/date"
 import ReadMore from "../../ReadMore/ReadMore"
+import Atag from "../../util-components/Atag/Atag"
+import MyImage from "../../util-components/MyImage/MyImage"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import Title from "../../util-components/Titles/Title"
 import styles from "./IssuesList.module.css"
@@ -41,11 +43,15 @@ export default function IssuesList({ issues }: IssuesListProps): JSX.Element {
                         </span>
                      </span>
                      <span className={styles.gist_link} >
-                        <a rel="noreferrer" href={issue.html_url} target="_blank">Link to issue</a>
+                        <Atag href={issue.html_url}>
+                           Link to issue
+                        </Atag>
                      </span>
                   </div>
                   <div className={styles.issue_item_creator}>
-                     <Image style={{ borderRadius: "50%" }} width={25} height={25} objectFit="cover" src={issue.user.avatar_url} />
+                     {/* <Image style={{ borderRadius: "50%" }} width={25} height={25} objectFit="cover" src={issue.user.avatar_url} /> */}
+
+                     <MyImage src={issue.user.avatar_url} width={25} height={25} border="circle" />
                      <MyLink to={`/users/${issue.user.login}`} >
                         {issue.user.login}
                      </MyLink>

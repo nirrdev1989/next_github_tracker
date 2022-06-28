@@ -2,6 +2,7 @@ import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { FileIcon, InfoIcon } from "../../icons"
 import { _GithubGist } from "../../models/GithubGists"
 import { timeDifference } from "../../utils/date"
+import Atag from "../util-components/Atag/Atag"
 import P from "../util-components/P/P"
 import styles from "./GistsList.module.css"
 
@@ -30,7 +31,10 @@ export default function GistsList({ gists }: GistsListProps) {
                         </span>
                      </span>
                      <span className={styles.gist_link} >
-                        <a rel="noreferrer" href={gist.html_url} target="_black">Link to gist</a>
+                        {/* <a rel="noreferrer" href={gist.html_url} target="_black">Link to gist</a> */}
+                        <Atag href={gist.html_url}>
+                           Link to gist
+                        </Atag>
                      </span>
                   </div>
 
@@ -39,7 +43,12 @@ export default function GistsList({ gists }: GistsListProps) {
                         <P size="small">Files:</P>
                         <div className={styles.gist_item_files}>
                            {Object.keys(gist.files).map((fileName) => {
-                              return <span className={styles.gist_item_files_item} key={fileName}> {FileIcon} <a target="_blank" rel="noreferrer" href={gist.files[fileName].raw_url}>{fileName}</a></span>
+                              return <span className={styles.gist_item_files_item} key={fileName}>
+                                 {FileIcon}
+                                 <Atag href={gist.files[fileName].raw_url}>
+                                    {fileName}
+                                 </Atag>
+                              </span>
                            })}
                         </div>
                      </div>

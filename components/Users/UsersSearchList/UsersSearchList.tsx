@@ -2,6 +2,7 @@ import Image from "next/image"
 import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 import MenuActions from "../../MenuActions/MenuActions"
+import MyImage from "../../util-components/MyImage/MyImage"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
 import styles from "./UsersSearchList.module.css"
@@ -19,7 +20,9 @@ export default function UsersSearchList({ users }: UsersSearchListProps): JSX.El
                <div className={styles.user_list_item} key={user.node_id} >
                   <div className={styles.user_list_item_header}>
                      <div className={styles.user_list_item_left}>
-                        <Image style={{ borderRadius: "50%" }} width={65} height={65} objectFit="cover" src={user.avatar_url} />
+
+                        <MyImage border="circle" width={65} height={65} src={user.avatar_url} />
+
                         <MyLink style={{ fontSize: "17px" }} to={`/users/${user.login}`}>
                            {user.login}
                         </MyLink>

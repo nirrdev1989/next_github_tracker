@@ -40,7 +40,7 @@
    grid-template-columns: repeat(4, auto);
    width: 50%;
    gap: var(--size-0-5-rem);
-   color: var(--three-light-color);
+   color: var(--four-light-color);
 }
 
 

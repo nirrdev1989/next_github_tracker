@@ -15,6 +15,8 @@ export default class MyDocument extends Document {
          <Html lang="en" >
             <Head >
                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+               <meta name="viewport" content="initial-scale=1.0, Width=device-width" />
+               <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
 
             </Head>
             <body data-mode="light">

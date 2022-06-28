@@ -8,6 +8,7 @@ import { timeDifference } from "../../../utils/date"
 import { getData } from "../../../utils/fetcher"
 import ReadMore from "../../ReadMore/ReadMore"
 import Button from "../../util-components/Button/Button"
+import MyImage from "../../util-components/MyImage/MyImage"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
 import Title from "../../util-components/Titles/Title"
@@ -49,7 +50,7 @@ export default function UserEvents({ userProfile, eventsUrl, events }: UserEvent
          <div className={styles.user_events_header}>
             <div>
                <Title type="h3">
-                  {EventIcon} Events <span style={{ fontSize: "13px", color: "#888" }} >(last 90 days)</span>
+                  {EventIcon} Events <span style={{ fontSize: "13px" }} >(last 90 days)</span>
                </Title>
             </div>
             <div>
@@ -75,7 +76,9 @@ export default function UserEvents({ userProfile, eventsUrl, events }: UserEvent
                   <div key={event.id} className={styles.user_event_item}>
                      <div className={styles.user_event_item_info}>
                         <span className={styles.user_event_img}>
-                           <Image style={{ borderRadius: "50%" }} width={35} height={35} objectFit="cover" src={event.actor.avatar_url} />
+
+                           <MyImage border="circle" width={35} height={35} src={event.actor.avatar_url} />
+
                         </span>
 
                         <span>

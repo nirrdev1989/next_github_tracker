@@ -19,8 +19,12 @@ export default function MenuActions({ name, fullName, type, url }: MenuActionsPr
    return (
       <>
          {menuList[type].items.find((item) => item.link === url) ?
-            <Button style={{ fontSize: "22px", paddingBottom: 0 }} color="main_transparent" onClick={() => removeItemFromMenu(name, type)}>{MinusIcon}</Button> :
-            <Button style={{ fontSize: "22px", paddingBottom: 0 }} color="main_transparent" onClick={() => addItemToMenu(name, fullName, url, type)}>{PlusGreenIcon}</Button>
+            <Button style={{ fontSize: "22px", paddingBottom: 0 }} color="main_transparent" onClick={() => removeItemFromMenu(name, type)}>
+               {MinusIcon}
+            </Button> :
+            <Button style={{ fontSize: "22px", paddingBottom: 0 }} color="main_transparent" onClick={() => addItemToMenu(name, fullName, url, type)}>
+               {PlusGreenIcon}
+            </Button>
          }
       </>
    )

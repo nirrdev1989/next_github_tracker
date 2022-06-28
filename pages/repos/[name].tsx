@@ -10,6 +10,9 @@ import Image from "next/image"
 import UserEvents from "../../components/Users/UserEvents/UserEvents"
 import MyLink from "../../components/util-components/MyLink.tsx/MyLink"
 import MenuActions from "../../components/MenuActions/MenuActions"
+import Atag from "../../components/util-components/Atag/Atag"
+import MyImage from "../../components/util-components/MyImage/MyImage"
+import Head from "next/head"
 
 
 interface RepoPageProps extends Record<string, unknown> {
@@ -21,15 +24,21 @@ function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
 
    return (
       <>
+         <Head>
+            {/* <meta name="description" content={description} /> */}
+            <title>{repo.name}</title>
+         </Head>
          <div className={`page_header ${styles.repo_header}`}>
             <div className={styles.repo_owner_img}>
-               <Image style={{ borderRadius: "50%" }} width={50} height={50} objectFit="cover" src={repo.owner.avatar_url} />
+
+               <MyImage border="circle" width={50} height={50} src={repo.owner.avatar_url} />
+
             </div>
             <div>
                <Title type="h1">
                   <MyLink style={{ marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
                      {repo.owner.login}
-                  </MyLink>/<a rel="noreferrer" href={repo.html_url} target="_blank">{repo.name}</a>
+                  </MyLink>/<Atag href={repo.html_url}>{repo.name}</Atag>
 
                   <MenuActions fullName={`${repo.name}/${repo.owner.login}`} name={repo.name} type="repos" url={`/repos/${repo.name}?user=${repo.owner.login}`} />
                </Title>

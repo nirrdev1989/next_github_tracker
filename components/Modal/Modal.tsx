@@ -89,6 +89,7 @@ function ModalHeader({ children, title }: ModalHeaderProps): JSX.Element {
       </div>
    )
 }
+
 MoadlWrapper.Header = ModalHeader
 MoadlWrapper.Body = ModalBody
 MoadlWrapper.Footer = ModalFooter

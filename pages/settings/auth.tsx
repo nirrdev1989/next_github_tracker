@@ -10,6 +10,7 @@ import { _GithubUserLikeOwner } from "../../models/GithubUserLikeOwner"
 import Cookie from "js-cookie"
 import styles from "../../styles/Auth.page.module.css"
 import { errorToast, successToast, warningToast } from "../../utils/toast"
+import Head from "next/head"
 
 interface AuthPageProps extends Record<string, unknown> { }
 
@@ -49,6 +50,10 @@ function AuthPage({ }: AuthPageProps): JSX.Element {
 
    return (
       <>
+         <Head>
+            {/* <meta name="description" content={description} /> */}
+            <title>settings/auth</title>
+         </Head>
          <div className={`page_header`}>
             <Title type="h1">Auth</Title>
          </div>

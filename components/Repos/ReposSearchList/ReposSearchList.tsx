@@ -3,6 +3,7 @@ import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { ForkIcon, IssueIcon, languageIcons, StarIcon } from "../../../icons"
 import { _GitHubRepo } from "../../../models/GithubRepo"
 import MenuActions from "../../MenuActions/MenuActions"
+import MyImage from "../../util-components/MyImage/MyImage"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
 import styles from "./ReposSearchList.module.css"
@@ -22,7 +23,7 @@ export default function ReposSearchList({ repos }: ReposSearchListProps): JSX.El
 
                   <div className={styles.repo_list_item_header}>
                      <div className={styles.repo_list_item_header_left}>
-                        <Image style={{ borderRadius: "50%" }} width={30} height={30} objectFit="cover" src={repo.owner.avatar_url} />
+                        <MyImage border="circle" width={30} height={30} src={repo.owner.avatar_url} />
                         <MyLink style={{ fontSize: "14px", marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
                            {repo.owner.login}
                         </MyLink>/

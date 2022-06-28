@@ -6,6 +6,7 @@ import { _GithubUserLikeOwner } from "../models/GithubUserLikeOwner";
 import { _GitHubRepo } from "../models/GithubRepo";
 import { _SearchResults } from "../models/Search";
 import { StarIcon } from "../icons";
+import Atag from "../components/util-components/Atag/Atag";
 
 
 interface HomeProps { }
@@ -13,6 +14,7 @@ interface HomeProps { }
 function HomePage({ }: HomeProps): JSX.Element {
   return (
     <>
+
       <div className={`page_header`}>
         <Title type="h1">Github tracker</Title>
       </div>
@@ -28,7 +30,7 @@ function HomePage({ }: HomeProps): JSX.Element {
           </span>
 
           <span>
-            <a style={{ color: "var(--main-green-color)" }} href="https://github.com/nirrdev1989/next_github_tracker" target="_blank" rel="noreferrer" >View repository</a>
+            <Atag style={{ color: "var(--main-green-color)" }} href="https://github.com/nirrdev1989/next_github_tracker" >View repository</Atag>
           </span>
         </div>
       </div>

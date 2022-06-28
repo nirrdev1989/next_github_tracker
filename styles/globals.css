@@ -118,6 +118,12 @@ body {
 }
 
 
+
+
+input {
+  padding: 0.3rem;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -126,12 +132,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
-input {
-  padding: 0.3rem;
-}
-
-
 
 button {
   text-align: center;

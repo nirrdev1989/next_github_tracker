@@ -15,6 +15,7 @@ import { GetServerSideProps } from "next"
 import Button from "../../components/util-components/Button/Button"
 import { LeftArrowIcon, RightArrowIcon } from "../../icons"
 import { usePaginate } from "../../hooks/usePaginate"
+import Head from "next/head"
 
 interface SearchPageProps extends Record<string, unknown> {
    dataType: string
@@ -59,6 +60,10 @@ function SearchPage({ dataType, newSearch }: SearchPageProps): JSX.Element {
 
    return (
       <div>
+         <Head>
+            {/* <meta name="description" content={description} /> */}
+            <title>search/{router.query?.name}</title>
+         </Head>
          <div className={`page_header`}>
             <Title type="h1">Search</Title>
             <P size="small">{router.query?.name}</P>
