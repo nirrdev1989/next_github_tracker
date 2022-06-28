@@ -8,11 +8,8 @@
 
 .open {
    animation: fade-in 0.7s forwards;
-   /* max-width: 500px; */
    max-height: 400px;
    overflow-x: hidden;
-   /* white-space: nowrap; */
-   /* text-overflow: ellipsis; */
 }
 
 .read_more_btn:hover {

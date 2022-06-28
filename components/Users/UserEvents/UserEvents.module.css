@@ -58,70 +58,8 @@
 }
 
 .user_event_commit_item div {
-   /* max-width: 450px; */
    overflow-x: hidden;
    max-height: 300px;
 
-   /* white-space: nowrap; */
-   /* text-overflow: ellipsis; */
+
 }
-
-/* 
-
-
-
-.user_event_item_info {
-   display: flex;
-   gap: var(--size-1-rem);
-   align-items: center;
-}
-
-.marked {
-   color: var(--main-orange-color);
-   font-size: 14px;
-}
-
-.user_event_item_user {
-   display: flex;
-   align-items: center;
-   gap: var(--size-1-rem);
-}
-
-.user_event_item_commits {
-   margin-top: var(--size-1-rem);
-   display: flex;
-   flex-direction: column;
-   gap: var(--size-0-5-rem);
-}
-
-.user_event_item_type,
-.user_event_commit_item {
-   color: var(--four-light-color);
-}
-
-.user_event_commit_item strong {
-   color: var(--main-dark-color);
-}
-
-.user_event_commit_item span {
-   max-width: 500px;
-   overflow: hidden;
-   white-space: nowrap;
-   text-overflow: ellipsis;
-}
-
-@media (max-width: 750px) {
-   .user_event_item_info {
-      flex-direction: column;
-      gap: var(--size-0-5-rem);
-      justify-content: flex-start;
-   }
-}
-
-@media (max-width: 500px) {
-   .user_event_item_info {
-      flex-direction: column;
-      gap: var(--size-0-5-rem);
-
-   }
-} */

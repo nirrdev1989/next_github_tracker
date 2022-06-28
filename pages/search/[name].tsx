@@ -14,7 +14,6 @@ import P from "../../components/util-components/P/P"
 import { GetServerSideProps } from "next"
 import Button from "../../components/util-components/Button/Button"
 import { LeftArrowIcon, RightArrowIcon } from "../../icons"
-import { usePaginate } from "../../hooks/usePaginate"
 import Head from "next/head"
 
 interface SearchPageProps extends Record<string, unknown> {
@@ -33,12 +32,6 @@ function SearchPage({ dataType, newSearch }: SearchPageProps): JSX.Element {
    const [data, setData] = useState<_SearchResults<any>>(initialSearchState)
    const [pageNumber, setPageNumber] = useState<number>(1)
    const [isNewSearch, setIsNewSearch] = useState<boolean>(newSearch)
-
-   // const { data, setPageNumber, pageNumber, isNewSearch, router } = usePaginate({
-   //    pageCount: 1, dataType, range: 30, url: "", newSearch, initialData: initialSearchState
-   // })
-
-
 
    useEffect(() => {
       const searchValue = router.query?.search

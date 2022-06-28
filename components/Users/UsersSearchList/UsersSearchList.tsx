@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 import MenuActions from "../../MenuActions/MenuActions"

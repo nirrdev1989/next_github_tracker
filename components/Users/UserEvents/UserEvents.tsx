@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { HTMLAttributes, DetailedHTMLProps, useState, useEffect } from "react"
 import { EventIcon, LeftArrowIcon, RepoIcon, RightArrowIcon } from "../../../icons"
 import { _GitHubEvents } from "../../../models/GithubEvents"

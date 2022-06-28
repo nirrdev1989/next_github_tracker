@@ -15,7 +15,6 @@
 .user_repo_item_dates {
    display: flex;
    gap: var(--size-1-rem);
-   /* opacity: 0.7; */
 }
 
 .user_repo_item_info i,

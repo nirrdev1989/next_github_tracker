@@ -1,6 +1,5 @@
 import Axios from "../../utils/axios";
 import { GetServerSideProps } from 'next'
-import Image from "next/image";
 import P from "../../components/util-components/P/P";
 import Title from "../../components/util-components/Titles/Title";
 import UserProfile from "../../components/Users/UserProfile/UserProfile";

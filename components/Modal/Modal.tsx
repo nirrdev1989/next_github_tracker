@@ -81,7 +81,6 @@ function ModalHeader({ children, title }: ModalHeaderProps): JSX.Element {
          <div className={styles.modal_title}>
             <Title type="h2">{title}</Title>
             {children}
-            {/* <Title type="h4">{children}</Title> */}
          </div>
          <div className={styles.modal_clode} onClick={() => {
             setEndStart(true)

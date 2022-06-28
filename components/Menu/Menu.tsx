@@ -37,10 +37,8 @@ export function MenuWrapper({ children, active }: MenuWrapperProps): JSX.Element
 
    useEffect(() => {
       if (active === undefined) {
-         // if (Children.count(children) === 1) {
          setSelectedItem(0)
          setIsCurrentActive(0)
-         // }
       }
    }, [children])
 
@@ -55,7 +53,6 @@ export function MenuWrapper({ children, active }: MenuWrapperProps): JSX.Element
                if (isValidElement(child)) {
                   return <> {child} </>
                }
-               // return cloneElement(child, { index: index })
             })}
 
          </div>

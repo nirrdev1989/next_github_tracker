@@ -31,7 +31,6 @@ export default function GistsList({ gists }: GistsListProps) {
                         </span>
                      </span>
                      <span className={styles.gist_link} >
-                        {/* <a rel="noreferrer" href={gist.html_url} target="_black">Link to gist</a> */}
                         <Atag href={gist.html_url}>
                            Link to gist
                         </Atag>
@@ -56,13 +55,11 @@ export default function GistsList({ gists }: GistsListProps) {
 
                   {gist.description &&
                      <P size="x_small">
-                        {/* {InfoIcon} */}
                         <span className={styles.gist_item_description}>
                            {gist.description}
                         </span>
                      </P>}
 
-                  {/* <P size="x_small"><span className={styles.gist_item_comments}>Comments: {gist.comments}</span> </P> */}
                </div>
             )
          })}

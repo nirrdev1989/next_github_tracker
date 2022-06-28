@@ -40,25 +40,7 @@
    margin-bottom: var(--size-1-5-rem);
 }
 
-/* .nav_base_options_item {
-   display: flex;
-   align-items: center;
-   transition: var(--transaction-0-5-s);
-   font-weight: 600;
-   font-size: 16px;
-   margin: var(--size-0-5-rem) 0;
-}
 
-.nav_base_options_item.active {
-   color: var(--main-blue-color);
-}
-
-.nav_base_options_item.active:hover,
-.nav_base_options_item :hover,
-.nav_base_options_item a:hover {
-   color: var(--second-blue-color);
-   text-decoration: none;
-} */
 
 @media (max-width: 850px) {
    .hamburger_icon {

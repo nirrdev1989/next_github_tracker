@@ -51,7 +51,6 @@ function AuthPage({ }: AuthPageProps): JSX.Element {
    return (
       <>
          <Head>
-            {/* <meta name="description" content={description} /> */}
             <title>settings/auth</title>
          </Head>
          <div className={`page_header`}>

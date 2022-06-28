@@ -17,7 +17,6 @@ export default function Searching({ }: SearchingProps): JSX.Element {
       if (value === router.query.search || value === "") {
          return
       }
-      console.log(value)
       if (router.query?.name !== "" && router.query.search !== "") {
          router.push({
             pathname: `/search/${router.query?.name}`,
@@ -26,12 +25,7 @@ export default function Searching({ }: SearchingProps): JSX.Element {
             }
          })
 
-         // router.push({
-         //    pathname: `${router.pathname}`,
-         //    query: {
-         //       search: value,
-         //    }
-         // })
+
       }
    }
 
@@ -41,9 +35,7 @@ export default function Searching({ }: SearchingProps): JSX.Element {
       }
    }
 
-   // useEffect(() => {
-   //    setValue(() => "")
-   // }, [router.pathname])
+
 
    useEffect(() => {
       setValue(() => "")

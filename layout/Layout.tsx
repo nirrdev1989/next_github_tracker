@@ -3,7 +3,6 @@ import Footer from "./Footer/Footer"
 import Header from "./Header/Header"
 import Sidebar from "./Sidebar/Sidebar"
 import styles from "./Layout.module.css"
-import Head from "next/head"
 
 interface LayoutProps {
    children: ReactNode
@@ -16,10 +15,7 @@ function Layout({ children, title = "", description = "default-description" }: L
    return (
 
       <>
-         {/* <Head>
-            <meta name="description" content={description} />
-            <title>{title}</title>
-         </Head> */}
+
          <div className={styles.layout_container}>
             <div className={styles.header_container}>
                <Header />
