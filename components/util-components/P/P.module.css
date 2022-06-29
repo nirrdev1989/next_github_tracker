@@ -1,6 +1,7 @@
 .p {
    margin: 0;
    line-height: 20px;
+   font-weight: 500;
 }
 
 .x_small {
@@ -12,9 +13,9 @@
 }
 
 .medium {
-   font-size: 15px;
+   font-size: 16px;
 }
 
 .large {
-   font-size: 17px;
+   font-size: 18px;
 }

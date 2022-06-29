@@ -13,27 +13,23 @@ interface LayoutProps {
 function Layout({ children, title = "", description = "default-description" }: LayoutProps): JSX.Element {
 
    return (
-
-      <>
-
-         <div className={styles.layout_container}>
-            <div className={styles.header_container}>
-               <Header />
-            </div>
-
-            <div className={styles.sidebar_container}>
-               <Sidebar />
-            </div>
-
-            <div className={styles.main_container}>
-               {children}
-            </div>
-
-            <div className={styles.footer_container}>
-               <Footer />
-            </div>
+      <div className={styles.layout_container}>
+         <div className={styles.header_container}>
+            <Header />
          </div>
-      </>
+
+         <div className={styles.sidebar_container}>
+            <Sidebar />
+         </div>
+
+         <div className={styles.main_container}>
+            {children}
+         </div>
+
+         <div className={styles.footer_container}>
+            <Footer />
+         </div>
+      </div>
    )
 }
 

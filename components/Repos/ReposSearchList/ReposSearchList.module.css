@@ -4,7 +4,7 @@
     width: 98%;
     padding: var(--size-1-rem) 0;
     gap: var(--size-1-rem);
-    border-bottom: solid var(--three-light-color) 1px;
+    border-bottom: solid var(--third-light-color) 1px;
  }
 
  .repo_list_item:last-child {

@@ -27,7 +27,7 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
    return (
       <>
          <Head>
-            {/* <meta name="description" content={description} /> */}
+            <meta name="description" content={"user profile github events gists repositories"} />
             <title>{userProfile.name}</title>
          </Head>
          <div className={`page_header ${styles.user_profile_header}`}>
@@ -39,7 +39,7 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
             <div className={styles.user_profile_info}>
                <div>
                   <Title type="h1">
-                     {userProfile.name}
+                     {userProfile.name || userProfile.login}
                      <MenuActions fullName={userProfile.login} name={userProfile.login} type="users" url={`/users/${userProfile.login}`} />
                   </Title>
                   <P style={{ marginBottom: "0.5rem" }} size="small">{userProfile.login}</P>

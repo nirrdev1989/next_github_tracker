@@ -1,11 +1,13 @@
  .issue_item {
-    border-bottom: solid var(--three-light-color) 1px;
+    border-bottom: solid var(--third-light-color) 1px;
     display: flex;
     flex-direction: column;
     gap: var(--size-1-rem);
     padding: var(--size-1-rem) 0;
     width: 98%;
  }
+
+ .issue_item_header {}
 
  .issue_item_creator,
  .issue_item_header {
@@ -19,7 +21,7 @@
  }
 
  .issue_item_description {
-    opacity: 0.7;
+    color: var(--third-light-color);
  }
 
  .issue_item_labels {

@@ -17,7 +17,6 @@ function HomePage({ }: HomeProps): JSX.Element {
     <>
       <Head>
         <title>Home</title>
-        {/* <meta name="description" content="repositories users github tracker" /> */}
       </Head>
       <div className={`page_header`}>
         <Title type="h1">Github tracker</Title>

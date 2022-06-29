@@ -54,7 +54,6 @@ function SearchPage({ dataType, newSearch }: SearchPageProps): JSX.Element {
    return (
       <div>
          <Head>
-            {/* <meta name="description" content={description} /> */}
             <title>search/{router.query?.name}</title>
          </Head>
          <div className={`page_header`}>

@@ -5,7 +5,7 @@
 }
 
 .auth_token_info p {
-   margin-bottom: var(--size-0-5-rem);
+   margin-bottom: var(--size-1-rem);
 }
 
 .auth_token_proccess_steps_container {

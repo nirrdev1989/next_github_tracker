@@ -60,37 +60,37 @@ function AuthPage({ }: AuthPageProps): JSX.Element {
          <div className={styles.auth_token_content}>
 
             <div className={styles.auth_token_info}>
-               <Title type="h3">
+               <Title type="h2">
                   Creating a personal access token
                </Title>
 
                <P style={{ color: "var(--main-orange-color)", opacity: 1 }} size="small">
-                  Because the API is limited in requests, you can auth yourself (optional).
+                  * Because the API is limited in requests, you can auth yourself (optional).
                </P>
 
                <P size="x_small">
-                  You can create a personal access token to use in place of a password with the command line or with the API.
+                  * You can create a personal access token to use in place of a password with the command line or with the API.
                </P>
 
                <P size="x_small">
-                  Personal access tokens (PATs) are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line.
+                  * Personal access tokens (PATs) are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line.
                </P>
 
                <P size="x_small">
-                  As a security precaution, GitHub automatically removes personal access tokens that haven't been used in a year. To provide additional security, we highly recommend adding an expiration to your personal access tokens.
+                  * As a security precaution, GitHub automatically removes personal access tokens that haven't been used in a year. To provide additional security, we highly recommend adding an expiration to your personal access tokens.
                </P>
 
                <P size="x_small">
-                  A token with no assigned scopes can only access public information. To use your token to access repositories from the command line, select repo. For more information, see "Available scopes".
+                  * A token with no assigned scopes can only access public information. To use your token to access repositories from the command line, select repo. For more information, see "Available scopes".
                </P>
 
                <P size="x_small">
-                  In this application the token will be saved in your cookies and will attached to the requests header
+                  * In this application the token will be saved in your cookies and will attached to the requests header
                </P>
 
                <P size="x_small">
 
-                  You can remove your token at any time, manually from the browser or click
+                  * You can remove your token at any time, manually from the browser or click
                   <Button
                      style={{ color: "var(--main-red-color)" }}
                      color="main_transparent"
@@ -102,7 +102,7 @@ function AuthPage({ }: AuthPageProps): JSX.Element {
             </div>
 
             <div className={styles.auth_token_proccess}>
-               <Title type="h3">
+               <Title type="h2">
                   Creating a token
                </Title>
 

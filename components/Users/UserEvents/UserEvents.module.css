@@ -13,7 +13,7 @@
 }
 
 .user_events_header h3 span {
-   color: var(--four-light-color);
+   color: var(--third-light-color);
 }
 
 .user_event_item {
@@ -45,7 +45,7 @@
 
 .user_event_item_type,
 .user_event_commit_item {
-   color: var(--four-light-color);
+   color: var(--third-light-color);
 }
 
 .user_event_commit_item {

@@ -10,20 +10,28 @@ body {
   font-family: monospace;
   color: var(--main-dark-color);
   background-color: var(--second-light-color);
-  /* animation: fade-in 0.5s forwards; */
 }
+
+
+
+
 
 .bar {
   height: 5px !important;
 }
 
+/* --gray10: rgb(119, 119, 119); */
+/* --gray20: rgb(156, 163, 175); */
+
 :root {
   --main-dark-color: rgb(26, 26, 26);
 
   --main-light-color: white;
-  --second-light-color: rgb(246, 246, 246);
-  --three-light-color: rgb(142, 142, 142);
-  --four-light-color: #888;
+  /* --second-light-color: rgb(246, 246, 246); */
+
+  --second-light-color: whitesmoke;
+
+  --third-light-color: rgb(156, 163, 175);
 
 
   --main-green-color: rgb(35, 197, 197);
@@ -59,8 +67,8 @@ body {
 
   --main-light-color: rgb(29, 29, 29);
   --second-light-color: rgb(41, 41, 41);
-  --three-light-color: rgb(133, 133, 133);
-  --four-light-color: #888;
+  --third-light-color: rgb(156, 163, 175);
+
 
   --main-green-color: rgb(35, 197, 197);
   --second-green-color: rgb(7, 165, 165);
@@ -117,9 +125,6 @@ body {
   background: #555;
 }
 
-
-
-
 input {
   padding: 0.3rem;
 }
@@ -141,6 +146,10 @@ button {
 
 button, input {
   border-radius: 0 !important;
+}
+
+span {
+  font-weight: 200 !important;
 }
 
 .page_header {

@@ -21,7 +21,7 @@ export default function IssuesList({ issues }: IssuesListProps): JSX.Element {
          {issues.length > 0 && issues.map((issue) => {
             return (
                <div key={issue.node_id} className={styles.issue_item}>
-                  <Title type="h3">
+                  <Title type="h2">
                      {/* {issue.state === "open" ?
                         <span style={{ color: "var(--main-green-color)" }}>{UnLockIcon}</span> :
                         <span style={{ color: "var(--main-red-color)" }}>{LockIcon}</span>} */}
@@ -64,7 +64,7 @@ export default function IssuesList({ issues }: IssuesListProps): JSX.Element {
 
                   {issue.labels.length > 0 &&
                      <div className={styles.issue_item_labels_container}>
-                        <Title type="h4">Labels:</Title>
+                        <Title type="h3">Labels:</Title>
                         <div className={styles.issue_item_labels}>
                            {issue.labels.map((label) => {
                               return (

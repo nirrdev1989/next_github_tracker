@@ -24,7 +24,8 @@ function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
    return (
       <>
          <Head>
-            {/* <meta name="description" content={description} /> */}
+            <meta name="description" content={"github events repositories issuses"} />
+
             <title>{repo.name}</title>
          </Head>
          <div className={`page_header ${styles.repo_header}`}>

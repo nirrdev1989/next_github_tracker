@@ -99,24 +99,24 @@ export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
          </div>
 
          <div className={styles.user_repo_item_info}>
-            <Title type="h4">{languageIcons[repo.language]} {repo.language}</Title>
-            <P size="x_small">
-               <span  >{repo.description}</span>
-               {IssueIcon}
+            <Title type="h3">{languageIcons[repo.language]} {repo.language}</Title>
+            <span>
+               <span>{repo.description}</span>
+
                <Button
-                  style={{ fontSize: "13px", paddingLeft: 0 }}
+                  style={{ fontSize: "14px", paddingLeft: "var(--size-0-5-rem)" }}
                   color="main_transparent"
                   disabled={repo.open_issues_count === 0}
                   onClick={() => switchDataType("Issues")}
                >
-                  Issues {repo.open_issues_count}
+                  {IssueIcon}Issues {repo.open_issues_count}
                </Button>
-            </P>
+            </span>
          </div>
 
          {repo.topics.length > 0 &&
             <div className={styles.user_repo_topics_container}>
-               <Title type="h4">Topics:</Title>
+               <Title type="h3">Topics:</Title>
                <div className={styles.user_repo_topics}>
                   {repo.topics.map((topic) => {
                      return <span key={topic}>{topic}</span>

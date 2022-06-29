@@ -15,7 +15,7 @@
    width: 100%;
    display: flex;
    justify-content: space-between;
-   border-bottom: 2px solid var(--four-light-color);
+   border-bottom: 2px solid var(--third-light-color);
 }
 
 
@@ -37,7 +37,7 @@
    align-items: center;
    height: 10%;
    justify-content: center;
-   border-top: 2px solid var(--four-light-color);
+   border-top: 2px solid var(--third-light-color);
    padding-top: var(--size-1-rem);
 }
 
