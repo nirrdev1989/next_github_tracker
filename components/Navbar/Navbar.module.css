@@ -53,13 +53,13 @@
 
    .nav_menu.close {
       display: block;
-      animation: slide-out 0.1s forwards;
+      animation: slide-out 0.7s forwards;
    }
 
    .nav_menu.open {
       width: 100%;
       display: block;
-      animation: slide-in 0.5s forwards;
+      animation: slide-in 0.7s forwards;
       z-index: 500;
       -webkit-touch-callout: none;
    }

@@ -6,11 +6,9 @@ import styles from "./Layout.module.css"
 
 interface LayoutProps {
    children: ReactNode
-   title?: string
-   description?: string
 }
 
-function Layout({ children, title = "", description = "default-description" }: LayoutProps): JSX.Element {
+function Layout({ children }: LayoutProps): JSX.Element {
 
    return (
       <div className={styles.layout_container}>

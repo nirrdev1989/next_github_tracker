@@ -1,22 +1,12 @@
 import Axios from "../../utils/axios";
 import { GetServerSideProps } from 'next'
-import P from "../../components/util-components/P/P";
-import Title from "../../components/util-components/Titles/Title";
 import UserProfile from "../../components/Users/UserProfile/UserProfile";
 import { withLayout } from '../../layout/Layout'
 import { _GithubUserProfile } from '../../models/GithubUserProfile'
-import styles from "../../styles/User.page.module.css"
 import { _GitHubRepo } from "../../models/GithubRepo";
-import { EmailIcon, GithubIcon, ListCardIcon, TwitterIcon } from "../../icons";
 import UserEvents from "../../components/Users/UserEvents/UserEvents";
 import { _GitHubEvents } from "../../models/GithubEvents";
-import MenuActions from "../../components/MenuActions/MenuActions";
-import Atag from "../../components/util-components/Atag/Atag";
-import MyImage from "../../components/util-components/MyImage/MyImage";
-import Head from "next/head";
-import { errorToast } from "../../utils/toast";
-
-
+import PageContainer from "../../components/Containers/PageContainer/PageContainer";
 
 interface UserProfileProps extends Record<string, unknown> {
    userProfile: _GithubUserProfile
@@ -24,42 +14,11 @@ interface UserProfileProps extends Record<string, unknown> {
 }
 
 function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element {
-
    return (
-      <>
-         <Head>
-            <meta name="description" content={"user profile github events gists repositories"} />
-            <title>{userProfile.name}</title>
-         </Head>
-
-         {/* <div className={`page_container`}> */}
-         <div className={`page_header ${styles.user_profile_header}`}>
-            <div className={styles.user_profile_img}>
-               <MyImage border="circle" width={100} height={100} src={userProfile.avatar_url} />
-            </div>
-            <div className={styles.user_profile_info}>
-               <div className={styles.user_profile_info_header}>
-                  <Title type="h1">
-                     {userProfile.name || userProfile.login}
-                  </Title>
-                  <Title type="h2">{userProfile.login}</Title>
-               </div>
-               <div className={styles.user_profile_info_links}>
-                  {userProfile.blog && <span >{ListCardIcon} <Atag href={userProfile.blog} >Blog</Atag></span>}
-                  {userProfile.twitter_username && <span>{TwitterIcon} <Atag href={`https://twitter.com/${userProfile.twitter_username}`} >Twitter</Atag></span>}
-                  {userProfile.email && <span>{EmailIcon} <Atag href={`mailto:${userProfile.email}`} >Email</Atag></span>}
-                  <span>{GithubIcon} <Atag href={userProfile.html_url} >Github</Atag></span>
-                  <MenuActions fullName={userProfile.login} name={userProfile.login} type="users" url={`/users/${userProfile.login}`} />
-               </div>
-            </div>
-         </div>
-
-         <div className={styles.user_profile_content}>
-            <UserProfile userProfile={userProfile} />
-            <UserEvents events={events} userProfile={userProfile} eventsUrl={`/users/${userProfile.login}/events`} />
-         </div>
-         {/* </div> */}
-      </>
+      <PageContainer title={userProfile.name} description="user profile github events gists repositories">
+         <UserProfile userProfile={userProfile} />
+         <UserEvents events={events} userProfile={userProfile} eventsUrl={`/users/${userProfile.login}/events`} />
+      </PageContainer>
    )
 }
 

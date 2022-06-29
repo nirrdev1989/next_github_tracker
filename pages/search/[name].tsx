@@ -15,6 +15,7 @@ import { GetServerSideProps } from "next"
 import Button from "../../components/util-components/Button/Button"
 import { LeftArrowIcon, RightArrowIcon } from "../../icons"
 import Head from "next/head"
+import PageContainer from "../../components/Containers/PageContainer/PageContainer"
 
 interface SearchPageProps extends Record<string, unknown> {
    dataType: string
@@ -52,10 +53,8 @@ function SearchPage({ dataType, newSearch }: SearchPageProps): JSX.Element {
    }, [dataType])
 
    return (
-      <div>
-         <Head>
-            <title>search/{router.query?.name}</title>
-         </Head>
+      <PageContainer title={"search/" + router.query?.name}>
+
          <div className={`page_header`}>
             <Title type="h1">Search</Title>
             <P size="small">{router.query?.name}</P>
@@ -88,9 +87,8 @@ function SearchPage({ dataType, newSearch }: SearchPageProps): JSX.Element {
                <UsersSearchList users={data.items} />}
             {data.items.length > 0 && dataType === "repositories" && router.query.search &&
                <ReposSearchList repos={data.items} />}
-
          </div>
-      </div>
+      </PageContainer>
    )
 }
 

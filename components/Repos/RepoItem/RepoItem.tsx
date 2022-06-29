@@ -11,6 +11,10 @@ import IssuesList from "../IssuesList/IssuesList"
 import { getData } from "../../../utils/fetcher"
 import Button from "../../util-components/Button/Button"
 import { useRouter } from "next/router"
+import MyImage from "../../util-components/MyImage/MyImage"
+import MyLink from "../../util-components/MyLink.tsx/MyLink"
+import MenuActions from "../../MenuActions/MenuActions"
+import Atag from "../../util-components/Atag/Atag"
 
 
 interface RopoItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -77,6 +81,21 @@ export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
             </MoadlWrapper.Footer>
          </MoadlWrapper>
 
+         <div className={`page_header ${styles.repo_header}`}>
+            <div className={styles.repo_owner_img}>
+               <MyImage border="circle" width={50} height={50} src={repo.owner.avatar_url} />
+            </div>
+            <div className={`${styles.repo_header_title}`}>
+               <Title type="h1">
+                  <MyLink style={{ marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
+                     {repo.owner.login}
+                  </MyLink>/<Atag href={repo.html_url}>{repo.name}</Atag>
+
+               </Title>
+               <MenuActions fullName={`${repo.name}/${repo.owner.login}`} name={repo.name} type="repos" url={`/repos/${repo.name}?user=${repo.owner.login}`} />
+            </div>
+         </div>
+
          <div className={styles.user_repo_item_dates}>
             <span>{DateIcon} Created: {new Date(repo.created_at).toLocaleDateString()}</span>
             <span>{DateIcon} Pushed:  {new Date(repo.pushed_at).toLocaleDateString()}</span>
@@ -102,7 +121,6 @@ export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
             <Title type="h3">{languageIcons[repo.language]} {repo.language}</Title>
             <span>
                <span>{repo.description}</span>
-
                <Button
                   style={{ fontSize: "14px", paddingLeft: "var(--size-0-5-rem)" }}
                   color="main_transparent"

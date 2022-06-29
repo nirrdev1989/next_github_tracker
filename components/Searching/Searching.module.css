@@ -30,7 +30,8 @@
 }
 
 .search_input svg {
-   width: 27px;
-   height: 27px;
+   width: 30px;
+   height: 25px;
    color: var(--main-dark-color);
+   padding-right: var(--size-1-rem);
 }

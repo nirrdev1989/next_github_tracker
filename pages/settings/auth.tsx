@@ -11,6 +11,7 @@ import Cookie from "js-cookie"
 import styles from "../../styles/Auth.page.module.css"
 import { errorToast, successToast, warningToast } from "../../utils/toast"
 import Head from "next/head"
+import PageContainer from "../../components/Containers/PageContainer/PageContainer"
 
 interface AuthPageProps extends Record<string, unknown> { }
 
@@ -49,10 +50,8 @@ function AuthPage({ }: AuthPageProps): JSX.Element {
    }, [])
 
    return (
-      <>
-         <Head>
-            <title>settings/auth</title>
-         </Head>
+
+      <PageContainer title={"settings/auth"} >
          <div className={`page_header`}>
             <Title type="h1">Auth</Title>
          </div>
@@ -131,7 +130,7 @@ function AuthPage({ }: AuthPageProps): JSX.Element {
                   </>}
             </div>
          </div>
-      </>
+      </PageContainer>
    )
 }
 

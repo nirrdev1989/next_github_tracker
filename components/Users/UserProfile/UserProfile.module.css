@@ -26,6 +26,24 @@
    overflow-x: hidden;
 }
 
+.user_profile_header {
+   display: flex;
+   align-items: center;
+   gap: var(--size-1-rem);
+}
+
+.user_profile_info_header {
+   display: flex;
+   align-items: center;
+   gap: var(--size-0-5-rem);
+}
+
+.user_profile_info_links {
+   display: flex;
+   align-items: center;
+   gap: var(--size-0-5-rem);
+}
+
 @media (max-width: 770px) {
    .user_profile_stats {
       flex-direction: column;

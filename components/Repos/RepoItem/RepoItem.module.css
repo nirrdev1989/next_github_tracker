@@ -1,3 +1,44 @@
+.repo_header {
+   padding-left: var(--size-0-5-rem);
+   display: flex;
+}
+
+.repo_header h1 {
+   display: flex;
+   align-items: center;
+}
+
+.repo_header_title {
+   display: flex;
+   align-items: center;
+}
+
+.repo_header_title button {
+   margin-top: 0;
+   padding-top: 0;
+}
+
+
+.repo_item_content {
+   display: grid;
+}
+
+.repo_item_content>div {
+   margin-bottom: var(--size-2-rem);
+}
+
+@media (max-width: 770px) {
+   .repo_header {
+      display: flex;
+      width: 100%;
+      justify-content: flex-start;
+      text-align: center;
+      align-items: center;
+   }
+
+}
+
+
 .user_repo_item {
    width: 100%;
    margin: auto;

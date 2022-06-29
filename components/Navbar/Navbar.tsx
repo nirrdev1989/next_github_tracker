@@ -18,7 +18,7 @@ export default function Navbar({ }: NavbarProps): JSX.Element {
    const { isDarkMode, switchMode } = useTheme()
    const { menuList } = useAppContext()
    const [isOpen, setIsOpen] = useState<boolean>(false)
-   const [endStart, setEndStart] = useAnimateEnd(100, setIsOpen)
+   const [endStart, setEndStart] = useAnimateEnd(500, setIsOpen)
 
    const router = useRouter()
 

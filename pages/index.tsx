@@ -8,25 +8,20 @@ import { _SearchResults } from "../models/Search";
 import { StarIcon } from "../icons";
 import Atag from "../components/util-components/Atag/Atag";
 import Head from "next/head";
+import PageContainer from "../components/Containers/PageContainer/PageContainer";
 // import { FlexContainer, FlexContainerQuery } from "../components/Containers/FlexContainer";
 
 
 interface HomeProps { }
 
 function HomePage({ }: HomeProps): JSX.Element {
-  console.log("HomePage")
   return (
-    <>
-      <Head>
-        <title>Home</title>
-      </Head>
+    <PageContainer title="home">
       <div className={`page_header`}>
         <Title type="h1">Github tracker</Title>
       </div>
 
-
       <div className={styles.home_page_content}>
-
         <P size="medium">
           A site that lets you view the details of the repositories or users and their activities, in addition you can keep to yourself lists of your favorite users and repositories
         </P>
@@ -40,15 +35,7 @@ function HomePage({ }: HomeProps): JSX.Element {
           </span>
         </div>
       </div>
-
-
-      {/* <FlexContainer1 flexDirection="row" mediaOptions={{ type: "column", value: 500 }}>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-      </FlexContainer1> */}
-
-    </>
+    </PageContainer>
   )
 }
 
