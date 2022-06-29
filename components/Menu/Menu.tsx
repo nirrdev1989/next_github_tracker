@@ -95,7 +95,6 @@ function MenuItem({ item }: MenuItemProps): JSX.Element {
    const { query } = useRouter()
    return (
       <div key={item.name} className={`${styles.menu_item_option} ${query?.name === item.name && styles.menu_item_options_active}`}>
-
          <MyLink to={item.link}>
             {item.fullName}
          </MyLink>

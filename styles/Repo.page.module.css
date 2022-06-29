@@ -8,6 +8,15 @@
    align-items: center;
 }
 
+.repo_header_title {
+   display: flex;
+   align-items: center;
+}
+
+.repo_header_title button {
+   margin-top: 0;
+   padding-top: 0;
+}
 
 
 .repo_item_content {

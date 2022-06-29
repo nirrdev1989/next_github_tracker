@@ -20,8 +20,6 @@ interface UserEventsProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElemen
    events: _GitHubEvents[]
 }
 
-
-
 export default function UserEvents({ userProfile, eventsUrl, events }: UserEventsProps): JSX.Element {
    const [data, setData] = useState<_GitHubEvents[]>([])
    const [pageNumber, setPageNumber] = useState<number>(0)

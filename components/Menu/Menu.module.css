@@ -38,11 +38,10 @@
 }
 
 .menu_item_option {
-   opacity: 0.5;
+   opacity: 0.7;
    transition: var(--transaction-0-5-s);
    margin-bottom: var(--size-0-5-rem);
-   padding-left: var(--size-1-5-rem);
-
+   padding-left: var(--size-2-rem);
 }
 
 .menu_item_options_active,

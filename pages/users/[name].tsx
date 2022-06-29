@@ -14,6 +14,7 @@ import MenuActions from "../../components/MenuActions/MenuActions";
 import Atag from "../../components/util-components/Atag/Atag";
 import MyImage from "../../components/util-components/MyImage/MyImage";
 import Head from "next/head";
+import { errorToast } from "../../utils/toast";
 
 
 
@@ -30,25 +31,25 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
             <meta name="description" content={"user profile github events gists repositories"} />
             <title>{userProfile.name}</title>
          </Head>
+
+         {/* <div className={`page_container`}> */}
          <div className={`page_header ${styles.user_profile_header}`}>
             <div className={styles.user_profile_img}>
-
                <MyImage border="circle" width={100} height={100} src={userProfile.avatar_url} />
-
             </div>
             <div className={styles.user_profile_info}>
-               <div>
+               <div className={styles.user_profile_info_header}>
                   <Title type="h1">
                      {userProfile.name || userProfile.login}
-                     <MenuActions fullName={userProfile.login} name={userProfile.login} type="users" url={`/users/${userProfile.login}`} />
                   </Title>
-                  <P style={{ marginBottom: "0.5rem" }} size="small">{userProfile.login}</P>
+                  <Title type="h2">{userProfile.login}</Title>
                </div>
-               <div className={styles.user_profile_links}>
+               <div className={styles.user_profile_info_links}>
                   {userProfile.blog && <span >{ListCardIcon} <Atag href={userProfile.blog} >Blog</Atag></span>}
                   {userProfile.twitter_username && <span>{TwitterIcon} <Atag href={`https://twitter.com/${userProfile.twitter_username}`} >Twitter</Atag></span>}
                   {userProfile.email && <span>{EmailIcon} <Atag href={`mailto:${userProfile.email}`} >Email</Atag></span>}
                   <span>{GithubIcon} <Atag href={userProfile.html_url} >Github</Atag></span>
+                  <MenuActions fullName={userProfile.login} name={userProfile.login} type="users" url={`/users/${userProfile.login}`} />
                </div>
             </div>
          </div>
@@ -57,6 +58,7 @@ function UserProfilePage({ userProfile, events }: UserProfileProps): JSX.Element
             <UserProfile userProfile={userProfile} />
             <UserEvents events={events} userProfile={userProfile} eventsUrl={`/users/${userProfile.login}/events`} />
          </div>
+         {/* </div> */}
       </>
    )
 }
