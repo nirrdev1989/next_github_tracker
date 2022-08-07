@@ -1,16 +1,13 @@
-import { HTMLAttributes, DetailedHTMLProps, useState, useEffect } from "react"
-import { EventIcon, LeftArrowIcon, RepoIcon, RightArrowIcon } from "../../../icons"
+import { HTMLAttributes, DetailedHTMLProps } from "react"
+import { RepoIcon } from "../../../icons"
 import { _GitHubEvents } from "../../../models/GithubEvents"
 import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 import { _GithubUserProfile } from "../../../models/GithubUserProfile"
 import { timeDifference } from "../../../utils/date"
-import { getData } from "../../../utils/fetcher"
 import ReadMore from "../../ReadMore/ReadMore"
-import Button from "../../util-components/Button/Button"
 import MyImage from "../../util-components/MyImage/MyImage"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
-import Title from "../../util-components/Titles/Title"
 import styles from "./UserEvents.module.css"
 
 
