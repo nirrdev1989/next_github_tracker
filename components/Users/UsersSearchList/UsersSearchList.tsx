@@ -8,36 +8,48 @@ import styles from "./UsersSearchList.module.css"
 
 
 interface UsersSearchListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-   users: _GithubUserLikeOwner[]
+   data?: _GithubUserLikeOwner[]
 }
 
-export default function UsersSearchList({ users }: UsersSearchListProps): JSX.Element {
+export default function UsersSearchList({ data }: UsersSearchListProps): JSX.Element {
+   let users = data
    return (
       <div className={styles.users_list}>
          {users.length > 0 && users.map((user) => {
             return (
-               <div className={styles.user_list_item} key={user.node_id} >
-                  <div className={styles.user_list_item_header}>
-                     <div className={styles.user_list_item_left}>
-
-                        <MyImage border="circle" width={65} height={65} src={user.avatar_url} />
-
-                        <MyLink style={{ fontSize: "17px" }} to={`/users/${user.login}`}>
-                           {user.login}
-                        </MyLink>
-                     </div>
-                     <div>
-                        <MenuActions name={user.login} fullName={user.login} url={`/users/${user.login}`} type="users" />
-                     </div>
-                  </div>
-
-
-                  <div className={styles.user_list_item_content}>
-                     <P size="small"> Type: {user.type} </P>
-                  </div>
-               </div>
+               <UsersSearchListItem key={user.node_id} user={user} />
             )
          })}
+      </div>
+   )
+}
+
+
+interface UsersSearchListItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+   user: _GithubUserLikeOwner
+}
+
+export function UsersSearchListItem({ user }: UsersSearchListItemProps): JSX.Element {
+   return (
+      <div className={styles.user_list_item}  >
+         <div className={styles.user_list_item_header}>
+            <div className={styles.user_list_item_left}>
+
+               <MyImage border="circle" width={65} height={65} src={user.avatar_url} />
+
+               <MyLink style={{ fontSize: "17px" }} to={`/users/${user.login}`}>
+                  {user.login}
+               </MyLink>
+            </div>
+            <div>
+               <MenuActions name={user.login} fullName={user.login} url={`/users/${user.login}`} type="users" />
+            </div>
+         </div>
+
+
+         <div className={styles.user_list_item_content}>
+            <P size="small"> Type: {user.type} </P>
+         </div>
       </div>
    )
 }

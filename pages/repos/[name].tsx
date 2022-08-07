@@ -6,23 +6,62 @@ import RepoItem from "../../components/Repos/RepoItem/RepoItem"
 import { _GitHubEvents } from "../../models/GithubEvents"
 import UserEvents from "../../components/Users/UserEvents/UserEvents"
 import PageContainer from "../../components/Containers/PageContainer/PageContainer"
+import { TabsWrapper } from "../../components/Tabs/Tabs"
+import { PaginateWrapper } from "../../components/Paginate/Paginate"
+import { EventIcon, IssueIcon } from "../../icons"
+import IssuesList from "../../components/Repos/IssuesList/IssuesList"
+import { getRepoIssues, getUserEvents } from "../../utils/api/api"
 
 
 interface RepoPageProps extends Record<string, unknown> {
    repo: _GitHubRepo
-   events?: _GitHubEvents[]
 }
 
-function RepoPage({ repo, events }: RepoPageProps): JSX.Element {
+function RepoPage({ repo }: RepoPageProps): JSX.Element {
+   const headers = []
+
+   headers.push(
+      <>
+         {EventIcon}
+         Events
+         <span>(last 90 days)</span>
+      </>
+   )
+
+   if (repo.open_issues_count > 0) {
+      headers.push(
+         <>
+            {IssueIcon}
+            Issues
+            <span>{repo.open_issues_count}</span>
+         </>
+      )
+   }
 
    return (
-      <PageContainer title={repo.name} description={"github events repositories issuses"}>
+      <PageContainer title={repo.name} description={"github events repositories issues"}>
          <RepoItem repo={repo} />
-         <UserEvents
-            events={events}
-            userProfile={repo.owner}
-            eventsUrl={`/repos/${repo.owner.login}/${repo.name}/events`}
-         />
+
+         <TabsWrapper initialActive={0}>
+            <TabsWrapper.Tabs
+               headers={headers}
+            >
+               <PaginateWrapper url={`/repos/${repo.owner.login}/${repo.name}/events?page=`} fetchFn={getUserEvents} >
+                  <PaginateWrapper.PaginateActions />
+                  <PaginateWrapper.List withSearch={true} searchProp="type">
+                     <UserEvents userProfile={repo.owner} />
+                  </PaginateWrapper.List>
+               </PaginateWrapper>
+
+               <PaginateWrapper url={`/repos/${repo.owner.login}/${repo.name}/issues?page=`} fetchFn={getRepoIssues} >
+                  <PaginateWrapper.PaginateActions />
+                  <PaginateWrapper.List withSearch={true} searchProp="title" >
+                     <IssuesList />
+                  </PaginateWrapper.List>
+               </PaginateWrapper>
+
+            </TabsWrapper.Tabs>
+         </TabsWrapper>
       </PageContainer>
 
    )
@@ -34,15 +73,12 @@ export default withLayout(RepoPage)
 export const getServerSideProps: GetServerSideProps<RepoPageProps> = async (context) => {
 
    let repoResult = null
-   let eventsResult = null
 
    try {
-      const [repo, events] = await Promise.all([
+      const [repo] = await Promise.all([
          Axios.get(`/repos/${context.query.user}/${context.query.name}`),
-         Axios.get(`/repos/${context.query.user}/${context.query.name}/events`)
       ])
       repoResult = repo.data
-      eventsResult = events.data
    } catch (error) {
       console.log(error)
    }
@@ -56,7 +92,6 @@ export const getServerSideProps: GetServerSideProps<RepoPageProps> = async (cont
    return {
       props: {
          repo: repoResult,
-         events: eventsResult
       }
    }
 }

@@ -9,13 +9,13 @@ const ModalContext = createContext(null)
 
 interface MenuWrapperProps extends PropsWithChildren<any> {
    show?: boolean
-   setShowModl: (show: boolean) => void
+   setShowModal: (show: boolean) => void
 }
 
 
-export function MoadlWrapper({ children, setShowModl, show }: MenuWrapperProps): JSX.Element {
+export function ModalWrapper({ children, setShowModal, show }: MenuWrapperProps): JSX.Element {
    const [isBrowser, setIsBrowser] = useState<boolean>(false);
-   const [endStart, setEndStart] = useAnimateEnd(500, setShowModl)
+   const [endStart, setEndStart] = useAnimateEnd(500, setShowModal)
 
 
    useEffect(() => {
@@ -89,21 +89,21 @@ function ModalHeader({ children, title }: ModalHeaderProps): JSX.Element {
    )
 }
 
-MoadlWrapper.Header = ModalHeader
-MoadlWrapper.Body = ModalBody
-MoadlWrapper.Footer = ModalFooter
+ModalWrapper.Header = ModalHeader
+ModalWrapper.Body = ModalBody
+ModalWrapper.Footer = ModalFooter
 
 // interface ModalProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 //    children?: ReactNode
 //    show: boolean
 //    title?: string
-//    setShowModl: (show: boolean) => void
+//    setShowModal: (show: boolean) => void
 //    footer?: any
 // }
 
-// export default function Modal({ show, children, setShowModl, title, footer }: ModalProps) {
+// export default function Modal({ show, children, setShowModal, title, footer }: ModalProps) {
 //    const [isBrowser, setIsBrowser] = useState<boolean>(false);
-//    const [endStart, setEndStart] = useAnimateEnd(500, setShowModl)
+//    const [endStart, setEndStart] = useAnimateEnd(500, setShowModal)
 //    useEffect(() => {
 //       setIsBrowser(() => true);
 //    }, []);

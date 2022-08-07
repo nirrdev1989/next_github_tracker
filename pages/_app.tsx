@@ -39,11 +39,9 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
 
   return <>
     <Head>
-
       <meta property='og:url' content={process.env.NEXT_PUBLIC_DOMAIN + router.asPath} />
       <title>Top Github Tracker</title>
       <meta name="description" content="repositories users github tracker activities events" />
-
     </Head>
     <AppContextProvider>
       <ToastContainer />

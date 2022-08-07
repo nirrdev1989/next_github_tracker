@@ -1,5 +1,4 @@
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
 import ReposSearchList from "../../components/Repos/ReposSearchList/ReposSearchList"
 import Searching from "../../components/Searching/Searching"
 import UsersSearchList from "../../components/Users/UsersSearchList/UsersSearchList"
@@ -8,49 +7,20 @@ import { withLayout } from "../../layout/Layout"
 import { _GitHubRepo } from "../../models/GithubRepo"
 import { _GithubUserLikeOwner } from "../../models/GithubUserLikeOwner"
 import { _SearchResults } from "../../models/Search"
-import { getData } from "../../utils/fetcher"
 import styles from "../../styles/Search.page.module.css"
 import P from "../../components/util-components/P/P"
 import { GetServerSideProps } from "next"
-import Button from "../../components/util-components/Button/Button"
-import { LeftArrowIcon, RightArrowIcon } from "../../icons"
-import Head from "next/head"
 import PageContainer from "../../components/Containers/PageContainer/PageContainer"
+import { PaginateWrapper } from "../../components/Paginate/Paginate"
+import { getSearchRepos, getSearchUsers } from "../../utils/api/api"
 
 interface SearchPageProps extends Record<string, unknown> {
    dataType: string
-   newSearch: boolean
+   newSearch?: boolean
 }
 
-const initialSearchState: _SearchResults<any> = {
-   items: [],
-   total_count: 0,
-   incomplete_results: true
-}
-
-function SearchPage({ dataType, newSearch }: SearchPageProps): JSX.Element {
+function SearchPage({ dataType }: SearchPageProps): JSX.Element {
    const router = useRouter()
-   const [data, setData] = useState<_SearchResults<any>>(initialSearchState)
-   const [pageNumber, setPageNumber] = useState<number>(1)
-   const [isNewSearch, setIsNewSearch] = useState<boolean>(newSearch)
-
-   useEffect(() => {
-      const searchValue = router.query?.search
-      const name = router.query?.name
-
-      if (searchValue !== undefined && name !== undefined) {
-         getData(`/search/${name}?q=${searchValue}&page=${pageNumber}`, (error, data: _SearchResults<_GithubUserLikeOwner | _GitHubRepo>) => {
-            setIsNewSearch(() => false)
-            setData(data)
-         })
-      }
-   }, [router.query.search, pageNumber])
-
-   useEffect(() => {
-      setData(initialSearchState)
-      setPageNumber(() => 1)
-      setIsNewSearch(() => true)
-   }, [dataType])
 
    return (
       <PageContainer title={"search/" + router.query?.name}>
@@ -62,32 +32,34 @@ function SearchPage({ dataType, newSearch }: SearchPageProps): JSX.Element {
 
          <div className={styles.search} >
             <Searching />
-
-            {!isNewSearch &&
-               <>
-                  <Button disabled={pageNumber <= 1 || router.query.search === ""} color="main_transparent" onClick={() => {
-                     setPageNumber((prev) => prev - 1)
-                  }}>
-                     {LeftArrowIcon}
-                  </Button>
-                  <Button disabled={pageNumber === 0 || router.query.search === ""} color="main_transparent" onClick={() => {
-                     setPageNumber((prev) => prev + 1)
-                  }}>
-                     {RightArrowIcon}
-                  </Button>
-
-                  <small>Page-{pageNumber}  </small>
-               </>}
-
-            {data?.total_count > 0 && <P size="small">Results {data.total_count} for {router.query.search}</P>}
+            {/* {data?.total_count > 0 && <P size="small">Results {data.total_count} for {router.query.search}</P>} */}
          </div>
 
-         <div className={styles.search_results}>
-            {data.items.length > 0 && dataType === "users" && router.query.search &&
-               <UsersSearchList users={data.items} />}
-            {data.items.length > 0 && dataType === "repositories" && router.query.search &&
-               <ReposSearchList repos={data.items} />}
-         </div>
+         {router.query?.search && dataType === "repositories" &&
+            <PaginateWrapper
+               // initialFetch={false}
+               url={`/search/${router.query.name}?q=${router.query.search}&page=`}
+               fetchFn={getSearchRepos}
+            >
+               <PaginateWrapper.PaginateActions />
+               <PaginateWrapper.List >
+                  <ReposSearchList />
+               </PaginateWrapper.List>
+            </PaginateWrapper>
+         }
+
+         {router.query?.search && dataType === "users" &&
+            <PaginateWrapper
+               // initialFetch={false}
+               url={`/search/${router.query.name}?q=${router.query.search}&page=`}
+               fetchFn={getSearchUsers}
+            >
+               <PaginateWrapper.PaginateActions />
+               <PaginateWrapper.List >
+                  <UsersSearchList />
+               </PaginateWrapper.List>
+            </PaginateWrapper>
+         }
       </PageContainer>
    )
 }

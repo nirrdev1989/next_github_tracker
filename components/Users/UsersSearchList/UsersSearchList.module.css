@@ -4,7 +4,7 @@
    padding: var(--size-1-rem) 0;
    gap: var(--size-1-rem);
    border-bottom: solid var(--third-light-color) 1px;
-   width: 98%;
+   width: 100%;
 }
 
 .user_list_item:last-child {

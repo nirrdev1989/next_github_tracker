@@ -1,7 +1,7 @@
  .repo_list_item {
     display: flex;
     flex-direction: column;
-    width: 98%;
+    width: 100%;
     padding: var(--size-1-rem) 0;
     gap: var(--size-1-rem);
     border-bottom: solid var(--third-light-color) 1px;

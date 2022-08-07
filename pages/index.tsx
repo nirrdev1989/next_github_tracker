@@ -7,9 +7,7 @@ import { _GitHubRepo } from "../models/GithubRepo";
 import { _SearchResults } from "../models/Search";
 import { StarIcon } from "../icons";
 import Atag from "../components/util-components/Atag/Atag";
-import Head from "next/head";
 import PageContainer from "../components/Containers/PageContainer/PageContainer";
-// import { FlexContainer, FlexContainerQuery } from "../components/Containers/FlexContainer";
 
 
 interface HomeProps { }

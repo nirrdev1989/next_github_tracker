@@ -11,10 +11,10 @@ import styles from "./IssuesList.module.css"
 
 
 interface IssuesListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-   issues: _GithubRepoIssue[]
+   data?: _GithubRepoIssue[]
 }
 
-export default function IssuesList({ issues }: IssuesListProps): JSX.Element {
+export default function IssuesList({ data: issues }: IssuesListProps): JSX.Element {
    return (
       <div className={styles.issues}>
 

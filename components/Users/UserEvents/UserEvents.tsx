@@ -16,41 +16,44 @@ import styles from "./UserEvents.module.css"
 
 interface UserEventsProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    userProfile: _GithubUserProfile | _GithubUserLikeOwner
-   eventsUrl: string
-   events: _GitHubEvents[]
+   eventsUrl?: string
+   data?: _GitHubEvents[]
 }
 
-export default function UserEvents({ userProfile, eventsUrl, events }: UserEventsProps): JSX.Element {
-   const [data, setData] = useState<_GitHubEvents[]>([])
-   const [pageNumber, setPageNumber] = useState<number>(0)
+export default function UserEvents({ userProfile, data }: UserEventsProps): JSX.Element {
+   // const [data, setData] = useState<_GitHubEvents[]>([])
+   // const [pageNumber, setPageNumber] = useState<number>(0)
 
-   console.log(userProfile.type)
+   // console.log(userProfile.type)
 
-   useEffect(() => {
-      if (pageNumber >= 1) {
-         getData(
-            `${eventsUrl}?page=${pageNumber}`,
-            (error, data: _GitHubEvents[]) => {
-               setData(() => data)
-            })
-      }
-   }, [pageNumber])
+   // useEffect(() => {
+   //    if (pageNumber >= 1) {
+   //       getData(
+   //          `${eventsUrl}?page=${pageNumber}`,
+   //          (error, data: _GitHubEvents[]) => {
+   //             setData(() => data)
+   //          })
+   //    }
+   // }, [pageNumber])
 
-   useEffect(() => {
-      setData(() => [])
-   }, [userProfile.login])
+   // useEffect(() => {
+   //    setData(() => [])
+   // }, [userProfile.login])
 
-   let currentEvents = data.length ? data : events
+   // let currentEvents = data.length ? data : events
+
+   let currentEvents = data
+
 
    return (
       <div>
          <div className={styles.user_events_header}>
-            <div>
+            {/* <div>
                <Title type="h3">
                   {EventIcon} Events <span style={{ fontSize: "13px" }} >(last 90 days)</span>
                </Title>
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
                <Button disabled={pageNumber <= 1} color="main_transparent" onClick={() => {
                   setPageNumber((prev) => prev - 1)
                }}>
@@ -63,7 +66,7 @@ export default function UserEvents({ userProfile, eventsUrl, events }: UserEvent
                </Button>
 
                <small>Page-{pageNumber === 0 ? 1 : pageNumber}</small>
-            </div>
+            </div> */}
          </div>
 
 
@@ -73,9 +76,7 @@ export default function UserEvents({ userProfile, eventsUrl, events }: UserEvent
                   <div key={event.id} className={styles.user_event_item}>
                      <div className={styles.user_event_item_info}>
                         <span className={styles.user_event_img}>
-
                            <MyImage border="circle" width={35} height={35} src={event.actor.avatar_url} />
-
                         </span>
 
                         <span>

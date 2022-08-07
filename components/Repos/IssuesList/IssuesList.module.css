@@ -4,7 +4,11 @@
     flex-direction: column;
     gap: var(--size-1-rem);
     padding: var(--size-1-rem) 0;
-    width: 98%;
+    width: 100%;
+ }
+
+ .issue_item:last-child {
+    border-bottom: none;
  }
 
  .issue_item_header {}

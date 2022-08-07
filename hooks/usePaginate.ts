@@ -1,50 +1,60 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { getData } from "../utils/fetcher";
+import { useEffect, useRef, useState, MutableRefObject } from "react";
+import Axios from "../utils/axios";
+import { progressBarConfig } from "../utils/progress-bar";
 
-interface _InitialStateUseusePaginate {
-   pageCount: number;
-   range?: number;
-   url?: string;
-   newSearch?: boolean;
-   initialData?: any;
-   dataType?: string;
+interface _InitialStateUsePaginate {
+   startPage?: number
 }
 
-export function usePaginate({ pageCount, dataType, range, url, newSearch, initialData }: _InitialStateUseusePaginate) {
-   const [pageNumber, setPageNumber] = useState<number>(pageCount)
-   const [data, setData] = useState<any>(initialData)
-   const [isNewSearch, setIsNewSearch] = useState<boolean>(newSearch)
-   const router = useRouter()
+interface _Paginate<T> {
+   prevPage: (url: string) => void
+   nextPage: (url: string) => void
+   data: T
+   fetchData: (url: string) => void
+   pageNumber: MutableRefObject<number>
+}
 
-   useEffect(() => {
-      const searchValue = router.query?.search
-      const name = router.query?.name
+const progressBar = progressBarConfig()
 
-      let url = ""
-      if (searchValue !== undefined && name !== undefined) {
-         console.log("SERCHING")
-         if (name === "users") {
-            url = `/search/users?q=${searchValue}&page=${pageNumber}`
-         } else if (name === "repos") {
-            url = `/search/repositories?q=${searchValue}&page=${pageNumber}`
-         }
+export function usePaginate({ startPage = 1 }: _InitialStateUsePaginate): _Paginate<any> {
+   const [data, setData] = useState([])
+   const pageNumber = useRef(startPage)
+   // const fetchDataOnInitial = useRef(initialFetch);
 
-         getData(url, (error, data: any) => {
-            setIsNewSearch(() => false)
-            setData(data)
+
+   function fetchData(finalUrl: string) {
+      progressBar.start()
+      Axios.get(finalUrl)
+         .then((response) => {
+            // console.log(response);
+            setData(response.data)
          })
-      }
-   }, [router.query.search, pageNumber])
+         .catch((error) => {
+            console.log(error)
+         })
+         .finally(() => {
+            progressBar.done()
+         })
+   }
 
+   function nextPage(url: string) {
+      pageNumber.current++
+      fetchData(url + pageNumber.current)
+   }
+
+   function prevPage(url: string) {
+      if (pageNumber.current === 1) return
+      pageNumber.current--
+      fetchData(url + pageNumber.current)
+   }
 
    useEffect(() => {
-      setData(initialData)
-      setPageNumber(() => 1)
-      setIsNewSearch(() => true)
-   }, [dataType])
+      console.log("url effect called")
+      pageNumber.current = 1
+   }, [])
 
 
-   return { data, setPageNumber, pageNumber, isNewSearch, router }
 
+   return { prevPage, nextPage, data, fetchData, pageNumber }
 }

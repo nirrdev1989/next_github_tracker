@@ -1,85 +1,25 @@
-import { HTMLAttributes, DetailedHTMLProps, useState, useEffect } from "react"
-import { DateIcon, languageIcons, StarIcon, FollowIcon, ForkIcon, IssueIcon, LeftArrowIcon, RightArrowIcon } from "../../../icons"
+import { HTMLAttributes, DetailedHTMLProps } from "react"
+import { DateIcon, languageIcons, StarIcon, FollowIcon, ForkIcon } from "../../../icons"
 import { _GitHubEvents } from "../../../models/GithubEvents"
 import { _GitHubRepo, _GithubRepoIssue } from "../../../models/GithubRepo"
 import Badge from "../../util-components/Badge/Badge"
-import P from "../../util-components/P/P"
 import Title from "../../util-components/Titles/Title"
 import styles from "./RepoItem.module.css"
-import { MoadlWrapper } from "../../Modal/Modal"
-import IssuesList from "../IssuesList/IssuesList"
-import { getData } from "../../../utils/fetcher"
-import Button from "../../util-components/Button/Button"
-import { useRouter } from "next/router"
 import MyImage from "../../util-components/MyImage/MyImage"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import MenuActions from "../../MenuActions/MenuActions"
 import Atag from "../../util-components/Atag/Atag"
 
 
-interface RopoItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface RepoItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    repo: _GitHubRepo,
 }
 
-export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
-   const [showModal, setShowModl] = useState<boolean>(false)
-   const [issues, setIssues] = useState<_GithubRepoIssue[]>([])
-   const [dataType, setDataType] = useState<string>("")
-   const [pageNumber, setPageNumber] = useState<number>(1)
-   const router = useRouter()
-
-   function switchDataType(type: string) {
-      if (type === dataType) {
-         setShowModl(() => true)
-         return
-      }
-      setDataType(() => type)
-      // setPageNumber(() => 1)
-   }
-
-
-   useEffect(() => {
-      if (dataType !== "") {
-         getData(
-            `/repos/${repo.owner.login}/${repo.name}/${dataType.toLowerCase()}?page=${pageNumber}`,
-            (error, data: _GithubRepoIssue[]) => {
-               setShowModl(() => true)
-               setIssues(() => data)
-            })
-      }
-   }, [dataType, pageNumber])
-
-   useEffect(() => {
-      setDataType(() => "")
-      setPageNumber(() => 1)
-   }, [repo.name, router.query])
+export default function RepoItem({ repo }: RepoItemProps): JSX.Element {
 
 
    return (
       <div className={styles.user_repo_item}>
-
-         <MoadlWrapper show={showModal} setShowModl={setShowModl}>
-            <MoadlWrapper.Header title={dataType}> <P size="x_small">{repo.owner.login}</P>  </MoadlWrapper.Header>
-
-            <MoadlWrapper.Body>
-               {issues.length > 0 && <IssuesList issues={issues} />}
-            </MoadlWrapper.Body>
-
-            <MoadlWrapper.Footer>
-               <Button disabled={pageNumber <= 1} color="main_transparent" onClick={() => {
-                  setPageNumber((prev) => prev - 1)
-               }}>
-                  {LeftArrowIcon}
-               </Button>
-               <Button disabled={issues.length < 30} color="main_transparent" onClick={() => {
-                  setPageNumber((prev) => prev + 1)
-               }}>
-                  {RightArrowIcon}
-               </Button>
-
-               <small>Page-{pageNumber}</small>
-            </MoadlWrapper.Footer>
-         </MoadlWrapper>
 
          <div className={`page_header ${styles.repo_header}`}>
             <div className={styles.repo_owner_img}>
@@ -90,7 +30,6 @@ export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
                   <MyLink style={{ marginLeft: "var(--size-1-rem)" }} to={`/users/${repo.owner.login}`}>
                      {repo.owner.login}
                   </MyLink>/<Atag href={repo.html_url}>{repo.name}</Atag>
-
                </Title>
                <MenuActions fullName={`${repo.name}/${repo.owner.login}`} name={repo.name} type="repos" url={`/repos/${repo.name}?user=${repo.owner.login}`} />
             </div>
@@ -121,14 +60,6 @@ export default function RepoItem({ repo }: RopoItemProps): JSX.Element {
             <Title type="h3">{languageIcons[repo.language]} {repo.language}</Title>
             <span>
                <span>{repo.description}</span>
-               <Button
-                  style={{ fontSize: "14px", paddingLeft: "var(--size-0-5-rem)" }}
-                  color="main_transparent"
-                  disabled={repo.open_issues_count === 0}
-                  onClick={() => switchDataType("Issues")}
-               >
-                  {IssueIcon}Issues {repo.open_issues_count}
-               </Button>
             </span>
          </div>
 

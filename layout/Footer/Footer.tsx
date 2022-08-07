@@ -1,4 +1,3 @@
-
 import { HTMLAttributes, DetailedHTMLProps } from "react"
 import Atag from "../../components/util-components/Atag/Atag"
 import { GithubIcon2, LinkedinIcon } from "../../icons"

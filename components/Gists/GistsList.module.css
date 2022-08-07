@@ -6,6 +6,10 @@
    border-bottom: solid var(--third-light-color) 1px;
 }
 
+.gist_item:last-child {
+   border-bottom: 0;
+}
+
 .gist_item_header {
    display: flex;
    gap: var(--size-1-rem);
