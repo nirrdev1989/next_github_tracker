@@ -22,9 +22,11 @@ export default function Navbar({ }: NavbarProps): JSX.Element {
 
    const router = useRouter()
 
-   // useEffect(() => {
-   //    setEndStart(true)
-   // }, [router])
+   useEffect(() => {
+      if (isOpen) {
+         setEndStart(true)
+      }
+   }, [router])
 
    return (
       <nav className={`${isOpen ? styles.nav + " " + styles.open : styles.nav}`}>

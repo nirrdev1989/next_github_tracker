@@ -4,6 +4,7 @@ import { _GitHubEvents } from "../../../models/GithubEvents"
 import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 import { _GithubUserProfile } from "../../../models/GithubUserProfile"
 import { timeDifference } from "../../../utils/date"
+import NoResults from "../../NoResults/NoResults"
 import ReadMore from "../../ReadMore/ReadMore"
 import MyImage from "../../util-components/MyImage/MyImage"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
@@ -18,12 +19,12 @@ interface UserEventsProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElemen
 }
 
 export default function UserEvents({ userProfile, data: currentEvents }: UserEventsProps): JSX.Element {
-
+   console.log(currentEvents)
    return (
       <div>
          <div className={styles.user_events_header}></div>
          <div className={styles.user_events}>
-            {currentEvents.length > 0 && currentEvents.map((event) => {
+            {currentEvents.length > 0 ? currentEvents.map((event) => {
                return (
                   <div key={event.id} className={styles.user_event_item}>
                      <div className={styles.user_event_item_info}>
@@ -67,7 +68,7 @@ export default function UserEvents({ userProfile, data: currentEvents }: UserEve
                      }
                   </div>
                )
-            })}
+            }) : <NoResults />}
          </div>
       </div>
    )
