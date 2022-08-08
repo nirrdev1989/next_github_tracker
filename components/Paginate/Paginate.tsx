@@ -1,6 +1,7 @@
 import { createContext, MutableRefObject, PropsWithChildren, useContext, useEffect, useState, Children, cloneElement, isValidElement, useRef } from "react"
 import { LeftArrowIcon, RightArrowIcon } from "../../icons";
 import { progressBarConfig } from "../../utils/progress-bar";
+import NoResults from "../NoResults/NoResults";
 import Button from "../util-components/Button/Button";
 import styles from "./Paginate.module.css"
 
@@ -92,10 +93,11 @@ function PaginateActions({ }): JSX.Element {
             <Button disabled={pageNumber.current === 1} color="main_transparent" onClick={prevPage}>
                {LeftArrowIcon}
             </Button>
-            <Button disabled={data.length > pageLimit} color="main_transparent" onClick={nextPage}>
+            <Button disabled={data.length < pageLimit} color="main_transparent" onClick={nextPage}>
                {RightArrowIcon}
             </Button>
-            <small>Page-{pageNumber.current}</small>
+            <small>Page-{pageNumber.current} </small>
+            {/* &nbsp; Results {data.length} */}
          </div>
    )
 }
@@ -117,7 +119,7 @@ function List({ withSearch = false, searchProp = "", children }: ListProps): JSX
       filterData = data.filter((item) => item[searchProp].toLowerCase().includes(searchValue.toLowerCase()))
    }
 
-   if (!data || data.length === 0) return <div></div>
+   if (!data || data.length === 0) return null
 
    return (
       <>

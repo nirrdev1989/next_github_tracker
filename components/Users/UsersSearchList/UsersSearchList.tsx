@@ -1,6 +1,7 @@
 import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { _GithubUserLikeOwner } from "../../../models/GithubUserLikeOwner"
 import MenuActions from "../../MenuActions/MenuActions"
+import NoResults from "../../NoResults/NoResults"
 import MyImage from "../../util-components/MyImage/MyImage"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
@@ -11,15 +12,14 @@ interface UsersSearchListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
    data?: _GithubUserLikeOwner[]
 }
 
-export default function UsersSearchList({ data }: UsersSearchListProps): JSX.Element {
-   let users = data
+export default function UsersSearchList({ data: users }: UsersSearchListProps): JSX.Element {
    return (
       <div className={styles.users_list}>
-         {users.length > 0 && users.map((user) => {
+         {users.length > 0 ? users.map((user) => {
             return (
                <UsersSearchListItem key={user.node_id} user={user} />
             )
-         })}
+         }) : <NoResults />}
       </div>
    )
 }

@@ -18,77 +18,9 @@ interface UserProfileProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEleme
 
 
 export default function UserProfile({ userProfile }: UserProfileProps): JSX.Element {
-   // const [showModal, setShowModal] = useState(false)
-   // const [data, setData] = useState<any[]>([])
-   // const [dataType, setDataType] = useState<string>("")
-   // const [pageNumber, setPageNumber] = useState<number>(1)
-   // const router = useRouter()
-
-
-   // function switchDataType(type: string) {
-
-   //    // router.push({
-   //    //    pathname: `/users/${userProfile.login}`,
-   //    //    query: {
-   //    //       type: type
-   //    //    }
-   //    // })
-   //    if (type === dataType) {
-   //       setShowModal(() => true)
-   //       return
-   //    }
-   //    setPageNumber(() => 1)
-   //    setDataType(() => type)
-   // }
-
-   // useEffect(() => {
-   //    if (dataType !== "") {
-   //       getData(
-   //          `/users/${userProfile.login}/${dataType.toLowerCase()}?page=${pageNumber}`,
-   //          (error, data: _GithubGist[] | _GitHubRepo[] | _GithubUserLikeOwner[]) => {
-   //             setShowModal(() => true)
-   //             setData(() => data)
-   //          })
-   //    }
-   // }, [dataType, pageNumber])
-
-   // useEffect(() => {
-   //    setDataType(() => "")
-   //    setPageNumber(() => 1)
-   // }, [userProfile.login])
-
-   // console.log("render")
 
    return (
       <div className={`${styles.user_profile}`}>
-
-         {/* <ModalWrapper show={showModal} setShowModal={setShowModal} >
-            <ModalWrapper.Header title={`${dataType}`} >
-               <P size="x_small">{userProfile.name}</P>
-            </ModalWrapper.Header>
-            <ModalWrapper.Body>
-               {dataType === "Gists" && <GistsList gists={data} />}
-               {dataType === "Repos" && <ReposSearchList repos={data} />}
-               {dataType === "Followers" && <UsersSearchList users={data} />}
-            </ModalWrapper.Body>
-            <ModalWrapper.Footer>
-               <>
-                  <Button disabled={pageNumber <= 1} color="main_transparent" onClick={() => {
-                     setPageNumber((prev) => prev - 1)
-                  }}>
-                     {LeftArrowIcon}
-                  </Button>
-                  <Button disabled={data.length < 30} color="main_transparent" onClick={() => {
-                     setPageNumber((prev) => prev + 1)
-                  }}>
-                     {RightArrowIcon}
-                  </Button>
-
-                  <small>Page-{pageNumber}</small>
-               </>
-            </ModalWrapper.Footer>
-         </ModalWrapper> */}
-
          <div className={`page_header ${styles.user_profile_header}`}>
             <div className={styles.user_profile_img}>
                <MyImage border="circle" width={100} height={100} src={userProfile.avatar_url} />

@@ -1,8 +1,8 @@
-import Image from "next/image"
 import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { ForkIcon, IssueIcon, languageIcons, StarIcon } from "../../../icons"
 import { _GitHubRepo } from "../../../models/GithubRepo"
 import MenuActions from "../../MenuActions/MenuActions"
+import NoResults from "../../NoResults/NoResults"
 import MyImage from "../../util-components/MyImage/MyImage"
 import MyLink from "../../util-components/MyLink.tsx/MyLink"
 import P from "../../util-components/P/P"
@@ -13,15 +13,14 @@ interface ReposSearchListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
    data?: _GitHubRepo[]
 }
 
-export default function ReposSearchList({ data }: ReposSearchListProps): JSX.Element {
-   let repos = data
+export default function ReposSearchList({ data: repos }: ReposSearchListProps): JSX.Element {
    return (
       <div className={styles.users_list}>
-         {repos.length > 0 && repos.map((repo) => {
+         {repos.length > 0 ? repos.map((repo) => {
             return (
                <ReposSearchListItem repo={repo} key={repo.node_id} />
             )
-         })}
+         }) : <NoResults />}
       </div>
    )
 }

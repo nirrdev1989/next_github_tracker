@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   // const router = useRouter()
 
   useEffect(() => {
+    const NProgress = progressBarConfig()
 
     function start() {
       NProgress.start()
@@ -25,7 +26,6 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
       }, 1000)
     }
 
-    const NProgress = progressBarConfig()
     router.events.on('routeChangeStart', start)
     router.events.on('routeChangeComplete', done)
     router.events.on('routeChangeError', done)

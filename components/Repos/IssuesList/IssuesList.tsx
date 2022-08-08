@@ -2,6 +2,7 @@ import Image from "next/image"
 import { HTMLAttributes, DetailedHTMLProps } from "react"
 import { _GithubRepoIssue } from "../../../models/GithubRepo"
 import { timeDifference } from "../../../utils/date"
+import NoResults from "../../NoResults/NoResults"
 import ReadMore from "../../ReadMore/ReadMore"
 import Atag from "../../util-components/Atag/Atag"
 import MyImage from "../../util-components/MyImage/MyImage"
@@ -18,7 +19,7 @@ export default function IssuesList({ data: issues }: IssuesListProps): JSX.Eleme
    return (
       <div className={styles.issues}>
 
-         {issues.length > 0 && issues.map((issue) => {
+         {issues.length > 0 ? issues.map((issue) => {
             return (
                <div key={issue.node_id} className={styles.issue_item}>
                   <Title type="h2">
@@ -76,7 +77,7 @@ export default function IssuesList({ data: issues }: IssuesListProps): JSX.Eleme
                   }
                </div>
             )
-         })}
+         }) : <NoResults />}
       </div>
    )
 }

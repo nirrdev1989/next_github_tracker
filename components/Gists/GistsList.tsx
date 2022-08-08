@@ -1,7 +1,8 @@
 import { HTMLAttributes, DetailedHTMLProps } from "react"
-import { FileIcon, InfoIcon } from "../../icons"
+import { FileIcon } from "../../icons"
 import { _GithubGist } from "../../models/GithubGists"
 import { timeDifference } from "../../utils/date"
+import NoResults from "../NoResults/NoResults"
 import Atag from "../util-components/Atag/Atag"
 import P from "../util-components/P/P"
 import styles from "./GistsList.module.css"
@@ -10,14 +11,14 @@ interface GistsListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement
    data?: _GithubGist[]
 }
 
-export default function GistsList({ data: gists }: GistsListProps) {
+export default function GistsList({ data: gists }: GistsListProps): JSX.Element {
    return (
       <div className={styles.gists}>
-         {gists.length > 0 && gists.map((gist) => {
+         {gists.length > 0 ? gists.map((gist) => {
             return (
                <GistsItem key={gist.node_id} gist={gist} />
             )
-         })}
+         }) : <NoResults />}
       </div>
    )
 }
@@ -26,7 +27,7 @@ export default function GistsList({ data: gists }: GistsListProps) {
 interface GistItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    gist: _GithubGist
 }
-export function GistsItem({ gist }: GistItemProps) {
+export function GistsItem({ gist }: GistItemProps): JSX.Element {
    return (
       <div className={styles.gist_item}>
          <div className={styles.gist_item_header}>

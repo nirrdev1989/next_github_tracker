@@ -17,56 +17,11 @@ interface UserEventsProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElemen
    data?: _GitHubEvents[]
 }
 
-export default function UserEvents({ userProfile, data }: UserEventsProps): JSX.Element {
-   // const [data, setData] = useState<_GitHubEvents[]>([])
-   // const [pageNumber, setPageNumber] = useState<number>(0)
-
-   // console.log(userProfile.type)
-
-   // useEffect(() => {
-   //    if (pageNumber >= 1) {
-   //       getData(
-   //          `${eventsUrl}?page=${pageNumber}`,
-   //          (error, data: _GitHubEvents[]) => {
-   //             setData(() => data)
-   //          })
-   //    }
-   // }, [pageNumber])
-
-   // useEffect(() => {
-   //    setData(() => [])
-   // }, [userProfile.login])
-
-   // let currentEvents = data.length ? data : events
-
-   let currentEvents = data
-
+export default function UserEvents({ userProfile, data: currentEvents }: UserEventsProps): JSX.Element {
 
    return (
       <div>
-         <div className={styles.user_events_header}>
-            {/* <div>
-               <Title type="h3">
-                  {EventIcon} Events <span style={{ fontSize: "13px" }} >(last 90 days)</span>
-               </Title>
-            </div> */}
-            {/* <div>
-               <Button disabled={pageNumber <= 1} color="main_transparent" onClick={() => {
-                  setPageNumber((prev) => prev - 1)
-               }}>
-                  {LeftArrowIcon}
-               </Button>
-               <Button disabled={currentEvents.length < 30} color="main_transparent" onClick={() => {
-                  setPageNumber((prev) => prev === 0 ? prev + 2 : prev + 1)
-               }}>
-                  {RightArrowIcon}
-               </Button>
-
-               <small>Page-{pageNumber === 0 ? 1 : pageNumber}</small>
-            </div> */}
-         </div>
-
-
+         <div className={styles.user_events_header}></div>
          <div className={styles.user_events}>
             {currentEvents.length > 0 && currentEvents.map((event) => {
                return (

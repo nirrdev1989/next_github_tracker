@@ -1,4 +1,4 @@
-.user_events_header {
+/* .user_events_header {
    display: flex;
    gap: var(--size-1-rem);
    align-items: center;
@@ -14,7 +14,7 @@
 
 .user_events_header h3 span {
    color: var(--third-light-color);
-}
+} */
 
 .user_event_item {
    margin-top: var(--size-1-rem);

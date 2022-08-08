@@ -14,6 +14,7 @@ import ReposSearchList from "../../components/Repos/ReposSearchList/ReposSearchL
 import UsersSearchList from "../../components/Users/UsersSearchList/UsersSearchList";
 import GistsList from "../../components/Gists/GistsList";
 import { getUserEvents, getUserFollowers, getUserRepos, getUserGists } from "../../utils/api/api";
+import NoResults from "../../components/NoResults/NoResults";
 
 interface UserProfileProps extends Record<string, unknown> {
    userProfile: _GithubUserProfile

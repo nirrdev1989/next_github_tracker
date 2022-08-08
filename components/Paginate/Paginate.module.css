@@ -1,7 +1,7 @@
 .paginate_actions {
-   /* display: flex; */
+   display: flex;
    /* justify-content: center; */
-   /* align-items: center; */
+   align-items: center;
 }
 
 .paginate_actions>button {
